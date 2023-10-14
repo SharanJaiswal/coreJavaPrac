@@ -1,0 +1,28 @@
+package kk.oops.interfaces;
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.applybreak();
+        car.acc();
+        car.start();
+        car.stop();
+
+        Engine car2 = new Car();
+//        car2.a;   // Gives error because Engine type reference variable cannot find variable named "a" to refer, although Car having its version of "a".
+
+        Media carMedia = new Car(); // We wanted t start media, but it's starting the car.
+
+        NiceCar car3 = new NiceCar();
+        car3.startMyCar();
+        car3.stopMyCar();
+        car3.startMusic();
+        car3.stopMusic();
+
+        car3.upgradeEngine(new ElectricEngine());
+        car3.startMyCar();  // Now when car starts, electric engine will gets start
+        car3.stopMyCar();
+        car3.startMusic();
+        car3.stopMusic();
+    }
+}

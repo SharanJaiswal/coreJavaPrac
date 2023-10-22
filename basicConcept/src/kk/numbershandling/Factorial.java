@@ -14,6 +14,6 @@ public class Factorial {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println(fact(input.nextInt()).toString());
+        System.out.println(fact(input.nextInt()));
     }
 }

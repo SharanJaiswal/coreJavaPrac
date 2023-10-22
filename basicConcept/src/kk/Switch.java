@@ -38,3 +38,7 @@ public class Switch {
         }
     }
 }
+/*
+If there is a switch statement inside a method that expects something to be returned from each case, then there has to
+be one more return statement outside the switch statement itself.
+ */

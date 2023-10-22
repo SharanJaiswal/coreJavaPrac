@@ -1,4 +1,4 @@
-package kk.stringBufferClass;
+package kk.strings.stringBufferClass;
 
 /*
 StringBuffer class object has mutable sequence of characters. Efficient as compare to String in terms of memory and time. Thread-safe hence slower.

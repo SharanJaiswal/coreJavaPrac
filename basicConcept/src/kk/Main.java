@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         /*
-        args passed to call the main method are stored in an String array,
-        ie, the arguments will be casted as String irrespective of their data type by looks
+        args passed to call the main method are stored in a String array,
+        ie, the arguments will be cast as String irrespective of their data type by looks
          */
 //        System.out.println(args[0] + " " + args[1]);
 
@@ -18,7 +18,7 @@ public class Main {
         If it is non-whitespace character, then it starts to store the stream of characters.
         But when it does that, it does in same manner, ie, check if next character is non-whitespace char or not.
         Once it sees that next incoming char is whitespace char, then it stops reading. That unstored whitespace char
-        then ready to be store by another input scanner. If next is also new next(), then it will not store char until
+        then ready to be store by another input scanner. If next input stream reader is also new next(), then it will not store char until
         non-whitespace char comes, and will store until non-whitespace char continues to occur. But if there is
         nextLine() method, this will store the whitespace character as well.
         Enter key is the end of the input,not stored anywhere.

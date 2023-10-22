@@ -1,4 +1,4 @@
-package kk.stringBufferClass;
+package kk.strings.stringBufferClass;
 
 import java.util.Random;
 import java.util.Scanner;

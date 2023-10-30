@@ -18,7 +18,7 @@ public class Main {
         // SubClass type reference variable cannot refer Super class. There are many extra member variables inside subClass.
         // If child class start referencing the parent class, then it would expect those extra variables, which are part of subclass, from parent class.
         // This cannot happen because Object is created of type parent, and only those member variables are initialized which are part of parent. NOT child.
-        // So, members which are not initialized, cannot be referenced. Also because child constructor is not called, parent constructor is called.
+        // So, members which are not initialized, cannot be referenced. Also, because child constructor is not called, parent constructor is called.
 //        BoxWeight box3 = new Box(4,6,8);
 
         // because of above valid logic, we can pass the object of type child to the constructor of type Parent, which is expecting argument of type Parent
@@ -28,5 +28,6 @@ public class Main {
         /* ========================= */
         System.out.println((new Box()) instanceof Box);
         System.out.println(new Box() instanceof Object);
+        System.out.println(new Box() instanceof BoxWeight);
     }
 }

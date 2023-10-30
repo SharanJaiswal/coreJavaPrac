@@ -1,9 +1,10 @@
 package kk.oops.interfaces.nestedinterface;
 
 public class A {
-    public interface NestedInterface {
+    public static interface NestedInterface {   // Inner interfaces are always static
         boolean isOdd(int num);
     }
+    int a=56;
 }
 
 class B implements A.NestedInterface {
@@ -17,5 +18,7 @@ class Main {
     public static void main(String[] args) {
         B obj = new B();
         System.out.println(obj.isOdd(5));
+
+        A aObj = new A();
     }
 }

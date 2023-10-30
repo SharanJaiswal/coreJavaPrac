@@ -21,5 +21,8 @@ public class CompareStrings {
 
         String st8 = "Scaler";
         System.out.println(st1 == st8);
+
+        System.out.println(st1.compareTo(st7)); // lexicographically comparison
+        System.out.println(st1.compareToIgnoreCase(st7));
     }
 }

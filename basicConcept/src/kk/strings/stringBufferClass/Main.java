@@ -2,7 +2,7 @@ package kk.strings.stringBufferClass;
 
 /*
 StringBuffer class object has mutable sequence of characters. Efficient as compare to String in terms of memory and time. Thread-safe hence slower.
-While String build is non-thread-safe. Appending characters will not create new object of it, unlike arrays.
+While String build is non-thread-safe. Appending characters will not create new object out of it, unlike arrays.
  */
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +20,7 @@ public class Main {
         sb1.insert(2, sb3);
         System.out.println(sb1);
         sb3.append("d g g g g g g ");
+        System.out.println(sb3);
         System.out.println(sb1);
 
         sb1.replace(2,9, "saint");

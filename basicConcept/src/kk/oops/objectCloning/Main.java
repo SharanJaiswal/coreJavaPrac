@@ -13,12 +13,15 @@ public class Main {
          */
         Human twinNew = (Human) human1.clone();
         System.out.println(human1.equals(twinNew)); // Object cloned will not be same. It'll be in new memory location. Example of shallow copy.
+        // Shallow Copy: Not nested/lower level of references below the level of object is also being copied to new object.
+        // Just the attributes at first level of object is duplicated in new object, and downstream object reference the exact same memory location even through cloned object of shallow copy.
+        // Hence, slow intents NOT TOO DEEP.
         /*
         In shallow copy, the new object will be created. Inside that new object, primitive data types reference variable will have their value at separate location for obvious reason
         that primitives variables do not refer to memory location in heap. They itself store value of variable.
         While, non-primitives reference variables of new object will point to same memory location where object of non-primitive of that data type is located.
         Hence, in shallow copy, change in one non-primitive will reflect in the cloned object's version of that non-primitive reference variable to which it is pointing to.
-        We have seen above that cloned object itself is different, but their String datatype will be pointing to same. Even if they would have Arrays, then both will be pointing to same.
+        We have seen above that cloned object itself is different, but their String datatype will be pointing to same. Even if they would have Arrays, then both will be pointing to same (String Pool).
          */
         System.out.println(human1.name.equals(twinNew.name));   // true
 
@@ -31,12 +34,14 @@ public class Main {
         // Deep Copy example
         Human deepHuman = (Human) human1.deepClone();
         System.out.println(human1.equals(deepHuman));
-        System.out.println(Arrays.equals(human1.arr, deepHuman.arr));   // still true
+        System.out.println(human1.arr == deepHuman.arr);
+        System.out.println(Arrays.equals(human1.arr, deepHuman.arr));   // still true because Arrays.equals checks if count of are equals; and corresponding elements are equal in value.
+        // It does not compare the memory location of both the arrays.
         System.out.println(human1.name.equals(deepHuman.name)); // Still true
         human1.arr[3] = 100;
         System.out.println(Arrays.toString(human1.arr));
         System.out.println(Arrays.toString(deepHuman.arr));
-        System.out.println(Arrays.equals(human1.arr, deepHuman.arr));   // Now false, because internally java knows that until elements are same lets point to same object in heap
-        // But when any element of the gets changed, a total new memory will be pointed. So, it is safe.
+        System.out.println(Arrays.equals(human1.arr, deepHuman.arr));   // Now false, because Arrays.equals start implementing logic of comparing the corresponding element,
+        // at one place at idx=3 it fails. Hence, gives error OR false as return value.
     }
 }

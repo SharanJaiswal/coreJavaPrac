@@ -1,7 +1,7 @@
 package kk.oops.interfaces.nestedinterface;
 
 public interface P {
-    public interface NestedInterface {
+    public static interface NestedInterface {   // Inner interfaces are always static
         boolean isOdd(int num);
     }
 }

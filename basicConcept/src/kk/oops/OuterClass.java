@@ -17,12 +17,12 @@ class OuterTest {
 }
 
 /*
-Outermost class cannot be static, while the inner class can and cannot be static, because the to access static entity,
+Outermost class cannot be static, while the inner class can and cannot be static, because to access the static entity,
 it must be dependent on any class. If outermost class is allowed to be static, then it means outermost class is dependent
 on any other class, which is not possible. Outermost class is ultimately independent, while subsequent inner class are
 wrapped around by their outer class, ie, inner class are dependent on outer classes.
  */
-public class InnerClass {
+public class OuterClass {
     static class StaticTest {
         String name;
         static String naam;
@@ -32,7 +32,8 @@ public class InnerClass {
             StaticTest.naam = name;
         }
     }
-// Static class is in the scope of the InnerClass, while non-static class is in the scope of all the objects of InnerClass
+// Static class is in the scope of the OuterClass, ie, static class can be accessed by using outerclass or its objects(non-preferred way) as reference,
+// while non-static class is in the scope of all the objects of OuterClass, ie, it will only be accessed by the objects of outer class & not by outer class itself.
     class NonStaticTest {
         String name;
 
@@ -46,11 +47,12 @@ public class InnerClass {
         Below works because this inner class whose object is created is static class, and static candidate does not
         need any object of their enclosing class to access them
          */
-        StaticTest statObj1 = new InnerClass.StaticTest("Sharan");  // Preferred way of accessing the static candidate
+        StaticTest statObj1 = new OuterClass.StaticTest("Sharan");  // Preferred way of accessing the static candidate
         StaticTest statObj2 = new StaticTest("Jaiswal");
-        System.out.println("Non Static attr : " + statObj1.name + ". ====> Static Value : " + InnerClass.StaticTest.naam);
+        System.out.println("Non Static attr : " + statObj1.name + ". ====> Static Value : " + OuterClass.StaticTest.naam);
         // Above is the preferred way of accessing the static candidate is using [Outerclassname.]Innerstaticclassname.staticcandidate
         System.out.println("Non Static attr : " + statObj2.name + ". ====> Static Value : " + statObj2.naam);
+        // It is an example where static content if once changed, is changed for all of its occurrences in all the objects.
         /*
         We can observe that although inner class being the static, have 2 different objects. It can be possible because
         class template is static, not the instances of the class. It is hence preferred to used "outerClass.InnerStaticClass"
@@ -65,10 +67,8 @@ public class InnerClass {
 //        NonStaticTest nonStatObj1 = new NonStaticTest("Sharan");
 //        NonStaticTest nonStatObj2 = new NonStaticTest("Jaiswal");
 
-        // Below is an example where static content if once changed, is changed for all of its occurrences.
-        OuterTest ot1 = new OuterTest("OuterTestSharan");
-        OuterTest ot2 = new OuterTest("OuterTestJaiswal");
-        System.out.println("Non Static attr : " + ot1.naam + ". ====> Static Value : " + OuterTest.name); // Preferred way of accessing the static candidate is using class name,not via objects
-        System.out.println("Non Static attr : " + ot2.naam + ". ====> Static Value : " + ot2.name);
+        /*
+        checkout links in the README.md file
+         */
     }
 }

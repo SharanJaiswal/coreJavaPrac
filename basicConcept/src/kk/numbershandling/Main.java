@@ -57,7 +57,7 @@ public class Main {
         System.out.println(p.add(q));
         System.out.println(p.subtract(q));
         System.out.println(p.multiply(q));
-//        System.out.println(p.divide(q));
+//        System.out.println(p.divide(q));    // gives error as this gives non-terminating quotient as answer/
         System.out.println(p.negate());
 
         BigDecimal con = BigDecimal.ONE;

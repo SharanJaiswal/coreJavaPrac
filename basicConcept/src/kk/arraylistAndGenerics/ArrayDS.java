@@ -7,7 +7,9 @@ import java.util.Arrays;
 public class ArrayDS {
     public static void main(String[] args) {
         int[] arr = null;
-//        System.out.println(arr.length); // will give error because arr reference variable is not pointing to any array. Hence, size of null cannot be found. It is absurd, causes NPE
+//        System.out.println(arr.length);
+// will give error because arr reference variable is not pointing to any array. Hence, size of null cannot be found. It is absurd, causes NPE.
+// Also, length is a part of instantiated object, not part of reference variable. So, when object itself is not present|instantiated, then we cannot refer its instance variable.
 
         // syntax
         // datatype[] reference_var = new datatype[size];   // reference_var is pointing to memory having arrays of LHS datatype

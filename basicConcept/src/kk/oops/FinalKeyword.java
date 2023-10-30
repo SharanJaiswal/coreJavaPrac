@@ -14,7 +14,7 @@ public class FinalKeyword {
         // Seeing if singleton works or not by checking if the value of state is same on calling new obj of B from new Obj of A
         A newA = new A();
         System.out.println(newA.BOBJ.state);
-        System.out.println(a.BOBJ == newA.BOBJ);    // confirmation that both the objects of A are holding same object of B
+        System.out.println(a.BOBJ == newA.BOBJ);    // confirmation that both the objects of A are holding/referencing same object of B
     }
 }
 

@@ -1,4 +1,4 @@
-package kk.arraylistAndGenerics;
+package kk.generic;
 
 public class GenericInterfaceClass implements GenericInterface<Integer> {   // Here we provided Integer for T
     @Override

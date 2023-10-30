@@ -1,9 +1,9 @@
 package kk.oops;
 
 public class First {
-    // Classes can be empty nad valid
+    // Classes can be empty and valid
 }
 
 interface Inter {
-    // Interfaces can be empty nad valid
+    // Interfaces can be empty and valid
 }

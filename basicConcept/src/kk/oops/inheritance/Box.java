@@ -1,8 +1,8 @@
 package kk.oops.inheritance;
 
 public class Box {
-//    private double l; // If any attribute is private in parent class, it cannot be directly referenced from th objects of Parent or Child class.
-// There has to be some way in the sam class where private attribute is defined and initialized through which it can be referenced.
+//    private double l; // If any attribute is private in parent class, it cannot be directly referenced from the objects of Parent or Child class.
+// There has to be some way in the same class where private attribute is defined and initialized through which it can be referenced.
     double l;
     double h;
     double w;

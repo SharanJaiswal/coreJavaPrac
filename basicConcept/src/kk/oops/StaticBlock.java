@@ -5,7 +5,7 @@ public class StaticBlock{
     static int b;
 
     /*
-    Since static variables are not object dependent, we want to initialize our static variables.
+    Since static variables are not object dependent, and in case where we want to initialize our static variables.
     This can be achieved via static block, which runs only exactly once when the class gets loaded for the very first time,
     i.e., when the first object gets created. Static block does not run after creation of first object.
      */

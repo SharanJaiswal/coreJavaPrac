@@ -16,7 +16,7 @@ public class Main {
         This can be useful when we want different functionality with different object created. But better approach would be to
         extend the abstract parent class to new classes, each having different method body, aligning the former requirement.
          */
-//        Parent parent1 = new Parent(40);
+//        Parent parent1 = new Parent(40, 69);
         Parent parent2 = new Parent(40, 69) {
             @Override
             void career(String job) {

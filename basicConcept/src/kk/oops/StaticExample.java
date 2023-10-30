@@ -3,16 +3,21 @@ package kk.oops;
 public class StaticExample {
     public static void main(String[] args) {
         // main is a static method
-        // Consider this main methods as part of code in application that will anywhere create the object this class.
+        // Consider this main methods as part of code in application that will anywhere create the object of this class.
         // From static method, to call non-static methods, we need an object to refer those non-static methods via objects.
         StaticExample obj = new StaticExample();
         obj.nonStatic();
 
         // TO call static methods from static methods, we don't need class objects. We can refer them using class itself.
-        // Although we can call the static method using "this" keyword, but it is not acceptable, and doesn't make clear sense to the logic.
+        // Although we can call the static method using "this" keyword, but it is not acceptable and will give error, and doesn't make clear sense to the logic.
         // So avoid using "this" to refer the static candidates.
         StaticExample.fun();
+//        this.fun();   // Using "this" keyword will give an error because static members are object independent
+
+        obj.fun();  // This will work because static members are accessible by objects. But is not preferred way to access static members of a class
         System.out.println(StaticExample.number);
+//        System.out.println(this.number);  // Using "this" keyword will give an error because static members are object independent
+        System.out.println(obj.number);
     }
     static int number;  // Unlike final variables, static variables don't need to initialize themselves. They will follow default value.
     static void fun() {
@@ -32,5 +37,6 @@ public class StaticExample {
     void nonStatic() {
         System.out.println("Inside non static method!!!");
         greetings();    // aka, this.greetings(); ,ie, nonStatic() is non-static method, and can call other object dependent objects, to which object it is part of.
+        fun();  // We can and cannot use class name as a reference to access the static method. If we are not using, then that static member must belong to same class.
     }
 }

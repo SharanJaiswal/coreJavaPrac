@@ -17,6 +17,7 @@ public class ReverseArray {
         System.out.println(arr);
     }
 
+    // Similarly, we can use this below logic of ArrayList for reversing an Array.
     static void reverseArrayList(ArrayList<Integer> arr) {
         if (arr == null || arr.size() == 1) { /* DO NOTHING. For handling the swapping. */ }
         else {

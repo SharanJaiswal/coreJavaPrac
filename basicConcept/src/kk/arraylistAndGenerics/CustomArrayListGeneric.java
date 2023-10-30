@@ -11,7 +11,7 @@ import java.util.List;
 // If no error is there, generics hence don't create runtime overhead. Because replacement happens at compile time itself.
 // Its highly complicated working with generics. Hence, we will be using Object. Also, T cannot be replaced with primitive data types.
 // Interfaces can also have generic types.
-public class CustomArrayListGeneric<T> {    // public class CustomArrayListGeneric<T extends ClassName> // Ensures T can only be f ClassName or ClassName's child class.
+public class CustomArrayListGeneric<T> {    // public class CustomArrayListGeneric<T extends ClassName> // Ensures T can only be of ClassName or ClassName's child class.
     private Object[] data;
     final private static int DEFAULT_SIZE = 10;
     private int size = 0;   // will work as an index iterator
@@ -58,7 +58,7 @@ public class CustomArrayListGeneric<T> {    // public class CustomArrayListGener
     }
 
     // Use of wildcard: Apart from restricting the value of T in general, it can also be used to accept the params to methods, of type ClassName or their child classes.
-    // Below is an general example, not related to this class.
+    // Below is a general example, not related to this class.
     public void getList1 (List<Number> list) { /* We can only receive param of Number type */ }
     // Below, If we are not using generic type T passed to the class, we can use wildcard '?'
     public void getList2 (List<? extends Number> list) { /* We can receive List containing elements of type Number and its subclasses */ }

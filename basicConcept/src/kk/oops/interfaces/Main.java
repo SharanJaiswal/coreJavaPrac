@@ -11,7 +11,7 @@ public class Main {
         Engine car2 = new Car();
 //        car2.a;   // Gives error because Engine type reference variable cannot find variable named "a" to refer, although Car having its version of "a".
 
-        Media carMedia = new Car(); // We wanted t start media, but it's starting the car.
+        Media carMedia = new Car(); // We wanted to start media, but it's starting the car.
 
         NiceCar car3 = new NiceCar();
         car3.startMyCar();

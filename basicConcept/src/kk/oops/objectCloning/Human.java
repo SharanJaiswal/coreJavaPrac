@@ -6,7 +6,7 @@ public class Human implements Cloneable {
 
     int[] arr = new int[] {1,2,3,4,5};;
 
-    public Human (Human human) {    // This can be used to make deep copy but it'll be slow. So, we'll modify the clone method of Object class (It's not from Cloneable interface)
+    public Human (Human human) {    // This can be used to make deep copy, but it'll be slow. So, we'll modify the clone method of Object class (It's not from Cloneable interface)
         this.name = human.name;
         this.age = human.age;
         this.arr = human.arr;

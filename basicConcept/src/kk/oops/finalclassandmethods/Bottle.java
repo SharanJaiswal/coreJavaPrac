@@ -23,4 +23,3 @@ public final class Bottle extends Container {
 //class GlassBottle extends Bottle{
 class GlassBottle{
 }
-

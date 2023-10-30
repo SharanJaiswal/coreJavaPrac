@@ -1,6 +1,6 @@
 package kk.oops.interfaces.deafultinterface;
 
-public interface B {  // interface to interface inheritance uses"extends" keyword.
+public interface B {  // interface to interface inheritance uses "extends" keyword.
     void greet();
 
 //    default void fun() {    // We cannot have simply 2 interfaces with same method signature with body

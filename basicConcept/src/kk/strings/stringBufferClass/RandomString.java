@@ -16,9 +16,12 @@ public class RandomString {
         StringBuffer strBuf = new StringBuffer();
         int count = 0;  // To only check if post decrement operator when executes. It executes after the expression gets evaluated as if no post-decrement operator is present.
         while(size-- != 0) {
-            strBuf.append((char) (97 + (int) (random.nextFloat() * 26)));
+//            strBuf.append((char) (97 + (int) (random.nextFloat() * 26)));   // See TestingRandFloat class in this package
+            strBuf.append((char) (97 + (int) (random.nextFloat() * 100 % 26)));
+            // The above is somewhat wrong, as there could be possibility where (int)(random.nextFloat()*26) gives 0 most of the times.
             count++;
         }
         return strBuf.toString() + " " + count;
+        // There is no need to write toString as second operand of first operator '+' from left is also a String, which makes first operand a String.
     }
 }

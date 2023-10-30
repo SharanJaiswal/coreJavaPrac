@@ -3,7 +3,7 @@ package kk.oops.interfaces.deafultinterface;
 public class Driver implements A, B {
     // If we want to call different body of default method with same signature.
     // Actually, the default method is inherited, and can be overridden.
-    // If we override  method with same signature in class which implements interface having same signature default method,
+    // If we override method with same signature in class which implements interface having same signature default method,
     // then it hides the scope of the inherited default interface method in this class.
     // On priority, the overridden body of method of this class will be executed.
     @Override
@@ -17,7 +17,7 @@ public class Driver implements A, B {
     }
 
     // If there are 2 defaults inherited with same method signature, then override it and
-    // provide the body as which body's to execute; A's or B's. We can also add out code in below method
+    // provide the body as which method's body to execute; A's or B's. We can also add out code in below method
     @Override
     public void forConflict() {
         A.super.forConflict();

@@ -2,7 +2,7 @@ package kk.arraylistAndGenerics;
 /*
 Dynamic size is not actually true. Internally, the size is fixed, but keeps on changing until certain threshold is reached. When element count threshold hits,
 new ArrayList is created, elements from old arraylist are copied to new one, new arraylist reference replaces the old arraylist, old arraylist gets deleted.
-All this happens seamlessly
+All this happens seamlessly.
  */
 
 import java.util.ArrayList;

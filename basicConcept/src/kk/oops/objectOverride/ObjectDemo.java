@@ -20,8 +20,11 @@ public class ObjectDemo implements Comparable<ObjectDemo>{  // Inside <> there c
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);   // By default, it does not call (hashCode of obj1) == (hashCode of obj2), instead compares the memory location of objects, ie, internally calls == .
+        return super.equals(obj);   // By default, it does call (hashCode of obj1) == (hashCode of obj2), and not compares the memory location of objects, ie, internally calls == on has values.
         // Hence, String objects having same value expects true while calling this, due to String Pool concept in java.
+        // While "==" compares the memory location.
+        // equals internally calls toString values of the operands and compares the actual string value character by character to return the boolean value.
+        // While '==' compares the memory location in case of objects, and values in case of primitives.
     }
 
     @Override

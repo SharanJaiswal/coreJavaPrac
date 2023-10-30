@@ -13,6 +13,6 @@ public class Son extends Parent{
 
     @Override
     void partner(String name, int age) {
-        System.out.println("I love " + name + ". She is of age " + age + ".");
+        System.out.println("I like " + name + ". She is of age " + age + ".");
     }
 }

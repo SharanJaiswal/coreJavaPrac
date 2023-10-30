@@ -25,7 +25,7 @@ public class Container {
 
     // Now lets see if the static methods can be inherited or not
     static void greetings() {
-        System.out.println("Hi I am in Conatiner method. Greetings!!");
+        System.out.println("Hi I am in Container method. Greetings!!");
     }
 
 //    Final static methods can be inherited but cannot be overridden. On contrary normal static methods can be inherited, overridden, but overridden body don't gets executed

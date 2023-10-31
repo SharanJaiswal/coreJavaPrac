@@ -2,13 +2,13 @@
 
 2. switch
 
-3. package [kk.strings]: strings,CompareStrings,StringBuilderVsString  TODO: unicodes of few characters; String Obj.split() method with regex;
+3. package [kk.strings] : strings,CompareStrings,StringBuilderVsString  TODO: unicodes of few characters; String Obj.split() method with regex;
 
 4. package [kk.numbershandling] : Main, Factorial
 
 5. package [kk.functions] : VarArgs, MethodShadowing. TODO:  https://www.javatpoint.com/shadowing-in-java    https://www.geeksforgeeks.org/nested-classes-java/
 
-6. package [kk.lambdas] : Student, Main. Contains: Comparable nad Coomparators
+6. package [kk.lambdas] : Student, Main. Contains: Comparable and Comparators
 
 7. package [kk.generic] : GenericInterface, GenericInterfaceClass. TODO: generics and wildcards
 
@@ -42,4 +42,6 @@
 
 22. package [kk.oops.interfaces.deafultinterface] : Main, Driver
 
-23. package [kk.algoconcepts.search.linearsearch] : Main
+23. package [kk.algoconcepts.search.linearsearch] : Main(lc1295, lc1672)
+
+24. package [kk.algoconcepts.search.binarysearch] : Main, TargetCeiling(lc744, lc34), InfiniteArrays, (lc852, lc162, lc1095), PivotInRotated

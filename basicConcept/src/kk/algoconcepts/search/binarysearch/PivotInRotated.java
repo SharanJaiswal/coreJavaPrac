@@ -4,7 +4,7 @@ public class PivotInRotated {
     public static void main(String[] args) {
         int[] arr = {4,5,6,7,3};
         int target = 6, start = 0, end = arr.length - 1;
-        int pivot = PivotInRotated.findThePivot(arr);
+        int pivot = PivotInRotated.findThePivot_nonDuplicated(arr);
         System.out.println(pivot);
         if (target == -1) { // call binary search for already sorted non-rotated array of size >= 1.
             // call binary search with start and end
@@ -20,22 +20,57 @@ public class PivotInRotated {
         }
     }
 
-    static int findThePivot(int[] arr) {
+    static int findThePivot_nonDuplicated(int[] arr) {
         int start = 0, end = arr.length - 1, mid;
         while (start <= end) {  // Solution is for array having non-duplicate elements
             mid = start + (end - start) / 2;
-            if (mid < end && arr[mid] > arr[mid + 1]) { // first condition before && ensuring there is an element after mid. At least 2 elements.
+            if (mid < end && arr[mid] > arr[mid + 1]) { // first ensuring there is an element after mid && condition. At least 2 elements.
                 return mid;
-            } else if (mid > start && arr[mid] < arr[mid - 1]) {    // first condition before && ensuring there is an element before mid. At least 2 elements.
+            } else if (mid > start && arr[mid] < arr[mid - 1]) {    // first ensuring there is an element before mid && condition. At least 2 elements.
                 return mid - 1;
             } else if (arr[mid] <= arr[start]) {    // we used <= and not < because this can handle array of size 1 where mid and start CAN point to same first element.
                 end = mid - 1;
             } else {    // if (arr[mid] > arr[start]    // where start to mid is already sorted
                 start = mid + 1;    // There is a possibility where mid is pivot. So, making start as element next to pivot ie, smallest element might skip pivot from array in concern.
-                // Hence, that case has already been covered
+                // But, that case has already been covered
             }
         }
-        return -1;  // When array is sorted or of size 1;
+        return -1;  // When array is sorted or of size 1, or when array is not rotated at all. We could actually send "array.length - 1" here instead of -1.
         // If pivot is found, then there is sure-shot 2 ascending array
+    }
+
+    // For sorted arrays containing the duplicated elements: [2, 2, 9, 10, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    static int findThePivot_Duplicated(int[] arr) {
+        int start = 0, end = arr.length, mid;
+        while (start <= end) {
+            mid = start + (end - start) / 2;
+            if (mid < end && arr[mid] > arr[mid + 1]) {
+                return mid;
+            } else if (start < mid && arr[mid] < arr[mid - 1]) {
+                return mid - 1;
+            }
+            // Now, we cannot put rest 2 cases because as per the given example above this method, element at mid, start and end are equals. Those will be satisfied by both the 2 conditions.
+            // There is no exclusive case where control will move. We cannot decide at which part the pivot lies, left or right. So, it looks like a failed logic at this scenario.
+            // To overcome this, we can ignore duplicate elements which are equal to mid-element and present at start and end.
+            if (arr[mid] == arr[start] && arr[mid] == arr[end]) {
+                // Also, there might be case where element at start or end that we are skipping, might be the pivot.
+                if(arr[start] > arr[start + 1]) {
+                    return start;
+                }
+                start++;
+
+                if (arr[end] < arr[end - 1]) {
+                    return end - 1;
+                }
+                end--;
+            }
+            // if left side of array sorted, so we will find pivot in right side
+            else if (arr[start] < arr[mid] || (arr[start] == arr[mid] && arr[mid] > arr[end])) {
+                start = mid - 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return -1;
     }
 }

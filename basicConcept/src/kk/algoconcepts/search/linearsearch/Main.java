@@ -6,7 +6,6 @@ public class Main {
         int target = 19;
         System.out.println(linearSearch(nums, target));
 
-
         int[][] arr = {
                 {23, 4, 1},
                 {18, 12, 3, 9},
@@ -21,7 +20,7 @@ public class Main {
 
     // search in the array: return the index if found, else return -1
     static int linearSearch(int[] arr, int target) {
-        if (arr.length == 0) {
+        if (arr == null || arr.length == 0) {
             return -1;
         }
 
@@ -40,7 +39,7 @@ public class Main {
     static String searchIn2D(int[][] arr, int target) {
         if (arr == null || arr.length == 0) { return -1 + ", " + -1; }
         for (int[] ar : arr) {
-            if (ar == null) { return -1 + ", " + -1; }
+//            if (ar == null) { return -1 + ", " + -1; }    // What if element is present in upcoming rows. Hence, writing this line is wrong.
         }
 
         int rowCount = -1;

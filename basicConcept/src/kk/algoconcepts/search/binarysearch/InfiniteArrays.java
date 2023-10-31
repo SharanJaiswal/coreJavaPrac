@@ -13,7 +13,7 @@ public class InfiniteArrays {
 
     /*
     To select array where element can appear can be achieved by 2 ways. Either we iteratively pick window of fixed size and compare target from extremes values, or
-    We can pick window of exponentially increasing size, adn compare target with extremes at the window.
+    We can pick window of exponentially increasing size, and compare target with extremes at the window.
     At comparing on extremes in potential sub array, if we find target match, we can include elements further that extreme that include all occurrences of that target at extreme, exponentially.
      */
     static int[] pickArrayForBinarySearch(int[] arr, int target) {

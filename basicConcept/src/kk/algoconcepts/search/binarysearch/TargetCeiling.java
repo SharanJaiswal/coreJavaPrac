@@ -1,21 +1,24 @@
 package kk.algoconcepts.search.binarysearch;
 // to find the first smallest element's index whose element is >= target in ascending sorted array
+// It is not required that target must be present in the array. There could be cases where target is not present in the array, still we can get the answer.
+// eg, if target < arr[0], then answer is arr[0]; if arr[0]<target<arr[max_idx], where target element is not in arr, then answer will surely be one element among all array elements;
+// For case where target> arr[max_idx], answer is not possible
 public class TargetCeiling {
     public static void main(String[] args) {
         int[] arr = null;
     }
-// Solution covers edge cases of array pointing null, target will not satisfy at all in arr (consecutively search in right sub array and will break out of while loop, returning -1)
+// Solution covers edge cases of array pointing null, target will not satisfy at all in arr (consecutively search in right|left sub array and will break out of while loop, returning -1)
     static int findCeilElement(int[] arr, int target) {
         int targetIdx = -1;
-        if (arr == null ) { return targetIdx; }
+        if (arr == null || arr.length == 0) { return targetIdx; }
         int start = 0, end = arr.length, mid;
         while (start <= end) {
             mid = start + (end - start) / 2;
             if (arr[mid] == target) { return mid; }
-            else if (arr[mid] > target) {
-                // {1,3,4,5}, T=2, ar[mid]=3, although we will look further in left subarray but ar[mid] could be the answer if condition not fall in subarray
+            else if (target < arr[mid]) {
+                // {1,3,5,7}, T=2, ar[mid]=3, although we will look further in left subarray but ar[mid] could be the answer if condition not fall in subarray
                 // because we are finding ceil, hence mid is potential index where condition satisfies of question
-// we are looking in sub array because actual element could be < arr[mid] of this IF condition, but also could be > target. If later condition not satisfied, ans is element of this mid
+// we are looking in sub array because actual element could be < arr[mid] of this IF condition, but also could be > target. If later condition is not satisfied, ans is element of this mid
                 targetIdx = mid;
                 end = mid - 1;
                 // When suppose in case the left sub array does not have the required answer, then targetIdx is the required answer; provided ans is in the array

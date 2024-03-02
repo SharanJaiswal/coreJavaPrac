@@ -21,7 +21,8 @@ public class Main {
 
         arrayList.forEach( item -> item.print());
 
-        // If hover over ArrayList.forEach(), we see that it takes action of type Consumer which takes only one input, ie, inside <> classname of obj present in () in lambda expr [LHS]
+        // If hover over ArrayList.forEach(), we see that it takes only one parameter as action of type Consumer.
+        // Consumer takes only one input, ie, inside <> classname of obj present in () in lambda expr [LHS]
         // Also, Consumer is just an interface, which can take upto 1 generic classname type, hence, LHS of lambda which is no. of args of function, is also 1 in number.
         // Consumer returns nothing, its accept abstract method
         Consumer<Student> func = (item) -> item.print();
@@ -33,7 +34,7 @@ public class Main {
 
         // We can define any lambda expression body and assign to this interface, but here it is restricted to take exactly 2 parameters, body return type is void.
         // and if parameter class is also mentioned in interface blueprint, then those parameters should also take care of matching corresponding param and their order.
-        Operation anyrandomname = (a, b) -> {
+        Operation anyRandomName = (a, b) -> {
             System.out.println("marks=" + b + " rollno=" + a);
             System.out.println("Sharan");
         };
@@ -43,7 +44,7 @@ public class Main {
         mainObj1.lambdaUser1(stu1.rollno, stu1.marks, printDetail);
 
         Main mainObj2 = new Main();
-        mainObj2.lambdaUser2(stu1.rollno, stu1.marks, anyrandomname);
+        mainObj2.lambdaUser2(stu1.rollno, stu1.marks, anyRandomName);
 
         // If this lambdaUser1|2 had been defined in Student class, then had just passed the action to lambdaUser1|2, because we could have implemented lambdaUser1|2 as below:
         // action.operation(this.rollno, this.marks);   // and called stuObject.lambdaUser1|2(actionVariable);

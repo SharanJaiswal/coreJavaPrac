@@ -1,7 +1,6 @@
 package kk.lambdas;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 public class Student implements Comparable<Student> {
     int rollno;
@@ -43,6 +42,7 @@ public class Student implements Comparable<Student> {
 
         System.out.println(Arrays.toString(stuArr));
 
+
         /*
         Lambdas are required when we pass the function to some methods. It's a shorthand way to achieve the same task of passing function.
         If we expect something in return from passed functions and if there is just one return statement in function body ,then we write the return expression w/o "return" keyword.
@@ -58,5 +58,57 @@ public class Student implements Comparable<Student> {
     // For Main class in same package
     public void print() {
         System.out.println("rollno=" + rollno + ", marks=" + marks);
+    }
+
+    public void sortUsingLambda () {
+        Student stu1 = new Student(34, 57f);
+        Student stu2 = new Student(67, 45f);
+        Student stu3 = new Student(-3, 29f);
+        Student stu4 = new Student(34, 99f);
+        Student stu5 = new Student(734, -1f);
+
+        List<Student> stuArr = new ArrayList<>();
+        stuArr.add(stu1);
+        stuArr.add(stu2);
+        stuArr.add(stu3);
+        stuArr.add(stu4);
+        stuArr.add(stu5);
+
+        Collections.sort(stuArr, compareByRollno);
+//        Collections.sort(stuArr, compareByMarks);
+
+
+        CompareStudentsByMarks compareStudentsByMarks = new CompareStudentsByMarks();
+        CompareStudentsByRollno compareStudentsByRollno = new CompareStudentsByRollno();
+        Collections.sort(stuArr, compareStudentsByMarks);
+        Collections.sort(stuArr,compareStudentsByRollno);
+
+    }
+
+    // By creating lambdas and using them
+    Comparator<Student> compareByRollno = (Student s1, Student s2) -> Integer.compare(s1.rollno, s2.rollno);
+    Comparable<Student> compareByMarks = (Student stu) -> Float.compare(stu.marks, this.marks);
+}
+
+
+/**
+ * Difference between Comparable and Comparator:
+ * 1. Comparable can be implemented on the domain class itself, ie., comapreTo method should be inside the class using whose object we will be calling compareTo method.
+ * 2. Comparator must simply be implemented into new class, without implementing the domain class.
+ * When we dont want to change the domain class, we use Comparator. Multiple comapre(arg1, arg2) method on domain class can be made using multiple new classes.
+ * Only one compareTo(arg1) method can be made inside domain class when using Comparable
+ */
+
+class CompareStudentsByMarks implements Comparator<Student> {
+    @Override
+    public int compare(Student o1, Student o2) {
+        return Float.compare(o1.marks, o2.marks);
+    }
+}
+
+class CompareStudentsByRollno implements Comparator<Student> {
+    @Override
+    public int compare(Student o1, Student o2) {
+        return Integer.compare(o1.rollno, o2.rollno);
     }
 }

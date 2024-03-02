@@ -17,7 +17,7 @@ public class Main {
         next() works as if internally it first checks if the character to store is non-whitespace character or not.
         If it is non-whitespace character, then it starts to store the stream of characters.
         But when it does that, it does in same manner, ie, check if next character is non-whitespace char or not.
-        Once it sees that next incoming char is whitespace char, then it stops reading. That unstored whitespace char
+        Once it sees that next incoming char is whitespace char, then it stops reading. That unsorted whitespace char
         then ready to be store by another input scanner. If next input stream reader is also new next(), then it will not store char until
         non-whitespace char comes, and will store until non-whitespace char continues to occur. But if there is
         nextLine() method, this will store the whitespace character as well.
@@ -65,8 +65,8 @@ public class Main {
         /* ========================= */
 
         Main obj1 = new Main();
-        System.out.println(obj1.getClass());    // obj.getClass() gives an object of type "Class". This object is stored in heap area
-        System.out.println(obj1.getClass().getClass());
-        System.out.println(obj1.getClass().getName());
+        System.out.println(obj1.getClass());    // obj.getClass() gives an object of type "Class" which has value "class package.s.UserClass". This object is stored in heap area.
+        System.out.println(obj1.getClass().getClass()); // value to be printed is "class java.lang.Class"
+        System.out.println(obj1.getClass().getName());  // package.s.ContextClass
     }
 }

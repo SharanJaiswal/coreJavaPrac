@@ -32,6 +32,8 @@ public class Main {
         System.out.println(A.divide(B));
         System.out.println(A.subtract(B));
         System.out.println(A.remainder(B));
+        System.out.println(B.remainder(A));
+        System.out.println(A.negate()); // and many other operations
 
         // For comparing the two values, comparable compareTo() is called with same logic.
         if (A.compareTo(B) > 0) { System.out.println("A > B"); }
@@ -61,5 +63,9 @@ public class Main {
         System.out.println(p.negate());
 
         BigDecimal con = BigDecimal.ONE;
+
+        X = new BigDecimal("10.0");
+        Y = new BigDecimal("5.0");
+        System.out.println(X.divide(Y));    // no error if the answer has terminating quotient.
     }
 }

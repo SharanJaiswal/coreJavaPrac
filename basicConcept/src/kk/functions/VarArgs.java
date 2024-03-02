@@ -3,7 +3,7 @@ package kk.functions;
 import java.util.Arrays;
 
 public class VarArgs {
-    // varargs if present with keyword args, then varargs will be at last in the params
+    // var-args if present with keyword args, then var-args will be at last in the params
     public static void main(String[] args) {
         fun1(2, 3, 4, 6);
         fun1();
@@ -12,7 +12,7 @@ public class VarArgs {
     }
 
     static void fun1(int... varArgs) {
-        // Multiple args passed individually but received in varArgs in Arrays data type
+        // Multiple args passed individually but received in varArgs in Array data type
         System.out.println(Arrays.toString(varArgs));
     }
 
@@ -21,6 +21,12 @@ public class VarArgs {
 //    static void fun1(String ...varArgs) {
 //        System.out.println(Arrays.toString(varArgs));
 //    }
+
+    // Same name but different signature
+    static void fun1(String a, int... varArgs) {
+        System.out.println(Arrays.toString(varArgs));
+    }
+
 
     static void fun2(int a, String b, int ...varArgs) {
         System.out.println(Arrays.toString(varArgs));

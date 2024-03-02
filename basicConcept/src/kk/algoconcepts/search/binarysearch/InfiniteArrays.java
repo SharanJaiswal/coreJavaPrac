@@ -48,7 +48,6 @@ public class InfiniteArrays {
                 subArrFound = true;
             }
         }
-
         return subArrayCouldNotBeFound ? new int[] {-1, -1} : InfiniteArrays.binarySearch(arr, target, start, end);
     }
     static int[] binarySearch(int[] arr, int target, int start, int end) {

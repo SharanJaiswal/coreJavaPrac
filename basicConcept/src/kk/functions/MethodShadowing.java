@@ -35,5 +35,4 @@ public class MethodShadowing {
         // For shadowing
         System.out.println(x);
     }
-
 }

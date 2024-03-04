@@ -1,8 +1,8 @@
 package kk.oops.abstractdemo;
 
 public abstract class Parent {
-    int age;    // Since this is still an abstract class, hence this class cannot have objects, unless methods are override while creating the objects.
-        // Therefore, variables & methods are not bound to be final static. They can be final, static, final static, or without any of them.
+    int age;    // Since this is still an abstract class, hence this class cannot have objects, unless methods are overridden before creating the objects.
+        // Therefore, methods with body defined and variables are NOT bound to be final static. They CAN be final, static, final static, or without any of them.
     final int VALUE;
     // the constructor cannot create objects, but can be used to initialize the instance variables and perform some task. Below is best example
     // This class cannot create objects unless abstract methods will have body,
@@ -12,6 +12,7 @@ public abstract class Parent {
         this.VALUE = value;
     }
 
+    // Constructor cannot be abstract because it should have body/functionality even though body can be empty but should have body part {}
 //    abstract Parent();  // needs some functionality when object gets created, hence its giving error.
 
 

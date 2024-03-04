@@ -12,7 +12,7 @@
 
 7. package [kk.lambdas] : Student, Main. Contains: Comparable and Comparators
 
-8. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, ReverseArray, CustomArrayList,
+8. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, ReverseArray, CustomArrayList, CustomArrayListGeneric
 
 9. package [kk.exceptionhandling] : Main, MyException. TODO: Catching exceptions in lower calling stacks, raised in higher calling stacks.
 
@@ -20,7 +20,7 @@
 
 11. package [kk.oops] : First, Students, SwapInteger, AGC, StaticExample, StaticBlock, TODO: https://www.javatpoint.com/shadowing-in-java https://www.geeksforgeeks.org/nested-classes-java/
 
-12. package [kk.oops] : FinalKeyword
+12. package [kk.oops] : FinalKeyword - Singleton
 
 13. package [kk.oops.finalclassandmethods] : StaticMethodInherit, Bottle
 

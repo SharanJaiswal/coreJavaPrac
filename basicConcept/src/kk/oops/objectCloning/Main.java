@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {  // We added "throws ExceptionName" because we are using clone() method.
-        // Exception will be thrown if Human had not cloned Cloneable interface.
+        // Or, we could add this throws CloneNotSupportedException at catch block of try where we call overridden clone().
+        // Exception will be thrown if Human had not implemented Cloneable interface.
         Human human1 = new Human(26, "Sharan");
         Human twin = new Human(human1); // This is taking too much of processing time
         /*
@@ -36,7 +37,7 @@ public class Main {
         System.out.println(human1.equals(deepHuman));
         System.out.println(human1.arr == deepHuman.arr);
         System.out.println(Arrays.equals(human1.arr, deepHuman.arr));   // still true because Arrays.equals checks if count of are equals; and corresponding elements are equal in value.
-        // It does not compare the memory location of both the arrays.
+        // It does not compare the memory location of both the arrays as memory location comparison is shadowed.
         System.out.println(human1.name.equals(deepHuman.name)); // Still true
         human1.arr[3] = 100;
         System.out.println(Arrays.toString(human1.arr));

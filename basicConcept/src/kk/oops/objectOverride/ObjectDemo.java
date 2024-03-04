@@ -1,6 +1,6 @@
 package kk.oops.objectOverride;
 
-// Except constructor and destructor, every overridden method of object returns a value.
+// Except constructor and destructor, every overridden default method of object returns a value.
 public class ObjectDemo implements Comparable<ObjectDemo>{  // Inside <> there can be any class, provided there is some logic which uses that class' member in compareTo()
     int num;
     public ObjectDemo(int num) {
@@ -9,7 +9,7 @@ public class ObjectDemo implements Comparable<ObjectDemo>{  // Inside <> there c
     }
 
     // random integer number representation of an object, not a memory address of object, formed using internal algo.
-    // When 2 objects are compared, their hashCodes are [NOT] compared. eg., obj1 == obj2; Supports also != operator. These == & != uses memory location comparison, not their hashes.
+    // When 2 objects are compared, their hashCodes are NOT compared. eg., obj1 == obj2; Supports also != operator. These == & != uses memory location comparison, not their hashes.
     // obj1>obj2 (NO HASHCODE or Memory Location can be used to compare objects involving < or > operator. REQUIRES compareTo) are NOT implementing hashCode() to compare.
     // When 2 objects are compared, their Comparable interface's compareTo() method must be implemented and being called.
     @Override
@@ -20,9 +20,9 @@ public class ObjectDemo implements Comparable<ObjectDemo>{  // Inside <> there c
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);   // By default, it does call (hashCode of obj1) == (hashCode of obj2), and not compares the memory location of objects, ie, internally calls == on has values.
+        return super.equals(obj);   // By default, it compares the memory location of objects, ie, internally calls == . However, it is suggested that it should overrider the super[Object].equals() call and should call (hashCode of obj1) == (hashCode of obj2), and not == of memory location. (String.valueOf(obj) ==> obj.toString() ==> Classname+@hex()hash())
         // Hence, String objects having same value expects true while calling this, due to String Pool concept in java.
-        // While "==" compares the memory location.
+        // While "==" compares the memory location (String.valueOf(obj) ==> obj.toString() ==> Classname+@hex()hash())
         // equals internally calls toString values of the operands and compares the actual string value character by character to return the boolean value.
         // While '==' compares the memory location in case of objects, and values in case of primitives.
     }

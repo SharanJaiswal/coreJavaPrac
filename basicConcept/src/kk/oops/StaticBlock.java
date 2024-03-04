@@ -1,5 +1,7 @@
 package kk.oops;
 
+import java.util.concurrent.TimeUnit;
+
 public class StaticBlock{
     static int a = 4;
     static int b;
@@ -7,7 +9,7 @@ public class StaticBlock{
     /*
     Since static variables are not object dependent, and in case where we want to initialize our static variables.
     This can be achieved via static block, which runs only exactly once when the class gets loaded for the very first time,
-    i.e., when the first object gets created. Static block does not run after creation of first object.
+    and has nothing to do with the timeline of creation of first object.
      */
 
     static {
@@ -16,8 +18,24 @@ public class StaticBlock{
     }
 
     public static void main(String[] args) {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Before first object creation
+        System.out.println("Before first object creation : " + StaticBlock.a + " " + StaticBlock.b);
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+
+        // After first object creation
         StaticBlock obj1 = new StaticBlock();
-        System.out.println(StaticBlock.a + " " + StaticBlock.b);
+        System.out.println("After first object creation : " + StaticBlock.a + " " + StaticBlock.b);
 
         StaticBlock.b += 3;
         System.out.println(StaticBlock.a + " " + StaticBlock.b);

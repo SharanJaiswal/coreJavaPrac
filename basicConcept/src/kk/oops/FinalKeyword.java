@@ -25,11 +25,12 @@ class A {
 
 class B {
     String state = "Default State.";
-    private static B singletonB;
+    private static B singletonB;    // since its static, hence have null as default value if not instantiated
 
     private B () {};
 
     public static B getSingletonObjectOfB() {
+        System.out.println(singletonB);
         if(singletonB == null) {
             singletonB = new B();
         }

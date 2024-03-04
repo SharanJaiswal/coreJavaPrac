@@ -13,7 +13,7 @@ public class Main {
         // Parent type referencing the child type
         Box box2 = new BoxWeight(1,2,3,4);
         System.out.println(box2.l + " " + box2.w + " " + box2.h);
-//        System.out.println(box2.weight);    // Cannot be reference because it is the type of reference variable ( not the type of object )
+//        System.out.println(box2.weight);    // Cannot be referenced because it is the type of reference variable ( not the type of object )
                                             // which determines what members can be accessed. Those member should have to be the part of reference var type
         // SubClass type reference variable cannot refer Super class. There are many extra member variables inside subClass.
         // If child class start referencing the parent class, then it would expect those extra variables, which are part of subclass, from parent class.
@@ -29,5 +29,6 @@ public class Main {
         System.out.println((new Box()) instanceof Box);
         System.out.println(new Box() instanceof Object);
         System.out.println(new Box() instanceof BoxWeight);
+        System.out.println(new BoxWeight() instanceof Box);
     }
 }

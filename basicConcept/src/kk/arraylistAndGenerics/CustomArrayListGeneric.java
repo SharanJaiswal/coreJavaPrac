@@ -18,6 +18,7 @@ public class CustomArrayListGeneric<T> {    // public class CustomArrayListGener
 
     public CustomArrayListGeneric() {
 //        this.data = new T[CustomArrayListGeneric.DEFAULT_SIZE]; // Error because Type param T cannot be instantiated directly
+//        that is, RHS gets executed at runtime, which gives error because T here is not know of its type.
         this.data = new Object[CustomArrayListGeneric.DEFAULT_SIZE];
     }
 

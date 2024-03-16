@@ -1,5 +1,10 @@
 package kk.algoconcepts.search.binarysearch;
 
+/**
+ * If there is a sequence of numbers where numbers are either increasing or decreasing,
+ * If there is continuous or periodic set of numbers between some range,
+ * If sub-problem satisfies above 2 conditions, etc.,
+ */
 public class Main {
     public static void main(String[] args) {
 //        int[] arr = {1,2,3,4,5,6,7,8,9};

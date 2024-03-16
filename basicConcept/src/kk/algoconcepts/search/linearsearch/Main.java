@@ -12,6 +12,7 @@ public class Main {
                 {78, 99, 34, 56},
                 {18, 12}
         };
+
         target = 34;
         System.out.println(searchIn2D(arr, target));
 
@@ -52,7 +53,7 @@ public class Main {
         }
         return -1 + ", " + -1;
     }
-
+//Count of numbers having even numbers of digits
     static int elementCountEvenDigits(int[] arr) {
         int count = 0;
         for (int element : arr) {

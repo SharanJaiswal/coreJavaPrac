@@ -5,13 +5,14 @@ new ArrayList is created, elements from old arraylist are copied to new one, new
 All this happens seamlessly.
  */
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ArrayListExample {
     public static void main(String[] args) {
         // syntax: LHS should have the datatype of elements inside diamond operator. RHS can also have it but its redundant to have same datatype there in <> in RHS
-        // () calls constructor in RHS can have initialCapacity of ArrayList. <> cannot have primitive data types inside it
+        // () calls constructor in RHS can have initialCapacity of ArrayList.
+        // In Java, <> cannot have primitive data types inside it.
+        // Therefore, to make generics compatible with primitive data types, there is an autoboxing of primitives, makes them derived type of Java Object, called wrapper objects.
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         ArrayList<Integer> arr1 = new ArrayList<>(5);
@@ -27,6 +28,7 @@ public class ArrayListExample {
         arr1.set(2,34567);
         System.out.println(arr1);
         arr1.remove(1);
+        System.out.println(arr1.remove(new Integer(90)));
         System.out.println(arr1);
         arr1.add(1, 407);
         System.out.println(arr1);
@@ -55,5 +57,10 @@ public class ArrayListExample {
             }
         }
         System.out.println(multArrList);
+
+        // Also, look below methods:
+//        arr1.retainAll(any other collection);   // arr1 will have only those elements which will be common to arr1 and collection item passed
+//        arr1.replaceAll();  // takes UnaryOperator type instance which is basically a lambda which takes one element at a time as an input from arr1,
+        // and transforms and returns an element of type of list
     }
 }

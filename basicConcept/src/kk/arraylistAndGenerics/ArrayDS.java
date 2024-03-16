@@ -59,6 +59,8 @@ public class ArrayDS {
                 {7,8,9,0}     // row1 -> [1,2,3](heap); row2 -> [4,5,6](heap); row3 -> [7,8,9,0](heap); . . . . . .(heap)   // Individual row size may vary if we don't give 'j' in [i][j]
         };
 
+        int[][][] threeD = new int[2][][];
+
         for (int row = 0; row < multArr2.length; row++) {
             for (int col = 0; col < multArr2[row].length; col++) {
                 System.out.print(multArr2[row][col]);

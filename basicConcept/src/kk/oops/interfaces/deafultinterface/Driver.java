@@ -5,7 +5,7 @@ public class Driver implements A, B {
     // Actually, the default method is inherited, and can be overridden.
     // If we override method with same signature in class which implements interface having same signature default method,
     // then it hides the scope of the inherited default interface method in this class.
-    // On priority, the overridden body of method of this class will be executed.
+    // On precedence, the overridden body of method of this class will be executed.
     @Override
     public void fun() {
         System.out.println("Fun in driver");

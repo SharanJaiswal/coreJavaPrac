@@ -8,15 +8,16 @@ public class InfiniteArrays {
     public static void main(String[] args) {
         int arr[] = {23, 24, 25, 999, 999, 999, 999 ,999, 999, 999, 1000};
         int target = 989;
-        System.out.println(Arrays.toString(InfiniteArrays.pickArrayForBinarySearch(arr, target)));
+        System.out.println(Arrays.toString(InfiniteArrays.pickArrayForBinarySearch1(arr, target)));
+        System.out.println(Arrays.toString(InfiniteArrays.pickArrayForBinarySearch2(arr, target)));
     }
 
-    /*
+    /**
     To select array where element can appear can be achieved by 2 ways. Either we iteratively pick window of fixed size and compare target from extremes values, or
     We can pick window of exponentially increasing size, and compare target with extremes at the window.
     At comparing on extremes in potential sub array, if we find target match, we can include elements further that extreme that include all occurrences of that target at extreme, exponentially.
      */
-    static int[] pickArrayForBinarySearch(int[] arr, int target) {
+    static int[] pickArrayForBinarySearch1(int[] arr, int target) {
         int start = -1, end = -1, windowSalt = 0, windowSize;
         boolean subArrayCouldNotBeFound = false;    // When it is evident that target could not be in any possible window
         boolean subArrFound = false;
@@ -37,7 +38,7 @@ public class InfiniteArrays {
             // because we have already increased the window at right in previous iteration.
             // In fact, if we take care of expanding at right, there will be no scenario where we had to expand window using start towards left.
             // So, code to expand window towards right exponentially is below
-            while (arr[end] == target) {
+            while (arr[end] < target) {
                 windowSize = (int)(Math.pow(2, windowSalt++));
                 end += windowSize;
                 end = end >= arr.length ? arr.length - 1 : end;
@@ -50,6 +51,40 @@ public class InfiniteArrays {
         }
         return subArrayCouldNotBeFound ? new int[] {-1, -1} : InfiniteArrays.binarySearch(arr, target, start, end);
     }
+
+    // When all array elements are unique and array is strictly increasing
+    public static int[] pickArrayForBinarySearch2(int[] arr, int target) {
+        int start, end = -1, windowSalt = 0, windowSize;
+        while(true) {
+            windowSize = (int)(Math.pow(2, windowSalt++));
+            start = ++end;
+
+            if (start >= arr.length) {
+                return new int[] {-1, -1};
+            }
+
+            if (target < arr[start]) {
+                return new int[] {-1, -1};
+            }
+
+            end = start + windowSize - 1;
+
+            if (end >= arr.length) {
+                end = arr.length - 1;
+            }
+
+            if (target <= arr[end] && target >= arr[start]) {
+//                return new int[] {start, end};
+                return InfiniteArrays.binarySearch(arr, target, start, end);
+            }
+        }
+    }
+
+    /**
+     * Binary search to find the array of target where array is increasing and can contain duplicates.
+     * a = starting index of target array with repeating elements.
+     * b = ending index of target array with repeating elements.
+     */
     static int[] binarySearch(int[] arr, int target, int start, int end) {
         int s = start, e = end, mid, a = -1, b = -1;
         while (s <= e) {

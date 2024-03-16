@@ -5,8 +5,8 @@ public interface B {  // interface to interface inheritance uses "extends" keywo
 
 //    default void fun() {    // We cannot have simply 2 interfaces with same method signature with body
 //        // Makes the dynamic dispatcher confuse, which body version to execute, of A's or of B's
-    // See the last method to overcome this problem.
-//        System.out.println("I am in A");
+////     See the last method to overcome this problem.
+//        System.out.println("I am in B");
 //    }
 
 //    We can have more than 1 default methods in interfaces.

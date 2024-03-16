@@ -2,6 +2,7 @@ package kk.lambdas;
 
 import java.util.*;
 
+// Both Comparable and Comparator interfaces, if implemented, makes the stateful instances of the class ready to work bluntly with relational operators, ie, ==, <, >, etc.
 public class Student implements Comparable<Student> {
     int rollno;
     float marks;
@@ -11,6 +12,9 @@ public class Student implements Comparable<Student> {
         this.marks = marks;
     }
 
+    // compareTo() method is also called instance's natural ordering. Also, "natural ordering of class C is said to be consistent with equals" when,
+    // boolean value from both below are same for two given instances of a class.
+    // o1.equals(o2) == (o1.compareTo(o2) == 0)
     @Override
     public int compareTo(Student o) { // this method must return any among -1, 0, 1
         return this.rollno - o.rollno;  // THIS WILL SORT BY ROLLNO
@@ -82,6 +86,8 @@ public class Student implements Comparable<Student> {
         CompareStudentsByRollno compareStudentsByRollno = new CompareStudentsByRollno();
         Collections.sort(stuArr, compareStudentsByMarks);
         Collections.sort(stuArr,compareStudentsByRollno);
+
+        stuArr.sort(null);  // List also has sort() method. Also to any sort method, we can provide comparator(), or if null is given then natural ordering is picked for sort.
 
     }
 

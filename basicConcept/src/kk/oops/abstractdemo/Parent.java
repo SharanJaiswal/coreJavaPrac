@@ -16,9 +16,10 @@ public abstract class Parent {
 //    abstract Parent();  // needs some functionality when object gets created, hence its giving error.
 
 
-    // Below methods are not explicitly public. It's access modifier can be of any type. Because abstract class can have methods that are non-abstract.
-    // These abstract methods can be called inside from any method with body of this class if we provide the body to it at place where we call it.
-    // In case where we want to restrict this abstract method not to get defined in extending classes, we can put "private" to these abstract methods.
+    // Below methods with body are not explicitly public. It's access modifier can be of any type. Because abstract class can have methods that are non-abstract.
+    // These abstract methods can be called inside from any class' method with body, of this class, if we provide the body to it at place where we call it.
+    // We CANNOT put "private" to these abstract methods because first its illegal combination,
+    // and second, if we make it private, hoe can we inherit into other classes for the sole purpose of overriding it
     abstract void career(String job);
     abstract void partner(String name, int age);
 

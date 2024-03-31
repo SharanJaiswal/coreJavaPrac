@@ -3,6 +3,7 @@ package kk.oops.interfaces;
 public class Car implements Engine, Break, Media {
 
     int a = 40;
+
     @Override
     public void applybreak() {
         System.out.println("I apply break like a normal car.");

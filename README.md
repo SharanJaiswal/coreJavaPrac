@@ -1,4 +1,4 @@
-1. Main: args passed to psvm; Scanner class and next()|nextLine(); TODO: diff b/n next and nextLine; byte size of primitive data types.
+1. Main: args passed to psvm; Scanner class and next()|nextLine(); TODO: diff b/n next and nextLine; byte size of primitive data types (byte,char,short,int(2),long(2),float,double,boolean), >>> operator
 
 2. switch
 
@@ -14,42 +14,54 @@
 
 8. package [kk.lambdas] : Student, Main. Contains: Comparable and Comparators
 
-9. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, ArraysDS, ReverseArray, CustomArrayList, CustomArrayListGeneric
+9. package [kk.collectionInterface] : CollectionInterface
 
-10. package [kk.exceptionhandling] : Main, MyException. TODO: Catching exceptions in lower calling stacks, raised in higher calling stacks.
+10. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, ArraysDS, ReverseArray, CustomArrayList, CustomArrayListGeneric
 
-11. package [kk.strings.stringBufferClass] : Main, RandomString, TestingRandFloat
+11. package [kk.linkLists] : linkList,
 
-12. package [kk.oops] : First, Students, SwapInteger, AGC, StaticExample, StaticBlock, TODO: https://www.javatpoint.com/shadowing-in-java https://www.geeksforgeeks.org/nested-classes-java/
+12. package [kk.sets] : Sets, TreeSets
 
-13. package [kk.oops] : FinalKeyword - Singleton
+13. package [kk.maps] : Maps, TODO: is different implementations, beyond HashMaps
 
-14. package [kk.oops.finalclassandmethods] : StaticMethodInherit, Bottle
+14. package [kk.collectionsClass] : CollectionsClass
 
-15. package [kk.oops.inheritance] : Main
+15. 
 
-16. package [kk.oops.objectOverride] : ObjectDemo, StudentComparable
+16. package [kk.exceptionhandling] : Main, MyException. TODO: Catching exceptions in lower calling stacks, raised in higher calling stacks.
 
-17. package [kk.oops.objectCloning] : Main
+17. package [kk.strings.stringBufferClass] : Main, RandomString, TestingRandFloat
 
-18. package [kk.oops.polymorphism] : Main
+18. package [kk.oops] : First, Students, SwapInteger, AGC, StaticExample, StaticBlock, TODO: https://www.javatpoint.com/shadowing-in-java https://www.geeksforgeeks.org/nested-classes-java/
 
-19. package [kk.oops.abstractdemo] : Main
+19. package [kk.oops] : FinalKeyword - Singleton
 
-20. package [kk.oops.interfaces] : Main
+20. package [kk.oops.finalclassandmethods] : StaticMethodInherit, Bottle, OuterClass; TODO: Closures in Java
 
-21. package [kk.oops.interfaces.extendinginteface] : Main
+21. package [kk.oops.inheritance] : Main
 
-22. package [kk.oops.interfaces.nestedinterface] : Main, A
+22. package [kk.oops.objectOverride] : ObjectDemo, StudentComparable
 
-23. package [kk.oops.interfaces.deafultinterface] : Main, Driver
+23. package [kk.oops.objectCloning] : Main
 
-24. package [kk.algoconcepts.search.linearsearch] : Main(lc1295, lc1672)
+24. package [kk.oops.polymorphism] : Main
 
-25. package [kk.algoconcepts.search.binarysearch] : Main, TargetCeiling(lc744, lc34), InfiniteArrays, (lc852, lc162, lc1095), PivotInRotated, (lc410), RowColMatrix
+25. package [kk.oops.abstractdemo] : Main
 
-26. package [kk.numberSystem] : MagicNumber, Power, CountSetBits(lc832), RangeXOR; TODO: https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
+26. package [kk.oops.interfaces] : Main
 
-27. package [kk.numberSystem.primes] : Prime,
+27. package [kk.oops.interfaces.extendinginteface] : Main
 
-var type in java
+28. package [kk.oops.interfaces.nestedinterface] : Main, A
+
+29. package [kk.oops.interfaces.deafultinterface] : Main, Driver
+
+30. package [kk.algoconcepts.search.linearsearch] : Main(lc1295, lc1672)
+
+31. package [kk.algoconcepts.search.binarysearch] : Main, TargetCeiling(lc744, lc34), InfiniteArrays, (lc852, lc162, lc1095), PivotInRotated, (lc410), RowColMatrix
+
+32. package [kk.numberSystem] : MagicNumber, Power, CountSetBits(lc832), RangeXOR; TODO: https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
+
+33. package [kk.numberSystem.primes] : Prime,
+
+stream APIs

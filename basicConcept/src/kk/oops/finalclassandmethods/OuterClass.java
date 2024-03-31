@@ -1,4 +1,4 @@
-package kk.oops;
+package kk.oops.finalclassandmethods;
 
 
 /* outermost class cannot be static */
@@ -59,16 +59,60 @@ public class OuterClass {
         whenever we are referencing the "InnerStaticClass" anywhere. Otherwise, it's not an error, but a preferred way.
          */
 
+        /**
+         * Here, since we are in class named OuterClass, therefore while creating the object of StaticTest class we are not using OuterClass.StaticTest in RHS as well as LHS.
+         * Although we can use it as OuterClass.StaticTest.....
+         * But, if we have access StaticTest from outside OuterClass, then we must use format OuterClass.StaticTest.....
+         */
 
         /*
         Below cannot be created because we are accessing NonStatic class which is dependent on Static class, ie,
         we'll be needing an object of outer class to access this inner non-static class
         */
+
 //        NonStaticTest nonStatObj1 = new NonStaticTest("Sharan");
 //        NonStaticTest nonStatObj2 = new NonStaticTest("Jaiswal");
-
+        OuterClass outerClassObj1 = new OuterClass();
+        NonStaticTest nonStaticTest1 = outerClassObj1.new NonStaticTest("Inside non-static classobject 1");
+        OuterClass.NonStaticTest nonStaticTest2 = outerClassObj1.new NonStaticTest("Inside non-static class object 2");
         /*
         checkout links in the README.md file
          */
+
+
+        // Third type of class is LOCAL CLASS, which is defined inside a block, and is scoped inside a block.
+        // Here, below class is defined inside "main" method block.
+
+        int i = 10; // Variables global to local classes can be accessed for READ-WRITE from inside the local class.
+        // As long as the variables global to local class are not changing its value outside of local class block, READ-WRITE operation can be used on them.
+        // Otherwise, if this variable is changed somewhere "in the scope where class FOO is defined, ie, here in this main method", then READ-WRITE will throw an error inside class Foo.
+        // To access those variables, either those variables must be final or effectively final.
+        final int j = 20;
+        class Foo {
+            int x = i;  // Java compiler makes a copy of "i" form outside of this class and passes that copy to this class for its use. Now, in case where we make the object of Foo,
+            // and then passes that object to some method, then this will move the scope of var "i". In that new additional scope, we can change the value of "i". Since, this was the
+            // copy of "i", that will make original "i" outdated|out-of-sync. So, java devs decided to use only final or effectively final variables inside class, in scope enclosing
+            // that class.
+            int y = j;
+            public void tellMyName() {
+            }
+        }
+//        i=40; // This line will create compilation error inside class Foo.
+        j=30;   // we cannot change the value of this final variable.
+
+        Foo f = new Foo();
+        f.x=1;
+        System.out.println(f.x);
+
+
+
+        // Fourth type is Anonymous Classes, where existing class object is made at a place where the class is override.
+        Foo f2 = new Foo() {
+            // We can override existing methods of this existing class.
+            public void tellMyName() {
+                System.out.println("Sharan Jaiswal. From the Anonymous class");
+            }
+        };
+        f2.tellMyName();
     }
 }

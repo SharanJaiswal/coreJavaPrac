@@ -28,9 +28,25 @@ public class Main {
         System.out.println(input.next());
         System.out.println(input.nextLine());
 
-        int a = 1_000_000_000;  // rendered as below var 'b', Cannot be scanner input in this form
+        // Java is strongly typed. Static typing. int type of variable can only contain int value, decided at compile time. (Dynamic is observer in python, where a=10, a="Sharan".)
+        // Before throwing an error when type doesn't match with the value, it checks and tries to do type conversion, internally or via casting. But casting happens at runtime.
+        int a = 1_0_0_0_00_0_000;  // rendered as below var 'b', Cannot be scanner input in this form. We can place underscore anywhere in the number, even with floating-points also.
         int b = 1000000000;
 //        int c = 1,000,000,000;  // wrong as commas are not allowed
+        float flt = 23_456.75_01F;
+        double dbl = 23_456.75_01;
+        double val = 5.012E-15;
+        double int_double = 25D;    // Specifying D is useful in cases when instead of double, we would have declared type as "var".
+        long lng = 45378L;
+        short shrt = 34;
+
+        // lossy type casting
+        b = (int) flt;
+        System.out.println(b);  // no rounding off takes place
+
+        int res1 = 3/2;
+        double res2 = 3/2;  // NOT 1.5 because 3 and 2 are integers. int/int gives [precision lost] int result. that int result is then type converted to double.
+        System.out.println(res1 + " = = = = " + res2);
 
         /*
         For primitive data type everything on right is called literal, while things on left like the var_name,
@@ -53,6 +69,13 @@ public class Main {
 //        byte y = e * r / t; // This gives error because byte expressions are evaluated as integer expressions.
                             // Result will be integer, looking to stored in byte. Do type casting to remove error.
 
+        // Type Promotion : In any operation on RHS, first, among 2 operand, lower byte-sized OPERAND VALUE gets converted to higher byte sized OPERAND VALUE.
+//        `````````(byte,short,char,int)````````` < (long) < (float) < (double)
+        // Follows operator precedence order as well while selecting 2 operand at a time for performing operation.
+        int num1 = 2;
+        double num2 = 10;
+        double res3 = num1 * num2;  // first VALUE OF num1 type will be promoted to double, then double num1 will be multiplied to double num2.
+
         // Few basic progs
         System.out.println(Math.max(23, Math.max(45,78)));
 
@@ -68,5 +91,17 @@ public class Main {
         System.out.println(obj1.getClass());    // obj.getClass() gives an object of type "Class" which has value "class package.s.UserClass". This object is stored in heap area.
         System.out.println(obj1.getClass().getClass()); // value to be printed is "class java.lang.Class"
         System.out.println(obj1.getClass().getName());  // package.s.ContextClass
+
+        /**
+         * Literals: A way to specify values inline, for each of the primitive type.
+         * int age = 25; int count = 0b101010;  // int literals
+         *
+         */
+
+        /**
+         * Precedence order:
+         * postfix > unary {++a, --a, +a, -a, ~a, !a} > multiplicative {* / %} > additive {+ -} > shift {<< >> >>>} > relational { < > <= >= instanceof} > equality {== !=} >
+         *     & > ^ > | > && > || > ?: > assignment {= += -+ *= /= %= &= ^= |= <<= >>= >>>=}
+         */
     }
 }

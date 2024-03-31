@@ -19,7 +19,8 @@ public abstract class Parent {
     // Below methods with body are not explicitly public. It's access modifier can be of any type. Because abstract class can have methods that are non-abstract.
     // These abstract methods can be called inside from any class' method with body, of this class, if we provide the body to it at place where we call it.
     // We CANNOT put "private" to these abstract methods because first its illegal combination,
-    // and second, if we make it private, hoe can we inherit into other classes for the sole purpose of overriding it
+    // and second, if we make it private, how can we inherit into other classes for the sole purpose of overriding it?
+    // Also, if abstract methods are to be overridden in the child classes, then access modifier can be either same or less-restrictive|stronger-privilege
     abstract void career(String job);
     abstract void partner(String name, int age);
 

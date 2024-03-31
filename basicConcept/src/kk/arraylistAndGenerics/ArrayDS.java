@@ -6,6 +6,24 @@ import java.util.Arrays;
 
 public class ArrayDS {
     public static void main(String[] args) {
+        int slNos[];    // Declares arrays. Here, it doesn't allocate any space in memory, unlike "int some_int;" where memory is allocated of size 32|64 bit.
+        slNos = new int[5]; // Assignment. Memory allocation happens. Since, memory is allocated, there must be a value in the memory. Java give default values based on array type.
+
+        // Some ways
+        int arr1[] = {56,45,49,48}; // declared and initialized by values. According to RHS, size of Arrays is decided here.
+        int arr2[] = new int[]{56,45,49,48};    // declared and initialized by values. According to RHS, size of Arrays is decided here.
+
+        // Since we know that int gets type cast to double, but still below will throw error because collection group itself cannot be cast.
+//        double someDouble[] = new int[6];
+
+        System.out.println(slNos[0]);
+        System.out.println(slNos[1]);
+        System.out.println(slNos[2]);
+        System.out.println(slNos[3]);
+        System.out.println(slNos[4]);
+
+        // We cannot neither assign value nor fetch value for any index out of bound.
+
         int[] arr = null;
 //        System.out.println(arr.length);
 // will give error because arr reference variable is not pointing to any array. Hence, size of null cannot be found. It is absurd, causes NPE.

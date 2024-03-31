@@ -1,4 +1,4 @@
-package one;
+package testingPackages;
 
 class Prog2{
 	public static void main(String[] args) {

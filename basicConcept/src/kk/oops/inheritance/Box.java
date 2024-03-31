@@ -6,6 +6,7 @@ public class Box {
     double l;
     double h;
     double w;
+    int commonName;
 
     public Box() {
         this.l = -1;
@@ -33,5 +34,16 @@ public class Box {
 
     public void information() {
         System.out.println("Running the Box");
+        // Here we can directly access any private variable of this class. But if this method is overriden in child class, then same variable of this class won't be
+        // accessible form that overriding child class, even when direct attempt is made using super.
     }
+
+    /**
+     * If we are overriding a method in a child class and suppose there is another method with the same method name,
+     * same method arguments, but have different return type, then error will be thrown.
+     * It is because, when we call the method, we mention its name and it parameters with its type.
+     * If these both, name and param type and count will be same, then calling place won't be able to distinguish at compile time to link which method.
+     * Also, whenever we use @override annotation over overriding method in child class, compiler makes sure that there is actually a method in parent class
+     * with same method name, same param count, each param type in same order, and same return type, otherwise it'll throw an error.
+     */
 }

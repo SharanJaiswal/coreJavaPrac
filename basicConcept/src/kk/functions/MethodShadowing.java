@@ -6,7 +6,7 @@ public class MethodShadowing {
     static int x = 90;  // For shadowing
     public static void main(String[] args) {
         String outer = "Sharan";
-        {
+        {   // any reference variable declared inside a block, will have its scope till that block. A block is " { . . . } "
             String inner = "Jaiswal";
             outer = inner;
             // both same as writing outer=inner;

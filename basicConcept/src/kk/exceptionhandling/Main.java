@@ -1,5 +1,5 @@
 package kk.exceptionhandling;
-
+// Exceptions are used to handle mostly runtime errors, but less compile time errors.
 public class Main {
     public static void main(String[] args) {
         int a = 5;
@@ -12,8 +12,14 @@ public class Main {
             if (name.equals("Sharan")) {
                 throw new MyException("My message from my custom exception class");
             }
+            // Inside try block, or any block, we can have nested try-catch-finally block.
+
+            // If we had called any method from this try block and that method jad thrown an exception, then if that exception had been handled there in downstream, then here, this catch
+            // block will not get invoked. Otherwise, any of the below catch block would have been invoked. In that case where exception is not handled inside the downstrem method,
+            // the method signature will append "throws {ExceptionClassName}" after parenthesis containing parameters of the method. If exception is handled in method, then no need to append.
         } catch (MyException | ArithmeticException e) {
             System.out.println(e.getMessage());
+            // We can also use return statement form any of the block.
         } catch (Exception e) {
             System.out.println("normal exception");
         } finally {
@@ -22,7 +28,7 @@ public class Main {
     }
 
     // If any method is expected to throw an exception, even in their downstream, we have to mention "throws ExceptionName" at method signature, even in their interface.
-    // Where there is "throws ExceptionName" is mentioned, in that method this exception can be catched. Not methods below in the stack track, allowed methods above in stack trace.
+    // Where there is "throws ExceptionName" is mentioned, in that method this exception can be caught. Not methods below in the stack track, allowed methods above in stack trace.
     // If there is instance method which has "throws ExceptionName" in its definition, then from any type of methods from where it is called, should also have "throws ExceptionName"
     static int divide (int a, int b) throws ArithmeticException {
         if (b == 0) {

@@ -19,7 +19,7 @@ class OuterTest {
 /*
 Outermost class cannot be static, while the inner class can and cannot be static, because to access the static entity,
 it must be dependent on any class. If outermost class is allowed to be static, then it means outermost class is dependent
-on any other class, which is not possible. Outermost class is ultimately independent, while subsequent inner class are
+on any other enclosing class, which is not possible. Outermost class is ultimately independent, while subsequent inner class are
 wrapped around by their outer class, ie, inner class are dependent on outer classes.
  */
 public class OuterClass {
@@ -44,7 +44,7 @@ public class OuterClass {
 
     public static void main(String[] args) {
         /*
-        Below works because this inner class whose object is created is static class, and static candidate does not
+        Below works because this inner class whose object is created is of static class, and static candidate does not
         need any object of their enclosing class to access them
          */
         StaticTest statObj1 = new OuterClass.StaticTest("Sharan");  // Preferred way of accessing the static candidate
@@ -85,7 +85,7 @@ public class OuterClass {
 
         int i = 10; // Variables global to local classes can be accessed for READ-WRITE from inside the local class.
         // As long as the variables global to local class are not changing its value outside of local class block, READ-WRITE operation can be used on them.
-        // Otherwise, if this variable is changed somewhere "in the scope where class FOO is defined, ie, here in this main method", then READ-WRITE will throw an error inside class Foo.
+        // Otherwise, if this variable is changed somewhere "in the enclosing scope where class FOO is defined, ie, here in this main method", then READ-WRITE will throw an error inside class Foo.
         // To access those variables, either those variables must be final or effectively final.
         final int j = 20;
         class Foo {
@@ -98,7 +98,7 @@ public class OuterClass {
             }
         }
 //        i=40; // This line will create compilation error inside class Foo.
-        j=30;   // we cannot change the value of this final variable.
+//        j=30;   // we cannot change the value of this final variable.
 
         Foo f = new Foo();
         f.x=1;

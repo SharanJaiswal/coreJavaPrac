@@ -2,6 +2,7 @@ package kk.generic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.*;
 
 public class GenericImplementation {
     public static void main(String[] args) {
@@ -12,16 +13,21 @@ public class GenericImplementation {
         GenericInterface gi1 = (arg1) -> System.out.println(arg1);
         GenericInterface<String> gi2 = (agr1) -> System.out.println(agr1);
 
+        AnotherGenericInterface fi1 = (x) -> x*x;   // Here we have provided the body to the SAM
+        char e = 'e';
+        System.out.println(fi1.calculate(e));
 
         /**
-         * We cannot assign a specific type to its super type when it comes to generic, although generic is not in context then it's possible.
+         * We cannot assign a specific type to its super type when it comes to generic; but when generic is not in context then it's possible.
          * And thus, polymorphism and inheritance doesn't work with generics in the same way they work with classes otherwise.
          */
         List<String> names = new ArrayList<>();
         names.add("Name 1");
         names.add("Name 2");
+//        names.add(69);    // This will not work but adding a number to the list of Strings is possible from method printList1(), provided in its method signature we do not specify the list of some generic type.
 //        printList1(names);   // Throws error, but to make it work, we can make parameter non-generic in method signature.
         printList2(names);
+        System.out.println(names);
 
         List<Integer> numbers = new ArrayList<>();
         numbers.add(10);
@@ -37,7 +43,8 @@ public class GenericImplementation {
 //        temp.add(56);   // throws error
     }
 
-    private static void printList1(List<Object> itrList) {
+//    private static void printList1(List itrList) {
+        private static void printList1(List<Object> itrList) {
         itrList.forEach(System.out::println);   // reading of elements
         itrList.add(3); // writing elements. This writing is the reason because of which assigning a child type generic to super type is restricted
         // It is because, in above example, if this restriction was not present, would added a number into a list of Strings

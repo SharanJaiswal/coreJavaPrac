@@ -2,7 +2,8 @@ package kk.lambdas;
 
 import java.util.*;
 
-// Both Comparable and Comparator interfaces, if implemented, makes the stateful instances of the class ready to work bluntly with relational operators, ie, ==, <, >, etc.
+// Both Comparable and Comparator interfaces, if implemented, DOES NOT MAKE IN ANY WAY the stateful instances of the class ready to work bluntly with relational operators, ie, ==, <, >, etc.
+// RELATIONAL OPERATORS ARE NOT OVERLOADED Comparable or Comparator interfaces are implemented.
 public class Student implements Comparable<Student> {
     int rollno;
     float marks;
@@ -45,6 +46,10 @@ public class Student implements Comparable<Student> {
         Arrays.sort(stuArr, (o1, o2) -> (int)(o1.marks - o2.marks));
 
         System.out.println(Arrays.toString(stuArr));
+
+        // Check id relational operators are overloaded after defining compareTo() method:
+        System.out.println(stu1.compareTo(stu4));
+        System.out.println(stu1 == stu4);
 
 
         /*
@@ -91,17 +96,20 @@ public class Student implements Comparable<Student> {
 
     }
 
-    // By creating lambdas and using them
+    // By creating lambdas and using them. Also, we can create multiple lambdas of Comparable<T> and Comparator<T> inside class. But cannot override compareTo() method from Comparable more than one time.
+    // Avoid implementing Comparator on domain class, prefer Comparable over Comparator interface whenever there is need to implement object comparison logic because by default compareTo() is looked for these situations.
+    // If we are making logic outside of class, use Comparators or lambdas of both.
     Comparator<Student> compareByRollno = (Student s1, Student s2) -> Integer.compare(s1.rollno, s2.rollno);
     Comparable<Student> compareByMarks = (Student stu) -> Float.compare(stu.marks, this.marks);
+    Comparable<Student> compareByRolls = (Student stu) -> Float.compare(stu.rollno, this.rollno);
 }
 
 
 /**
  * Difference between Comparable and Comparator:
- * 1. Comparable can be implemented on the domain class itself, ie., comapreTo method should be inside the class using whose object we will be calling compareTo method.
+ * 1. Comparable can be implemented on the domain class itself, i.e., compareTo() method should be inside the class using whose object we will be calling compareTo method.
  * 2. Comparator must simply be implemented into new class, without implementing the domain class.
- * When we dont want to change the domain class, we use Comparator. Multiple comapre(arg1, arg2) method on domain class can be made using multiple new classes.
+ * When we don't want to change the domain class, we use Comparator. Multiple compare(arg1, arg2) method on domain class can be made using multiple new classes.
  * Only one compareTo(arg1) method can be made inside domain class when using Comparable
  */
 

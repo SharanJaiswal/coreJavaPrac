@@ -31,8 +31,9 @@ public class LowerBoundGenerics {
     private static void addToList1(List<? extends Number> numbers, Integer i) {
 //        numbers.add(i); // This is giving error because in this method signature, attribute numbers is of type list which ensures that the elements of the list
         // can contain only elements of type Number or its derived types. It doesn't specifically tell that what could be the exact type of elements.
-        // Hence, In case where the list of Integers is passed, and Integer can be added to the list, but in case where a list of Double is passed, that list 
-        // will not add the integer to the list of Doubles. Hence, compiler will throw an error in general, because it 's a runtime error.
+        // Hence, In case where the list of Integers is passed, then that Integer can be added to the list; but in case where a list of Double is passed, that list
+        // will not add the integer to the list of Doubles. Hence, compiler will throw an error in general, because it's a runtime error. Therefore, java doesn't allow this possible situation to happen, and hence doesn't allow anything to write
+        // to a list of some generics of child type, as siblings could conflict. Although, it can allow write operation on the list of generic type of parents.
     }
 
      private static void addToList2(List<? super Number> numbers, Number i) {   // means anything of type Number of upstream super classes.

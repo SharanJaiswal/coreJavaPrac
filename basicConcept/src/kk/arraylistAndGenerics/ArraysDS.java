@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * So, asList takes series of Object or ts derived types. Since, we are passing primitive type, hence auto-boxing is taking place, giving Lis of Integers.
- * AUto-unboxing is taking place when Integer type is getting cast into primitive type.
+ * So, asList takes series of Object or its derived types. Since, we are passing primitive type, hence auto-boxing is taking place, giving List of Integers.
+ * Auto-unboxing is taking place when Integer type is getting cast into primitive type.
  */
 
 public class ArraysDS {

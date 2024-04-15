@@ -37,7 +37,7 @@ public class ArrayDS {
 
         // Breaking down the step :
         int[] rollNos3; // declaration of array. rollNos3 is getting defined in the stack memory. Happens at compile time.
-        rollNos3 = new int[3];  // object is being created in heap memory. Happens at runtime. Dynamic memory allocation.
+        rollNos3 = new int[3];  // collection of memory is being created in heap memory. Happens at runtime. Dynamic memory allocation.
         System.out.println(rollNos3[1]);    // default value of integer element of an array is zero
         rollNos3[1] = 45;   // makes rollNos3 [0, 45, 0]
 

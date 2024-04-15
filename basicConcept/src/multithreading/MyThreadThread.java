@@ -1,5 +1,7 @@
-package durg.multithreading;
+package multithreading;
 
+// Not a good approach to implement multi-threading concept in java
+// A Thread class itself is extending Runnable class. Hence, we can override the run method. Thread's start() method calls run() method. Hence, when we call start() using this class's instance, this run will execute.
 public class MyThreadThread extends Thread {
     @Override
     public void run() {

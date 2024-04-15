@@ -9,7 +9,7 @@ import java.util.*;
 
 public class ArrayListExample {
     public static void main(String[] args) {
-        // syntax: LHS should have the datatype of elements inside diamond operator. RHS can also have it but its redundant to have same datatype there in <> in RHS
+        // syntax: LHS should have the datatype of elements inside diamond operator. RHS can also have it, but it's redundant to have same datatype there in <> in RHS
         // () calls constructor in RHS can have initialCapacity of ArrayList.
         // In Java, <> cannot have primitive data types inside it.
         // Therefore, to make generics compatible with primitive data types, there is an autoboxing of primitives, makes them derived type of Java Object, called wrapper objects.

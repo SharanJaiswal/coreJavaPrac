@@ -33,11 +33,14 @@ public class Zoo {
         // But We still can make cage of Strings. We didn't restrict yet with type of animals only inside cage. This could be achieved by restricting the type of generic.
 
 
-        // If we want to check thew compatibility of two animal in the cage, we are first putting them together in cage and then deciding if they are compatible, ie,
-//        we are first making BestCage object and then we are checking the compatibility of 2 animals.
+        // If we want to check the compatibility of two animal in the cage, we are first putting them together in cage and then deciding if they are compatible, ie,
+//        we are first making BestCage object, and then we are checking the compatibility of 2 animals.
 //        But, we can do one thing, is that, we'll check compatibility without making the BestCage object, ie, without putting the animals first in the cage.
         Monkey monkey1 = new Monkey();
         Monkey monkey2 = new Monkey();
         BestCage.isCompatibleBest(monkey1, monkey2);
+
+        // Testing if BestCage can accept any animals of type which doesn't implement Eats and|or Runs
+//        BestCage<Snail> snailBestCage = new BestCage<Snail>();  // Gives error. Hence, animals that will go inside BestCage must implement interfaces Runs and Eats also, along with Animals class itself.
     }
 }

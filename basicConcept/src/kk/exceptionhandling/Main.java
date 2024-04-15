@@ -14,8 +14,8 @@ public class Main {
             }
             // Inside try block, or any block, we can have nested try-catch-finally block.
 
-            // If we had called any method from this try block and that method jad thrown an exception, then if that exception had been handled there in downstream, then here, this catch
-            // block will not get invoked. Otherwise, any of the below catch block would have been invoked. In that case where exception is not handled inside the downstrem method,
+            // If we had called any method from this try block and that method had thrown an exception, then if that exception had been handled there in downstream, then here, this catch
+            // block will not get invoked. Otherwise, any of the below catch block would have been invoked. In that case where exception is not handled inside the downstream method,
             // the method signature will append "throws {ExceptionClassName}" after parenthesis containing parameters of the method. If exception is handled in method, then no need to append.
         } catch (MyException | ArithmeticException e) {
             System.out.println(e.getMessage());

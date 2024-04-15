@@ -29,7 +29,7 @@ public class Main {
         /*
         lambdas expressions can be assigned to variables of type interfaces
          */
-        Operation printDetail = (a, b) -> System.out.println("rollno=" + a +", marks=" + b);    // JVM resolves at runtime which body to pick of type Operations, ie, RHS ( after = )
+        Operation printDetail = (a, b) -> System.out.println("rollno=" + a +", marks=" + b);    // JVM resolves it at runtime which body to pick of type Operations, ie, RHS ( after = )
         // Operation<Integer, Float> printDetail = (a, b) -> System.out.println("rollno=" + a +", marks=" + b); // We can also restrict the type of param passed to lambda expression
 
         // We can define any lambda expression body and assign to this interface, but here it is restricted to take exactly 2 parameters, body return type is void.
@@ -58,7 +58,7 @@ public class Main {
     }
 }
 
-// Interface needs ONLY 1 abstract method of any name. We must concern with the count and type of params to that abstract methods, and abstract method return type.
+// Functional Interface needs ONLY 1 abstract method of any name. We must concern with the count and type of params to that abstract methods, and abstract method return type.
 // The return type of this abstract method major role when we assign lambda expression to variable of this interface type
 // where RHS of lambda body return type is same as this abstract method return type
 // Below commented can also be possible if we are not sure about input types of 2 params

@@ -14,8 +14,8 @@ public class Car implements Engine, Break, Media {
         System.out.println("I accelerate like a normal car.");
     }
 
-    // Below 2 overridden methods are in both interface, Engine and Media. Hence, it's difficult to decide, which version is bind
-    // Also, those interface methods don't have body to distinguish. Their body is defined in class implementing them.
+    // Below 2 overridden methods are in both interface, Engine and Media. Hence, it's difficult to decide, which version is binds here in this implementing class.
+    // Also, those interface methods don't have body to distinguish. Their body is defined in class implementing them. Also, they have same signature.
     // To overcome the below resolution, it's better to implement Engine and Media separately and two different class,
     // provide them their own body, and use their object to call them respectively.
     @Override

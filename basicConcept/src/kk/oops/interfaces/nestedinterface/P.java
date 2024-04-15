@@ -15,7 +15,7 @@ class Q implements P.NestedInterface {
 
 class Driver {
     public static void main(String[] args) {
-        B obj = new B();
+        Q obj = new Q();
         System.out.println(obj.isOdd(5));
     }
 }

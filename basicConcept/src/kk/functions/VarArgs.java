@@ -17,7 +17,7 @@ public class VarArgs {
     }
 
     // Overloading and varArgs:  If below method is uncommented, then due to its overloading,
-    // its empty call cannot be resolved
+    // its empty call cannot be resolved at compile time. Moreover, error will not be here, but at a place from where fun1() is being called, because at there, compiler won't be able to resolve.
 //    static void fun1(String ...varArgs) {
 //        System.out.println(Arrays.toString(varArgs));
 //    }
@@ -26,6 +26,7 @@ public class VarArgs {
     static void fun1(String a, int... varArgs) {
         System.out.println(Arrays.toString(varArgs));
     }
+    // Similarly, we cannot define function fun1(String str, int i) {sout(vargs);}  because if we call fun1("a", 8); then compiler won't be able to resolve the version of fun1() to call
 
 
     static void fun2(int a, String b, int ...varArgs) {

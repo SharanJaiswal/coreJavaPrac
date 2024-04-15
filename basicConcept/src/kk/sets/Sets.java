@@ -26,6 +26,11 @@ public class Sets {
         System.out.println(set.contains("Sharan"));
         System.out.println(set.contains("Jaiswal"));
 
+        System.out.println(set.add(null));
+        System.out.println(set);
+        System.out.println(set.remove(null));
+        System.out.println(set);
+
         /**
          * Every element that gets added to HashSet, first gets its hashCode(). There might be cases where collision of hasCodes happens.
          * In that case, each hashCode present in hashBucket, points to a LinkedList, where each element of linkedlist has one pointer referring to next node with same hashCode(data)

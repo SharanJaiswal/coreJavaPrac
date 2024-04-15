@@ -14,7 +14,7 @@ public class Main {
          */
         Human twinNew = (Human) human1.clone();
         System.out.println(human1.equals(twinNew)); // Object cloned will not be same. It'll be in new memory location. Example of shallow copy.
-        // Shallow Copy: Not nested/lower level of references below the level of object is also being copied to new object.
+        // Shallow Copy: Not nested/lower level of references below the first level of object is being copied to new object.
         // Just the attributes at first level of object is duplicated in new object, and downstream object reference the exact same memory location even through cloned object of shallow copy.
         // Hence, slow intents NOT TOO DEEP.
         /*
@@ -24,7 +24,8 @@ public class Main {
         Hence, in shallow copy, change in one non-primitive will reflect in the cloned object's version of that non-primitive reference variable to which it is pointing to.
         We have seen above that cloned object itself is different, but their String datatype will be pointing to same. Even if they would have Arrays, then both will be pointing to same (String Pool).
          */
-        System.out.println(human1.name.equals(twinNew.name));   // true
+        System.out.println(human1.name.equals(twinNew.name));   // true because literal values are compared, which is lexicographical comparison. Not good to test.
+        System.out.println(human1.name == twinNew.name);    // Here, memory is being compared --- true because of String Pool.
 
         System.out.println(Arrays.toString(human1.arr));
         human1.arr[2] = 46;
@@ -38,7 +39,9 @@ public class Main {
         System.out.println(human1.arr == deepHuman.arr);
         System.out.println(Arrays.equals(human1.arr, deepHuman.arr));   // still true because Arrays.equals checks if count of are equals; and corresponding elements are equal in value.
         // It does not compare the memory location of both the arrays as memory location comparison is shadowed.
-        System.out.println(human1.name.equals(deepHuman.name)); // Still true
+        System.out.println(human1.arr == deepHuman.arr);
+        System.out.println(human1.name.equals(deepHuman.name)); // true because lexicographical comparison
+        System.out.println(human1.name == deepHuman.name);
         human1.arr[3] = 100;
         System.out.println(Arrays.toString(human1.arr));
         System.out.println(Arrays.toString(deepHuman.arr));

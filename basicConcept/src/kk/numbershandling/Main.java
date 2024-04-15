@@ -60,6 +60,7 @@ public class Main {
         System.out.println(p.subtract(q));
         System.out.println(p.multiply(q));
 //        System.out.println(p.divide(q));    // gives error as this gives non-terminating quotient as answer/
+//        System.out.println(decimalFormat.format(p.divide(q)));  // nor this will work, as quotient is non-terminating
         System.out.println(p.negate());
 
         BigDecimal con = BigDecimal.ONE;
@@ -67,5 +68,6 @@ public class Main {
         X = new BigDecimal("10.0");
         Y = new BigDecimal("5.0");
         System.out.println(X.divide(Y));    // no error if the answer has terminating quotient.
+        System.out.println(decimalFormat.format(X.divide(Y)));
     }
 }

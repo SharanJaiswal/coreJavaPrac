@@ -5,7 +5,7 @@ Produced item will be kept in the variable n.
  */
 
 
-package durg.company;
+package multithreading.company;
 
 public class Company {
     // if there is value in below variable, then produced is present.

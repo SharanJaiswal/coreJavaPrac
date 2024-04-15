@@ -21,7 +21,7 @@ public interface B {  // interface to interface inheritance uses "extends" keywo
     }
 
 
-    // Interfaces can also have private methods. Since interfaces don't have any instances, hence private methods can be called from within the class itself. Therefore, these private
+    // Interfaces can also have private methods. Since interfaces don't have any instances, hence private methods can be called from within the interface itself. Therefore, these private
     // methods can be called either via static methods, or by default methods. Any class that will be implementing that interface, cannot access this private method because it is private.
     // Suppose, like this class, we are having a bunch of default methods, and we want to execute a block of code for each default method. In that case, we can define a private method
     // with that common block of code, and call this private method in those default methods.

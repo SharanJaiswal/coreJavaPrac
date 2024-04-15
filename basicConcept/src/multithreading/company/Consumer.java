@@ -1,28 +1,24 @@
-package durg.company;
+package multithreading.company;
 
-public class Producer extends Thread {
+public class Consumer extends Thread {
+
     Company c;
-
-    public Producer(Company c) {
+    public Consumer(Company c) {
         this.c = c;
     }
 
-    @Override
     public void run() {
-        super.run();
-        int i = 1;
         while(true) {
             try {
-                this.c.produceItem(i);
+                this.c.consumeItem();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            i++;
         }
     }
 }

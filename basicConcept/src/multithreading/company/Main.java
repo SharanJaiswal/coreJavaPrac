@@ -1,4 +1,4 @@
-package durg.company;
+package multithreading.company;
 
 public class Main {
     public static void main(String[] args) {

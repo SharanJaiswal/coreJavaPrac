@@ -1,9 +1,13 @@
 package kk.oops.abstractdemo;
 
 public abstract class Parent {
+    // Variables of any type of abstract class can have any type of access-modifiers
     int age;    // Since this is still an abstract class, hence this class cannot have objects, unless methods are overridden before creating the objects.
         // Therefore, methods with body defined and variables are NOT bound to be final static. They CAN be final, static, final static, or without any of them.
-    final int VALUE;
+    final int VALUE;    // Abstract class can have final variable.
+
+    static String staticVar = "Static variable in abstract class."; // abstract class can have static variable.
+    final static String finalStaticVariable = "Final Static Variable in abstract class.";   // Abstract class can have final static variable.
     // the constructor cannot create objects, but can be used to initialize the instance variables and perform some task. Below is best example
     // This class cannot create objects unless abstract methods will have body,
     // but its child classes can call this parent constructor to initialize the variables of this class which are instance variables of child inherently
@@ -21,6 +25,8 @@ public abstract class Parent {
     // We CANNOT put "private" to these abstract methods because first its illegal combination,
     // and second, if we make it private, how can we inherit into other classes for the sole purpose of overriding it?
     // Also, if abstract methods are to be overridden in the child classes, then access modifier can be either same or less-restrictive|stronger-privilege
+    // Abstract methods cannot be final because final methods must have body which cannot be changed in child class.
+    // Abstract class can have final methods.
     abstract void career(String job);
     abstract void partner(String name, int age);
 
@@ -31,5 +37,13 @@ public abstract class Parent {
     // Abstract class can contain normal methods. Normal methods can be overridden also
     void normal() {
         System.out.println("This is normal method from Parent");
+    }
+
+    final void finalMethodInAbstract() {
+        System.out.println("Executing final method From abstract class.");
+    }
+
+    static final void finalStaticMethod() {
+        System.out.println("Executing static final method from abstract class.");
     }
 }

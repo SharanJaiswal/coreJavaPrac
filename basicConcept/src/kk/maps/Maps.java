@@ -13,10 +13,14 @@ public class Maps {
         Student stu1 = new Student("Foo", "Bar", 2, "Science");
         Student stu2 = new Student("Baar", "Baz", 1, "Commerce");
         Student stu3 = new Student("Blah", "Barrr", 3, "Arts");
+        Student stu4 = new Student("Ehhh", "Burrraahhh", 3, "Humanities");
 
-        students.put(stu1.getId(), stu1);
-        students.put(stu2.getId(), stu2);
-        students.put(stu3.getId(), stu3);
+        System.out.println(students.put(stu1.getId(), stu1));
+        System.out.println(students.put(stu2.getId(), stu2));
+        System.out.println(students.put(stu3.getId(), stu3));
+        System.out.println(students.put(null, stu4));
+
+
 
         System.out.println(students);
 
@@ -59,14 +63,14 @@ public class Maps {
         students.forEach((key, value) -> System.out.println(key + "==>" + value));
 
         System.out.println("=============Map computeIfAbsent==========");   // Also look compute, computeIfPresent, computeIfAbsent
-        // For a given key, if kv- pair is absent or v is null, then the same key will be a param to lambda which can return the value of type ? extends V (in general).
+        // For a given key, if kv- pair is absent or v is null, then the same key will be a param to lambda which can return the value of type <? extends V> (in general).
         // If value returned is null, then that K-V is not added to map, otherwise, it will get added.
         students.computeIfAbsent(111, k -> new Student("Shrn", "Jswl", k, "CSE"));
         System.out.println(students.get(111));
 
         /**
          * for HashMap, get() O(1) uses hash-code, containsKey (1) uses hash-code, put O(1)
-         * In HashMap, for on key, gives on hashcode, mapped to only one value.
+         * In HashMap, for on key, gives one hashcode, mapped to only one value.
          */
     }
 }

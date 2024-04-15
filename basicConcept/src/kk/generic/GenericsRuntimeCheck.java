@@ -31,7 +31,7 @@ public class GenericsRuntimeCheck {
 
 //        String name3 = names.get(2);  // This will give runtime error
         /**
-         * The value inside <> is associated with the reference variable and not with the referenced object on RHS. SO, when we assign names to names2, it just checked type compatibility.
+         * The value inside <> is associated with the reference variable and not with the referenced object on RHS. So, when we assign names to names2, it just checked type compatibility.
          * Moreover, RHS's <> is not checked because it was not supposed to happen at compile time. Thus, only the fact is checked if RHS type (List) can be referenced with the LHS type.
          * On these facts, when we sent name to incorrectAddToNames method, it is assigned to parameter type List, where its body implementation is a part of runtime operation.
          * Moreover, when byte code is generated, since value of parameter received is no longer with <>, so to java at runtime, names is just a list which is now referenced by List
@@ -49,7 +49,7 @@ public class GenericsRuntimeCheck {
         String anotherName = namesArray[0];
         /**
          * The above situation gives runtime error but unlike giving it at place just above, it gives it in method incorrectAddToArray. It is because in that method, at runtime, java
-         * knows that an array reference variable which is parameter, refers to an Array of String type. Thus at runtime there is an awareness of type of array.
+         * knows that an array reference variable which is parameter, refers to an Array of String type. Thus, at runtime there is an awareness of type of array.
          * Hence, when we are assigning an integer value to an element of string array, it throws an error.
          */
     }

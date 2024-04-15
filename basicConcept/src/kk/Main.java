@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         /*
-        args passed to call the main method are stored in a String array,
-        ie, the arguments will be cast as String irrespective of their data type by looks
+        args passed to call the main method are stored in a String array, i.e., the arguments will be cast as String irrespective of their data type by looks
          */
 //        System.out.println(args[0] + " " + args[1]);
 
@@ -28,7 +27,7 @@ public class Main {
         System.out.println(input.next());
         System.out.println(input.nextLine());
 
-        // Java is strongly typed. Static typing. int type of variable can only contain int value, decided at compile time. (Dynamic is observer in python, where a=10, a="Sharan".)
+        // Java is strongly typed. Static typing. int type of variable can only contain int value, decided and checked at compile time. (Dynamic type is observed in python, where a=10, but can be a="Sharan".)
         // Before throwing an error when type doesn't match with the value, it checks and tries to do type conversion, internally or via casting. But casting happens at runtime.
         int a = 1_0_0_0_00_0_000;  // rendered as below var 'b', Cannot be scanner input in this form. We can place underscore anywhere in the number, even with floating-points also.
         int b = 1000000000;
@@ -48,10 +47,14 @@ public class Main {
         double res2 = 3/2;  // NOT 1.5 because 3 and 2 are integers. int/int gives [precision lost] int result. that int result is then type converted to double.
         System.out.println(res1 + " = = = = " + res2);
 
-        /*
-        For primitive data type everything on right is called literal, while things on left like the var_name,
-        package name, class name, method name, interface name, etc.
+        /**
+         * For primitive data type everything on right is called literal, while things on left like the var_name,
+         * package name, class name, method name, interface name, etc.
+         * Literals: A way to specify values inline, for each of the primitive type.
+         * int age = 25; int count = 0b101010;  // int literals
+         *
          */
+
 
         float f1 = input.nextFloat();   // 10 : int to float as 10.0
         float f2 = input.nextFloat();   // 564.4567890 to rounded off
@@ -66,8 +69,9 @@ public class Main {
         byte e = 40; byte r = 50; byte t = 100;
         int d = e * r / t;  // Since LHS is bigger byte than RHS operands, then all RHS operands will be treated as int
         System.out.println(d);
-//        byte y = e * r / t; // This gives error because byte expressions are evaluated as integer expressions.
-                            // Result will be integer, looking to stored in byte. Do type casting to remove error.
+        byte y =(byte) (e * r / t); //
+        // If we would removed type casting (byte), then this would have given error because byte expressions are evaluated as integer expressions,ie., e r t will be promoted to int.
+// Hence, result will be integer, looking to stored in byte. Do type casting to remove error.
 
         // Type Promotion : In any operation on RHS, first, among 2 operand, lower byte-sized OPERAND VALUE gets converted to higher byte sized OPERAND VALUE.
 //        `````````(byte,short,char,int)````````` < (long) < (float) < (double)
@@ -75,6 +79,7 @@ public class Main {
         int num1 = 2;
         double num2 = 10;
         double res3 = num1 * num2;  // first VALUE OF num1 type will be promoted to double, then double num1 will be multiplied to double num2.
+        System.out.println(res3);
 
         // Few basic progs
         System.out.println(Math.max(23, Math.max(45,78)));
@@ -90,13 +95,8 @@ public class Main {
         Main obj1 = new Main();
         System.out.println(obj1.getClass());    // obj.getClass() gives an object of type "Class" which has value "class package.s.UserClass". This object is stored in heap area.
         System.out.println(obj1.getClass().getClass()); // value to be printed is "class java.lang.Class"
+        System.out.println(obj1.getClass().getClass().getClass()); // value to be printed is "class java.lang.Class" because .getClass() gives object of type Class.
         System.out.println(obj1.getClass().getName());  // package.s.ContextClass
-
-        /**
-         * Literals: A way to specify values inline, for each of the primitive type.
-         * int age = 25; int count = 0b101010;  // int literals
-         *
-         */
 
         /**
          * Precedence order:

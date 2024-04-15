@@ -20,5 +20,6 @@ class Main {
         System.out.println(obj.isOdd(5));
 
         A aObj = new A();
+        System.out.println(aObj.a);
     }
 }

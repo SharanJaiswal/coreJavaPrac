@@ -5,11 +5,11 @@ import java.util.List;
 
 // Generic strict type "checks" happen at compile time, replaces with their bounds or Object (if type param is unbounded).
 // Hence, bytecodes produces for runtime has ordinary classes, interface, methods.
-// Now, we know that object creation happens generally at runtime, in heap memory, where code like these gets executed: "new T[]" or "new T()"
+// Now, we know that object creation happens generally at runtime, in heap memory, where code like these gets executed: "new T[]" or "new T()" with T already getting replaced by some Type.
 // These object creation is not happen at compile time. In other words, lets assume that "T" doesn't get replaced in these statements at compile time.
 // Therefore, at runtime, JVM has statements like "new T[]" or "new T()" which doesn't make clear the type of the objects. Hence, it gives error.
 // If no error is there, generics hence don't create runtime overhead. Because replacement happens at compile time itself.
-// Its highly complicated working with generics. Hence, we will be using Object. Also, T cannot be replaced with primitive data types.
+// Its highly complicated working with generics. Hence, we will be using Object. Also, T cannot be replaced with primitive data types. It has to be derived data types or wrapper classes.
 // Interfaces can also have generic types.
 public class CustomArrayListGeneric<T> {    // public class CustomArrayListGeneric<T extends ClassName> // Ensures T can only be of ClassName or ClassName's child class.
     private Object[] data;

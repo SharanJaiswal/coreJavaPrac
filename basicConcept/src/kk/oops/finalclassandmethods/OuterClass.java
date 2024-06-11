@@ -1,5 +1,8 @@
 package kk.oops.finalclassandmethods;
 
+/**
+ * LOCAL VARIABLES ARE IN STACK. INSTANCE VARIABLES ARE IN HEAP. LAMBDAS WORK IN HEAP PRIMARILY.
+ */
 
 /* outermost class cannot be static */
 //static class A {
@@ -11,7 +14,7 @@ class OuterTest {
     String naam;
 
     public OuterTest(String name) {
-        OuterTest.name = name;
+        OuterTest.name = name;  // good when we want to update this static variable value in all previously created object. But if that's not the case, then initialize it in static block.
         this.naam = name;
     }
 }
@@ -47,7 +50,7 @@ public class OuterClass {
         Below works because this inner class whose object is created is of static class, and static candidate does not
         need any object of their enclosing class to access them
          */
-        StaticTest statObj1 = new OuterClass.StaticTest("Sharan");  // Preferred way of accessing the static candidate
+        StaticTest statObj1 = new OuterClass.StaticTest("Sharan");  // Preferred way of accessing the static candidate is OutermostClass.2ndLevelClass. ... .StaticTest
         StaticTest statObj2 = new StaticTest("Jaiswal");
         System.out.println("Non Static attr : " + statObj1.name + ". ====> Static Value : " + OuterClass.StaticTest.naam);
         // Above is the preferred way of accessing the static candidate is using [Outerclassname.]Innerstaticclassname.staticcandidate
@@ -55,7 +58,7 @@ public class OuterClass {
         // It is an example where static content if once changed, is changed for all of its occurrences in all the objects.
         /*
         We can observe that although inner class being the static, have 2 different objects. It can be possible because
-        class template is static, not the instances of the class. It is hence preferred to used "outerClass.InnerStaticClass"
+        class template is static, not the instances of the class. It is hence preferred to use "OuterClass.InnerStaticClass"
         whenever we are referencing the "InnerStaticClass" anywhere. Otherwise, it's not an error, but a preferred way.
          */
 
@@ -86,15 +89,20 @@ public class OuterClass {
         int i = 10; // Variables global to local classes can be accessed for READ-WRITE from inside the local class.
         // As long as the variables global to local class are not changing its value outside of local class block, READ-WRITE operation can be used on them.
         // Otherwise, if this variable is changed somewhere "in the enclosing scope where class FOO is defined, ie, here in this main method", then READ-WRITE will throw an error inside class Foo.
+        // It is because, in cases where we change the value of "i" (assuming it is referencing an object) inside the object of inner class, then 2 things will be observed:
+        // 1. when update happens of value of "i" in inner class, it might not be sequential(happens before or after) of the update happens outside of this inner class, which could be updated again against our will in enclosing scope. Thus, not retaining the updated value of "i" from inner class.
+        // 2. If "i" holds primitive value, whatever happens in the object of inner class stays in the object of inner class, and might not reflect in the outer class.
         // To access those variables, either those variables must be final or effectively final.
         final int j = 20;
         class Foo {
-            int x = i;  // Java compiler makes a copy of "i" form outside of this class and passes that copy to this class for its use. Now, in case where we make the object of Foo,
+            int x = i;  // If "i" gets updated in outer|inner scope, then due to asynchronous nature, it'll create problem for "i" itself in inner|outer scope.
+            // Java compiler makes a copy of "i" form outside of this class and passes that copy to this class for its use. Now, in case where we make the object of Foo,
             // and then passes that object to some method, then this will move the scope of var "i". In that new additional scope, we can change the value of "i". Since, this was the
             // copy of "i", that will make original "i" outdated|out-of-sync. So, java devs decided to use only final or effectively final variables inside class, in scope enclosing
             // that class.
             int y = j;
             public void tellMyName() {
+//                i++;  // Updating this asynchronously will make "i" in enclosing scope out-of-sync.
             }
         }
 //        i=40; // This line will create compilation error inside class Foo.
@@ -103,8 +111,7 @@ public class OuterClass {
         Foo f = new Foo();
         f.x=1;
         System.out.println(f.x);
-
-
+//        System.out.println(i);    // Even this potentially could change the value of "i" (absurd, but in cases where "i" hold non-primitive data reference), hence it is giving error in inner class.
 
         // Fourth type is Anonymous Classes, where existing class object is made at a place where the class is override.
         Foo f2 = new Foo() {
@@ -115,4 +122,8 @@ public class OuterClass {
         };
         f2.tellMyName();
     }
+
+    /**
+     * https://www.baeldung.com/java-lambda-effectively-final-local-variables
+     */
 }

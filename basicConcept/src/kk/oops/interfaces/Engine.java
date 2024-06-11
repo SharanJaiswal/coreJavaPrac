@@ -7,11 +7,11 @@ public interface Engine {
     // public: because it need to be accessed from the implementing classes, and directly using interface reference.
     // static: because it cannot be accessed from the object of interface, as creating object of interface is not allowed.
     // final: because interface by design is template that needs to be used invariably by the classes that implements it. Hence, the value should be same everywhere.
-    // Since interface cannot have constructor, therefore the variable of interface must be initialized at its definition.
+    // Since interface cannot have constructor, therefore the variable of interface must be initialized at its declaration.
 
     // Interface Methods CANNOT have final in any form, ie, final static or final because final methods needs body, but interfaces cannot have instance methods with body.
     // Interface methods can be static provided with body because static methods does not depend on the object of interface as interfaces don't have objects.
-    // If they are not static, they must not have body. If static keyword is allowed, then calling interface method must require body via interface name.
+    // If they are not static, they must not have body, except default methods. If static keyword is allowed, then calling interface method must require body via interface name.
     // Interfaces cannot have normal instance methods as they need object to access them.
 
     // Even Media interface has start and stop method. So class that inherits both, it's not specific from which start/stop its inherited
@@ -24,10 +24,15 @@ public interface Engine {
     }
 
     // Interfaces can also have private methods. Since interfaces don't have any instances, hence private methods can be called from within the class itself. Therefore, these private
-    // methods can be called either via static methods, or by default methods. Any class that will be implementing that interface, cannot access this private method because it is private.
+    // methods can be called either via static methods (if these methods are static also), or by default methods. Any class that will be implementing that interface, cannot access this private method because it is private.
     private void interfacePrivateMethod() {
         System.out.println("Executing private method in interface.");
     }
     // However, variables cannot be of type private, protected, or package-private. It can only be of type public static final.
     // Also, all variables declared will have "public static final" type. Adding custom access-modifier will create ambiguity and hence error.
+
+    default void defMet() { // default methods cannot be static, and can be call by the objects references of classes or its child implementing this interface.
+        System.out.println("This is Engine default method");
+        interfacePrivateMethod();
+    }
 }

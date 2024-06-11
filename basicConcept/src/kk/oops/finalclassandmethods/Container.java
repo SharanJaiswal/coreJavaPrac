@@ -1,14 +1,14 @@
 package kk.oops.finalclassandmethods;
 
 public class Container {
-    int size;
-    String material;
-    static String staticVar;
-    static String anotherStaticVar;
+    int size;   // instance
+    String material;    // instance
+    static String staticVar;    // class
+    static String anotherStaticVar; // class
 
     // Below for 2 final types variables, we have to provide their instantiation always.
-    final String finalVar = "Container Final Variable";
-    final static String finalStaticVar = "Container Final Static Variable";
+    final String finalVar = "Container Final Variable"; // instance
+    final static String finalStaticVar = "Container Final Static Variable"; // class
 
     public Container(int size, String material) {
         this.size = size;
@@ -18,12 +18,12 @@ public class Container {
     public Container() {
     }
 
-    // This method can be inherited and overridden because it is not final method, and neither this class is not defined as final class
+    // This instance method can be inherited and overridden because it is not final method, and neither this class is not defined as final class
     void getSizeAndMaterial() {
         System.out.println("In conatiner " + this.size + " " + this.material);
     }
 
-    // This method can be inherited but cannot be overridden as this method is defined as final method, hence we cannot change its content/body
+    // This method can be inherited but cannot be overridden as this method is defined as final method, hence we cannot change its content/body in child class
     final void getCostPrice() {
         System.out.println("Cost Price : " + this.size * 10);
     }
@@ -39,6 +39,5 @@ public class Container {
         System.out.println("Another non-derived static method.");
     }
 
-//    Final static methods can be inherited but cannot be overridden. On contrary normal static methods can be inherited, overridden, but overridden body don't get executed if called via reference variable of type child class or simply by child class itself.
-    // Overridden body of normal static methods in child class can be called using ref var of child class, or by using child class itself.
+//    Final static methods can be inherited but cannot be overridden.
 }

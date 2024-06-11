@@ -3,6 +3,8 @@ package kk.generic.zoo;
 // While seeing method feedAnimal(), come here to read it.
 // We could think that we can write <E [...] implements Eats> in the class definition, but java doesn't allow to use "implements" keyword inside <>.
 // Instead, use "extends" even if its interface. That's the way generic syntax works.
+
+
 // Moreover, if we write <E extends Animals, AnythingLikeFooBar>, java compiler interpret it as BestCage have generic type that accepts 2 variables;
 // One of type which is extending Animals (could be class or interface), and another variable of type generic AnythingLikeFooBar, where AnythingLikeFooBar is mere symbol
 // and coincidentally have name similar to one of the class or interface; just like "E" of "E extends Animals"
@@ -54,9 +56,9 @@ public class BestCage<E extends Animals & Eats & Runs> {
     }
 
 //    public static boolean isCompatibleBest(E animal1, E animal2) {    // If this would be non-static, we are bound to mention generic type "E" which should be same as mentioned inside class signature.
-    public static <T extends Animals> boolean isCompatibleBest(T animal1, T animal2) {  // Type inside <> must be between "static" keyword and before return type of the method.
+    public static <T extends Animals & Eats> boolean isCompatibleBest(T animal1, T animal2) {  // Type inside <> must be between "static" keyword and before return type of the method.
         return animal1.getType().equals(animal2.getType()); // We expect E to be of type Animal or its extension, because it'll support "getType()" method.
-//        says that E cannot be referenced from the static context because without specifying <E extends Animal>, E gets resolved in compile-time when using instantiating BestCage object {new BestCage<Animal>}
+//        says that E cannot be referenced from the static context because without specifying <E extends Animal>, E gets resolved in compile-time while instantiating BestCage object {new BestCage<Animal>}
 //        (in the commented method signature).
 
 //        E will get replaced by the value inside <> when creating the instance of BestCage class. Since, it is a static method, therefore we'll not call this method using BestCage instance.

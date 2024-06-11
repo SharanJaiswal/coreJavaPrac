@@ -5,7 +5,11 @@ import java.util.Map;
 
 /**
  * Map doesn't extend Collections. It has its own set of methods, and iterator methods.
- * Object -> Hash Function|Logic -> Hash Code (ONe way only)
+ * Object -> Hash Function|Logic -> Hash Code (One way only)
+ * After hash collision, element replaces existing node with same value of equals().
+ * If a certain bucket contain LL with node count > TREEIFY_THRESHOLD = 8, then that LL becomes red-black tree, where it first sorts by hashCode(), and then by compareTo() if hash are same.
+ * < UNTREEIFY_THRESHOLD = 6 ==> makes LL again.
+ *
  */
 public class Maps {
     public static void main(String[] args) {
@@ -20,13 +24,11 @@ public class Maps {
         System.out.println(students.put(stu3.getId(), stu3));
         System.out.println(students.put(null, stu4));
 
-
-
         System.out.println(students);
 
         System.out.println(students.get(1));
 
-        // null check : Both gives null. So, putting value as null in the map is not advised, as it won't giver the clear picture as if key-value pair is missing or the value is null.
+        // null check : Both gives null. So, putting value as null in the map is not advised, as it won't give the clear picture as if key-value pair is missing or the value is null.
         students.put(200, null);
         System.out.println(students.get(200));  // whose value is set as null
         System.out.println(students.get(300));  // whose key isn't in the HashMap

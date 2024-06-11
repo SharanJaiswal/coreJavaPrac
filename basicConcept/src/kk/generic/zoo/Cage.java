@@ -1,7 +1,7 @@
 package kk.generic.zoo;
 
 public class Cage {
-    // Since we don't have common parent class of Lion and Monkey, and our requirement is to have animals of any type inside of cage.
+    // Since we don't have common parent class of Lion and Monkey, and our requirement is to have animals of any type inside of given cage.
     // Therefore, we will use Object class
     private Object animal1;
     private Object animal2;

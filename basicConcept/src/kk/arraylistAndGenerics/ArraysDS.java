@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.BinaryOperator;
 
 /**
  * So, asList takes series of Object or its derived types. Since, we are passing primitive type, hence auto-boxing is taking place, giving List of Integers.
@@ -32,7 +33,7 @@ public class ArraysDS {
         Iterator<String> iterator3 = list1.iterator();
 
         iterator3.next();
-        iterator3.remove(); // If by any chance, we called this method prior to calling next(), then IllegalStateException will be thrown,
+        iterator3.remove(); // Removes from underlying list. If by any chance, we called this method prior to calling next(), then IllegalStateException will be thrown,
         // because iterator needs to point some element to get it removed from the underlying collection item, and hence iterator.
         // Once remove() has been called, we cannot call another remove() without calling next(), because it will throw IllegalStateException
 //        iterator3.remove();

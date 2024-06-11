@@ -22,16 +22,16 @@ public class ArrayListExample {
         arr1.add(38);
         arr1.add(90);
 
-        System.out.println(arr1.contains(10));
-        System.out.println(arr1.contains(234));
-        System.out.println(arr1);
+        System.out.println(arr1.contains(10));  // false
+        System.out.println(arr1.contains(234)); // true
+        System.out.println(arr1);   //[234, 12, 546, 38, 90]
         arr1.set(2,34567);
-        System.out.println(arr1);
+        System.out.println(arr1);   // // [234, 12, 34567, 38, 90]
         arr1.remove(1);
-        System.out.println(arr1.remove(new Integer(90)));
-        System.out.println(arr1);
+        System.out.println(arr1.remove(new Integer(90)));   // true
+        System.out.println(arr1);   // [234, 34567, 38]
         arr1.add(1, 407);
-        System.out.println(arr1);
+        System.out.println(arr1);   // [234, 407, 34567, 38]
         
         // Input in arrayList
         Scanner scanner = new Scanner(System.in);
@@ -59,7 +59,7 @@ public class ArrayListExample {
         System.out.println(multArrList);
 
         // Also, look below methods:
-        // remove(int idx | E ele)  // either take the index to remove the element at that index, or pass the element itself to remove the first occurrence of the element.
+        // boolean remove(int idx | E ele)  // either take the index to remove the element at that index, or pass the element itself to remove the first occurrence of the element.
 //        arr1.retainAll(any other collection);   // arr1 will have only those elements which will be common to arr1 and collection item passed
 //        arr1.replaceAll();  // takes UnaryOperator type instance which is basically a lambda which takes one element at a time as an input from arr1,
         // and transforms and returns an element of type of list

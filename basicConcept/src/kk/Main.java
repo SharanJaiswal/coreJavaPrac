@@ -27,54 +27,67 @@ public class Main {
         System.out.println(input.next());
         System.out.println(input.nextLine());
 
+        // byte size of primitive data types (byte(1B)->short.   char(2B)->int.    short(2B)->int(4B)->long(8B)->float(4B)->double(8B),boolean) // Arrow indicates widening
         // Java is strongly typed. Static typing. int type of variable can only contain int value, decided and checked at compile time. (Dynamic type is observed in python, where a=10, but can be a="Sharan".)
         // Before throwing an error when type doesn't match with the value, it checks and tries to do type conversion, internally or via casting. But casting happens at runtime.
         int a = 1_0_0_0_00_0_000;  // rendered as below var 'b', Cannot be scanner input in this form. We can place underscore anywhere in the number, even with floating-points also.
-        int b = 1000000000;
+        // These dunders cannot be placed adjacent to point in floating literals, before F or D or L, at the beginning or end of a number,
+        int b = 1000000000; // 4-bytes
 //        int c = 1,000,000,000;  // wrong as commas are not allowed
-        float flt = 23_456.75_01F;
+        // All floating point literals are by default of type double. So, we cannot assign default floating literals to reference type of "float". Same goes for int (default) into bytes.
+        float flt = 23_456.75_01F;  // can be upper case or lower case f or F.  4-bytes
+//        float f3 = 2983.54; // Error because RHS is interpreted as double. Trying to fit in 8-bytes in 4-bytes
         double dbl = 23_456.75_01;
         double val = 5.012E-15;
-        double int_double = 25D;    // Specifying D is useful in cases when instead of double, we would have declared type as "var".
-        long lng = 45378L;
+        double int_double = 25D;    // Specifying D or d is useful in cases when instead of double, we would have declared type as "var".
+        long lng = 45378L;  // both cases of l or L == 8-bytes
+        long lng2 = 45378;  // Widening casting
         short shrt = 34;
 
-        // lossy type casting
+        // lossy type casting, aka Narrowing
         b = (int) flt;
-        System.out.println(b);  // no rounding off takes place
+        System.out.println(b);  // no rounding off takes place 23456
 
-        int res1 = 3/2;
+        int res1 = 3/2; // 1
         double res2 = 3/2;  // NOT 1.5 because 3 and 2 are integers. int/int gives [precision lost] int result. that int result is then type converted to double.
-        System.out.println(res1 + " = = = = " + res2);
+        System.out.println(res1 + " = = = = " + res2);  // 1 = = = = 1.0
 
         /**
+         * Literal is an actual constant value which is stored in a variable. Reference variables for primitives can store actual value and can also point to another primitive reference variable.
+         * Reference variable pointing to some object holds object reference as a literal. Exceptionally, Strings can have literals.
          * For primitive data type everything on right is called literal, while things on left like the var_name,
          * package name, class name, method name, interface name, etc.
          * Literals: A way to specify values inline, for each of the primitive type.
-         * int age = 25; int count = 0b101010;  // int literals
-         *
+         * int age = 25; int count = 0xaF10(hexadecimal form-0x), int count = 0b0101(binary-0b|0B);  int count = 010 (octal-0x), // int literals
+         * There are no byte or short literals.
+         * char literals: char a = 'a'; char a = 97 : 0xFFCE : 07777: 65535 :  65536(error);    char literals can hold integer literals of any type, but allowed unicode range is [0-65535]
+         * Every escape character is possible char literal. \n (new line), \t (hor tab), \r (carriage return), \b (backspace), \f (form feed), \' , \", \\
          */
 
 
         float f1 = input.nextFloat();   // 10 : int to float as 10.0
         float f2 = input.nextFloat();   // 564.4567890 to rounded off
         float f3 = input.nextFloat();   // 999999999.4567896789
-        System.out.println(f1 + "---" + f2 + "---" + f3);
+        System.out.println(f1 + "---" + f2 + "---" + f3);   // 10.0---564.4568---1.0E9
 
         // never put big bytes into small bytes. If required, there will be byte loss and casting will be required
         int q = 257;
-//        byte w = (byte)(a); // 257 % 256 = 1
-//        System.out.println(w);
+        byte w = (byte)(q); // byte:[-128 to 127],
+        // So, X=257-127=130 => 130 % 256 = 130. Now, we considered only positives. Let's shift origin ,i.e., 0 as -128; therefore, 130 will be as 1
+        // Or, simply, X % 256 = R[0,255](1 to 255, then 0, where 0 means its 256th number and 1 means 1st number).
+        // Shift back origin where R=1 refers to -128 in byte. Therefore, answer in byte: R-129
+        System.out.println(w);
 
         byte e = 40; byte r = 50; byte t = 100;
-        int d = e * r / t;  // Since LHS is bigger byte than RHS operands, then all RHS operands will be treated as int
+        int d = e * r / t;  // Since byte operation happens as int operation, also LHS is bigger byte than RHS operands, then all RHS operands will be treated as int
         System.out.println(d);
-        byte y =(byte) (e * r / t); //
-        // If we would removed type casting (byte), then this would have given error because byte expressions are evaluated as integer expressions,ie., e r t will be promoted to int.
+        byte y =(byte) (e * r / t);
+        System.out.println(y);
+        // If we would removed type casting (byte), then this would have given error because byte expressions are evaluated as integer expressions,i.e., e r t will be promoted to int.
 // Hence, result will be integer, looking to stored in byte. Do type casting to remove error.
 
         // Type Promotion : In any operation on RHS, first, among 2 operand, lower byte-sized OPERAND VALUE gets converted to higher byte sized OPERAND VALUE.
-//        `````````(byte,short,char,int)````````` < (long) < (float) < (double)
+//        `````````(byte->short,char->int,short->int) -> int->long->float->double
         // Follows operator precedence order as well while selecting 2 operand at a time for performing operation.
         int num1 = 2;
         double num2 = 10;
@@ -100,8 +113,10 @@ public class Main {
 
         /**
          * Precedence order:
-         * postfix > unary {++a, --a, +a, -a, ~a, !a} > multiplicative {* / %} > additive {+ -} > shift {<< >> >>>} > relational { < > <= >= instanceof} > equality {== !=} >
-         *     & > ^ > | > && > || > ?: > assignment {= += -+ *= /= %= &= ^= |= <<= >>= >>>=}
+         * -> . () []    L-R
+         * postfix > unary(R-L) {++a, --a, +a, -a, ~a, !a} > multiplicative {* / %} > additive {+ -} > shift {<< >> >>>} > relational { < > <= >= instanceof} > equality {== !=} >
+         *     & > ^ > | > && > || > ?:(R-L) > assignment(R-L) {= += -+ *= /= %= &= ^= |= <<= >>= >>>=}
+         *     Comma
          */
     }
 }

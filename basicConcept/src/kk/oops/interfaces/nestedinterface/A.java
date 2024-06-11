@@ -5,6 +5,10 @@ public class A {
         boolean isOdd(int num);
     }
     int a=56;
+
+    void rand() {
+        System.out.println("in rand method");
+    }
 }
 
 class B implements A.NestedInterface {
@@ -12,6 +16,13 @@ class B implements A.NestedInterface {
     public boolean isOdd(int num) {
         return (num & 1) == 1;
     }
+
+    // Observe that error thrown when we tried to override "rand()"
+    // because we are implementing nested interface, not extending the enclosing class.
+//    @Override
+//    void rand() {
+//
+//    }
 }
 
 class Main {
@@ -21,5 +32,6 @@ class Main {
 
         A aObj = new A();
         System.out.println(aObj.a);
+        aObj.rand();
     }
 }

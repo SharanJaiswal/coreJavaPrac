@@ -28,7 +28,7 @@ public class Main {
     }
 
     // If any method is expected to throw an exception, even in their downstream, we have to mention "throws ExceptionName" at method signature, even in their interface.
-    // Where there is "throws ExceptionName" is mentioned, in that method this exception can be caught. Not methods below in the stack track, allowed methods above in stack trace.
+    // Where there is "throws ExceptionName" is mentioned, in that method this exception can be caught. Not methods below in the call-stack track, allowed methods above in call-stack trace.
     // If there is instance method which has "throws ExceptionName" in its definition, then from any type of methods from where it is called, should also have "throws ExceptionName"
     static int divide (int a, int b) throws ArithmeticException {
         if (b == 0) {

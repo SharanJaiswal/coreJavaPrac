@@ -15,10 +15,18 @@ public class Main implements B {    // interface to class inheritance uses "impl
 
     }
 
+    static void stat1() {
+        System.out.println("Main: Static methods in interface must have body");
+    }
+
+
     public static void main(String[] args) {
         Main obj = new Main();
-//        obj.stat1();    // cannot refer static method of interface using object reference at all because it is not inherited, because class can only be inherited not interfaces
-        // Use interface reference to call static method defined in them
+        // Below line will throw an error in cases where stat1() is not defined here or in upstream parent classes of this class(which is not case here); error because static method are inherited from classes but not from interfaces.
+        obj.stat1();    // "cannot" refer static method of interface using object reference in cases where static method is not overridden in classes of type <? super thisclass> because it is not inherited or shadowed,
+        // because class can only be inherited not interfaces.
+        // Use interface reference to call static method defined in them.
+//        obj.stat2();  // error scenario.
         A.stat1();
 //        B.stat1();    // Even B also cannot call static method of A even though B extends A. Reason is, B doesn't extend A as if A is class. A is not class but interface.
                         // So static method of A is not inherited in B and its downstream inheritance.

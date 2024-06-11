@@ -25,8 +25,8 @@ public abstract class Parent {
     // We CANNOT put "private" to these abstract methods because first its illegal combination,
     // and second, if we make it private, how can we inherit into other classes for the sole purpose of overriding it?
     // Also, if abstract methods are to be overridden in the child classes, then access modifier can be either same or less-restrictive|stronger-privilege
-    // Abstract methods cannot be final because final methods must have body which cannot be changed in child class.
-    // Abstract class can have final methods.
+    // Abstract methods cannot be final because final methods must have body which cannot be changed in child class. For same reason, it cannot be static.
+    // Abstract class can have final methods, static methods, final static methods.
     abstract void career(String job);
     abstract void partner(String name, int age);
 

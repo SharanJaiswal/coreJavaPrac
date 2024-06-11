@@ -65,3 +65,7 @@ public class Main {
 interface Operation<P,Q> {   // interface Operation {
     void operation (P a, Q b);     // void operation (int a, float b);
 }
+
+/**
+ * https://www.baeldung.com/java-lambda-effectively-final-local-variables
+ */

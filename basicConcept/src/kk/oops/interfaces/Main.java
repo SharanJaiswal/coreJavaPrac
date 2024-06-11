@@ -7,6 +7,8 @@ public class Main {
         car.acc();
         car.start();
         car.stop();
+        car.defMet();
+//        Engine.defMet();  // Default methods of an interfaces can be called via only object references of classes or its child implementing that interface.
 
         Engine car2 = new Car();
 //        car2.a;   // Gives error because Engine type reference variable cannot find variable named "a" to refer, although Car having its version of "a".

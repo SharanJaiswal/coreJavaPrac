@@ -1,5 +1,6 @@
 package kk.arraylistAndGenerics;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,14 +13,14 @@ import java.util.List;
 // Its highly complicated working with generics. Hence, we will be using Object. Also, T cannot be replaced with primitive data types. It has to be derived data types or wrapper classes.
 // Interfaces can also have generic types.
 public class CustomArrayListGeneric<T> {    // public class CustomArrayListGeneric<T extends ClassName> // Ensures T can only be of ClassName or ClassName's child class.
-    private Object[] data;
-    final private static int DEFAULT_SIZE = 10;
+    private T[] data;
+    final private static int DEFAULT_SIZE = 3;
     private int size = 0;   // will work as an index iterator
 
     public CustomArrayListGeneric() {
 //        this.data = new T[CustomArrayListGeneric.DEFAULT_SIZE]; // Error because Type param T cannot be instantiated directly
 //        that is, RHS gets executed at runtime, which gives error because T here is not know of its type.
-        this.data = new Object[CustomArrayListGeneric.DEFAULT_SIZE];
+        this.data = (T[]) new Object[CustomArrayListGeneric.DEFAULT_SIZE];
     }
 
     public void add (T element) {
@@ -41,14 +42,15 @@ public class CustomArrayListGeneric<T> {    // public class CustomArrayListGener
         return this.size;
     }
 
-    public void set(int idx, int ele) {
+    public void set(int idx, T ele) {
         this.data[idx] = ele;
     }
 
     private void resize() {
         int idx = 0;
-        Object[] temp = new Object[this.data.length * 2];
-        for (Object ele : this.data) {
+        T[] temp = (T[]) new Object[this.data.length * 2];
+//        T[] temp = (T[]) Array.newInstance(Object.class, this.data.length * 2);
+        for (T ele : this.data) {
             temp[idx++] = ele;
         }
         this.data = temp;
@@ -76,10 +78,12 @@ public class CustomArrayListGeneric<T> {    // public class CustomArrayListGener
         CustomArrayListGeneric<Integer> arrayList1 = new CustomArrayListGeneric<>();
         arrayList1.add(45);
         arrayList1.add(90);
+        arrayList1.add(100);
+        arrayList1.add(20);
         System.out.println(arrayList1);
 
 
-        // If we dont provide the generic value
+        // If we don't provide the generic value
         CustomArrayListGeneric arrayList2 = new CustomArrayListGeneric();  // Not providing value of T is also allowed, but raises security issue & concerns because any type can be filled
         arrayList2.add("Sharan");
         arrayList2.add(45);

@@ -10,8 +10,8 @@ public class ObjectDemo implements Comparable<ObjectDemo> {  // Inside <> there 
 
     // random integer number representation of an object, not a memory address of object, formed using internal algo.
     // When 2 objects are compared, their hashCodes are NOT compared. eg., obj1 == obj2; Supports also != operator. These == & != uses memory location comparison, not their hashes.
-    // obj1>obj2 (NO HASHCODE or Memory Location or any method can be used to compare objects involving < or > operator. REQUIRES compareTo() method) are NOT implementing hashCode() to compare.
-    // When 2 objects are compared, they can be compared using equals() method or their using Comparable interface's compareTo() method must be implemented.
+    // obj1>obj2 (NO HASHCODE or Memory Location or any method can be used to compare objects involving < or > operator. REQUIRES comparators) are NOT implementing hashCode() to compare.
+    // When 2 objects are compared, they can be compared using equals() method or their using Comparable interface's compareTo() method must be implemented, or any comparator.
     // Class X is said to be in consistent with equals() when o1.equals(o2) gives same boolean value as when it gives in o1.hashCode()==o2.hashCode()
     @Override
     public int hashCode() {

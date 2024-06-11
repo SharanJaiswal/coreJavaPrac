@@ -25,8 +25,11 @@ public class BoxWeight extends Box {
         this.weight = weight;
     }
 
-    public BoxWeight(BoxWeight other) {
-        super(other);   // This will not give error because the expression will be like: Parent parentObj = new Child();
-        this.weight = other.weight;
-    }
+//    Although method signature consist of method's name, type and order of params but still if return type is changed while overriding parent method, then this will throw an error while overriding.
+//    @Override
+//    public int information() {
+//        super.information();
+//        return 0;
+//    }
+
 }

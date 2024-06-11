@@ -47,7 +47,7 @@ public class Student implements Comparable<Student> {
 
         System.out.println(Arrays.toString(stuArr));
 
-        // Check id relational operators are overloaded after defining compareTo() method:
+        // Check if relational operators are overloaded after defining compareTo() method:
         System.out.println(stu1.compareTo(stu4));
         System.out.println(stu1 == stu4);
 
@@ -57,9 +57,9 @@ public class Student implements Comparable<Student> {
         If we expect something in return from passed functions and if there is just one return statement in function body ,then we write the return expression w/o "return" keyword.
         As anything right of "->" will be in 2 formats. Either inside {}, or just a single statement. If inside {}, then everything inside it will be written as normal body code.
         While, if there is no {}, then there will be just an expression giving an output. This output can be of any type, including void, but should match the type original func ret type.
-        We box multiple statement in the braces, as function body, also use "return" keyword when we use multiple/single line inside {}.
+        We box multiple statement in the braces, as function body, also use "return" keyword when it is required, while using multiple/single line inside {}, or without {}.
         So, multiple lines in body of function are in braces, with "return" keyword if original function needs anything in return, each statement followed by semicolon.
-        Else, single return expression w/o "return" keyword and semicolon if no braces is used; or any single statement like sout(...)
+        Else, single return expression w|w/o "return" keyword and semicolon if no braces is used; or any single statement like sout(...)
         Pass params to lambda are if original function can take arguments, placed in parentheses, followed by arrow operator followed by body/return expression value.
          */
     }

@@ -5,19 +5,27 @@ import java.util.Arrays;
 public class VarArgs {
     // var-args if present with keyword args, then var-args will be at last in the params
     public static void main(String[] args) {
-        fun1(2, 3, 4, 6);
-        fun1();
-        fun2(2, "3", 4, 5, 6);
-        fun2(8, "7");
+        fun1(2, 3, 4, 6);   // [2, 3, 4, 6]
+        fun1(); // []
+        fun2(2, "3", 4, 5, 6);  // [4, 5, 6]
+        fun2(8, "7");   // []
     }
+
 
     static void fun1(int... varArgs) {
         // Multiple args passed individually but received in varArgs in Array data type
         System.out.println(Arrays.toString(varArgs));
     }
 
+    // A method is overloaded when there are different permutations of arguments, considering also its arguments type; not by the return type.
+//    static int fun1(int... varArgs) {
+//        // Multiple args passed individually but received in varArgs in Array data type
+//        System.out.println(Arrays.toString(varArgs));   // [2, 3, 4, 6]
+//        return 0;
+//    }
+
     // Overloading and varArgs:  If below method is uncommented, then due to its overloading,
-    // its empty call cannot be resolved at compile time. Moreover, error will not be here, but at a place from where fun1() is being called, because at there, compiler won't be able to resolve.
+    // its empty call cannot be resolved at compile time. Moreover, error will not be here, but at a place from where fun1() is being called, because at there, compiler won't be able to resolve linkage.
 //    static void fun1(String ...varArgs) {
 //        System.out.println(Arrays.toString(varArgs));
 //    }

@@ -5,6 +5,7 @@ public interface A {
         System.out.println("I am in A");
     }
 
+    // default methods in interfaces are always public.
     /*
     In real world, once interface gets published, its out there to use and implement, and override abstract methods.
     We cannot simply add one more abstract method in the interface which is being implemented by many.
@@ -16,7 +17,7 @@ public interface A {
     which implemented it. So, default saves time. Change it here and it will reflect everywhere.
     Static methods in interface cannot be inherited but default methods can be inherited. Also, default methods can be overridden.
      */
-    default void forConflict() {    // See interface B for its description
+    default public void forConflict() {    // See interface B for its description
         System.out.println("Conflict picked from A");
     }
 }

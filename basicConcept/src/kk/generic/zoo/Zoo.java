@@ -25,7 +25,7 @@ public class Zoo {
         // We can see that a Lion got also added to a monkey's cage. This could potentially add anything, and cannot add Monkey at all.
         // This happened because at RHS we are not instantiating generic BetterCage<>, but a BetterCage w/o <>
         // which is equivalent to assigning non-generic type to generic type for backward compatibility.
-        // below is the incorrect way
+        // below is the correct way
         BetterCage<Monkey> monkeyBetterCage2 = new BetterCage<>(new Monkey(), new Monkey());
 
 

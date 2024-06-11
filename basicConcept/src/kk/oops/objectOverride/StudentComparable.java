@@ -41,7 +41,7 @@ public class StudentComparable implements Comparable<StudentComparable> {
 
         System.out.println(Arrays.toString(stuArr));
 
-        Arrays.sort(stuArr);
+        Arrays.sort(stuArr);    // picks compareTo() by default
 
         System.out.println(Arrays.toString(stuArr));
 
@@ -62,5 +62,45 @@ public class StudentComparable implements Comparable<StudentComparable> {
             }
         });
         System.out.println(Arrays.toString(stuArr));
+
+
+        ///////////////////////////////ANOTHER WAY TO PASS COMPARATOR AS PARAM TO SORT///////////////////////////////
+
+        stu1 = new StudentComparable(34, 57f);
+        stu2 = new StudentComparable(67, 45f);
+        stu3 = new StudentComparable(-3, 29f);
+        stu4 = new StudentComparable(34, 99f);
+        stu5 = new StudentComparable(734, -1f);
+        stuArr = new StudentComparable[] {stu1, stu2, stu3, stu4, stu5};
+        System.out.println(Arrays.toString(stuArr));
+//        Arrays.sort(stuArr, (StudentComparable o1, StudentComparable o2) -> o1.rollno - o2.rollno); // pass comparator's compare lambda directly.
+        Arrays.sort(stuArr, (o1, o2) -> o1.rollno - o2.rollno); //  by not specifying the type definitions, the compiler is capable of inferring these on its own.
+        System.out.println(Arrays.toString(stuArr));
+
+
+// We can pass the method reference also.
+//        public static int compareByNameThenAge(Human lhs, Human rhs) {
+//            if (lhs.name.equals(rhs.name)) {
+//                return Integer.compare(lhs.age, rhs.age);
+//            } else {
+//                return lhs.name.compareTo(rhs.name);
+//            }
+//        }
+//        humans.sort(Human::compareByNameThenAge);
+
+
+//        ANOTHER way: We can also avoid defining even the comparison logic itself by using an instance method reference and the Comparator.comparing method,
+//        which extracts and creates a Comparator based on that function.
+//        Collections.sort(humans, Comparator.comparing(Human::getName));
+
+
+//        ANOTHER BUT FOR REVERSE SORT:
+//        Comparator<Human> comparator = (h1, h2) -> h1.getName().compareTo(h2.getName());
+//        humans.sort(comparator.reversed());
+
+
+//        For complex sorting with multiple conditions. Here, if names will be different then go for age comparison, else, name comparison.
+//        humans.sort(Comparator.comparing(Human::getName).thenComparing(Human::getAge));
+
     }
 }

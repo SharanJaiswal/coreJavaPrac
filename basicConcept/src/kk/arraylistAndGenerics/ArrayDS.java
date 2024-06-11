@@ -1,8 +1,8 @@
 package kk.arraylistAndGenerics;
 /*
-Arrays are fixed sized, ie, we need to mention the number of elements that it holds, its length. For dynamic size arrays, we use ArrayList
+Array are fixed sized, ie, we need to mention the number of elements that it holds, its length. For dynamic size array, we use ArrayList
  */
-import java.util.Arrays;
+import java.util.Arrays;    // An array utility
 
 public class ArrayDS {
     public static void main(String[] args) {

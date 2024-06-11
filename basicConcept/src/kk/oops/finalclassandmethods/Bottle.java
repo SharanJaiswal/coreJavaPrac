@@ -1,6 +1,6 @@
 package kk.oops.finalclassandmethods;
 
-public final class Bottle extends Container {   // final classes cannot be inherited. So, if we want our classes to NOT to be inherited, we put final keyword.
+public final class Bottle extends Container {   // final classes cannot be inherited. So, if we want our classes to NOT be inherited, we put final keyword.
 
     final String type;
     public Bottle() {

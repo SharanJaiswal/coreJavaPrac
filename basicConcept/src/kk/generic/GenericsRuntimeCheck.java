@@ -11,17 +11,17 @@ public class GenericsRuntimeCheck {
         List<String> names = new ArrayList<>();
         addToNames(names, "Name 1");
         addToNames(names, "Name 2");
-        System.out.println(names);
+        System.out.println(names);  // [Name 1, Name 2]
 
-        // Till compile time only, whatever has been provided under <> is checked, but once bytecode ges generated for runtime, the type-erasure assigned to the reference variable type,
+        // Till compile time only, whatever has been provided under <> is checked, but once bytecode gets generated for runtime, the type assigned to the reference variable type in <>,
         // does not exist anymore. It's simply a reference variable of a given class type, ie, ArrayList<String> ls or ArrayList<Integer> li will be different till compile time only.
         // But in bytecode, they both will be simple ArrayList ls or ArrayList li.
         // After the introduction of generics in java, to make the code backward compatible, we can assign the generic type to non-generic type. But this comes with the cost.
         List names2 = names;    // RHS is list of generic type, while LHS is list of non-generic type. Here's where facade generates.
 
         incorrectAddToNames(names, 100);
-        System.out.println(names);  // Here we can see that names is just a list of Strings but it has one element which is of type Integer.
-        System.out.println(names.get(2) instanceof String); // We can also see that type conversion did not happen, ie, number is not stored as String
+        System.out.println(names);  // [Name 1, Name 2, 100] Here we can see that names is just a list of Strings but it has one element which is of type Integer.
+        System.out.println(names.get(2) instanceof String); // false - We can also see that type conversion did not happen, ie, number is not stored as String
 //        if(names.get(2) instanceof Integer) {
 //            System.out.println(Boolean.TRUE);
 //        } else {

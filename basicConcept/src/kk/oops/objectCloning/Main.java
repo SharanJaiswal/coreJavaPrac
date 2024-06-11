@@ -5,7 +5,8 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {  // We added "throws ExceptionName" because we are using clone() method.
         // Or, we could add this throws CloneNotSupportedException at catch block of try where we call overridden clone().
-        // Exception will be thrown if Human had not implemented Cloneable interface.
+        // Exception will be thrown if Human had not implemented Cloneable interface. Using Object.clone will throw an error if Cloneable interface is not implemented. Cloneable interface doesn't have clone method.
+        // As a practice, to use clone() always implement Cloneable interface.
         Human human1 = new Human(26, "Sharan");
         Human twin = new Human(human1); // This is taking too much of processing time
         /*
@@ -25,7 +26,7 @@ public class Main {
         We have seen above that cloned object itself is different, but their String datatype will be pointing to same. Even if they would have Arrays, then both will be pointing to same (String Pool).
          */
         System.out.println(human1.name.equals(twinNew.name));   // true because literal values are compared, which is lexicographical comparison. Not good to test.
-        System.out.println(human1.name == twinNew.name);    // Here, memory is being compared --- true because of String Pool.
+        System.out.println(human1.name == twinNew.name);    // Here, memory is being compared --- true NOT because of String Pool but because internally while making clone, object attribute values are as it is copied that might contain literal value or some references.
 
         System.out.println(Arrays.toString(human1.arr));
         human1.arr[2] = 46;

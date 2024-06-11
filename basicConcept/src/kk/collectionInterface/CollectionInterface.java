@@ -1,5 +1,7 @@
 package kk.collectionInterface;
 
+import java.util.Collection;
+
 public class CollectionInterface {
     /**
      * API to manage group of things.

@@ -2,6 +2,7 @@ package kk.strings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class strings {
     public static void main(String[] args) {
@@ -9,6 +10,7 @@ public class strings {
         System.out.println("strings.main");
         System.out.println("args = " + Arrays.toString(args));
 //        System.out.println(null);   // this will give error because println could not able to decide whether the null is of type String or char[] or any data type that can have null.
+        // We know that in java, some library methods are overloaded based on type of parameter passed. So here, let's assume that println cannot decide the type of null to call println correct version.
         System.out.println("a = " + a + null);  // while this works because before null which acts as the second operand to second '+' operator, its first operand is of String type.
         // above it is decided that last operand null is related to String type
         System.out.println(null + "AAAA");  // So, either of the operand for binary operator must be String, if another is null. So that null is promoted to String type.
@@ -24,11 +26,12 @@ public class strings {
         which internally calls valueOf->"null"|toString. Although, re-iterating that, this logic only works if both the operand are not primitive type, and at least one operand is of type String.
          */
         System.out.println('a' + 'b');  // 97+98
-        System.out.println("a" + 5);    // Ctrl+Click on println opens method that just takes single argument of type String. Hence, proved; first, valueOf() of operand of type other than String is called, then concatenation happens, then gain vlaueOf(cnct_str) is called.
+        System.out.println("a" + 5);    // Ctrl+Click on println opens method that just takes single argument of type String. Hence, proved; first, valueOf() of operand of type other than String is called, then concatenation happens, then gain valueOf(cnct_str) is called.
         System.out.println(5 + "a");
         System.out.println('a' + 5);
         System.out.println(5 + 5 + 'a');
-        System.out.println(5 + 5 + "a");
+        System.out.println(5 + 5 + "a");    // good example of operator precedence.
+        System.out.println("a" + 5 + 5);
 //        System.out.println(5 + new int[] {1,2,3,4,5});// Error even if operands are interchanged because since all operands are not of primitive types. Also, neither of the first two operands are of type String. One is of type "Array" used with "int"
         System.out.println(new int[] {1,2,3,4,5});  // SAYS makes implicit call to Arrays.toString(new int[]{1, 2, 3, 4, 5}) but prints the valueOf, output is different if called like below.
         // It is because valueOf method calls toString method if it is present. If toString method is not present, then some random characters are printed, e.g., "[I@7834w5t438"
@@ -41,6 +44,7 @@ public class strings {
         System.out.println("a" + new ArrayList<>());
         System.out.println(new ArrayList<>() + "b");
         System.out.println(new ArrayList<>());
+//        System.out.println(new ArrayList<>() + new HashMap<>());  // Error because, for operator '+', neither is of String type, nor both are primitive type. Remember, first all operands operate to become single operand for println.
         System.out.println((char)('a' + 5));
 //        System.out.println(new ArrayList<>() + new int[] {}); // Error even if operands are interchanged. Because, first '+' operator works, then println which converts passed val to String and then prints it.
 //        So, '+' doesn't know to implicitly convert the operand value to String, and hence to concatenate their string values as a single string.

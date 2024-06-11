@@ -47,5 +47,6 @@ public class Box {
      * * Another method in child with same signature of parent class' method but without @Override annotation and different return type gives error because @Override annotation is not necessary.
      * Also, whenever we use @Override annotation over overriding method in child class, compiler makes sure that there is actually a method in parent class
      * with same method name, same param count, each param type in same order, and same return type, otherwise it'll throw an error.
+     * Constructors cannot be overridden in java.
      */
 }

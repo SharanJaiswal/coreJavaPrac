@@ -3,6 +3,7 @@ package kk.lambdas;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +21,8 @@ public class Main {
         arrayList.add(stu5);
 
         arrayList.forEach( item -> item.print());
+
+//        double averagePrice = arrayList.stream().collect(Collectors.averagingInt(Product::getPrice));     // summingInt
 
         // If hover over ArrayList.forEach(), we see that it takes only one parameter as action of type Consumer.
         // Consumer takes only one input, ie, inside <> classname of obj present in () in lambda expr [LHS]

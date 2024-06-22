@@ -13,7 +13,7 @@
 
 7. package [kk.generic.zoo] : Zoo
 
-8. package [kk.lambdas] : Student, Main. Contains: Comparable and Comparators. TODO: https://www.baeldung.com/java-8-lambda-expressions-tips
+8. package [kk.lambdas] : Student, Main. Contains: Comparable and Comparators. TODO: https://www.baeldung.com/java-8-lambda-expressions-tips, https://www.baeldung.com/java-8-sort-lambda
 
 9. package [kk.collectionInterface] : CollectionInterface. TODO: Collection; Collections
 
@@ -34,7 +34,7 @@
 13. package [kk.sets] : Sets, TreeSets
 
 
-15. package [kk.streamapis] : StreamProgram. TODO: https://www.baeldung.com/java-8-streams; https://www.baeldung.com/java-8-collectors
+15. package [kk.streamapis] : StreamProgram, ParallelStreamProg. TODO: Optional class, https://www.baeldung.com/java-8-streams; https://www.baeldung.com/java-8-collectors
 
 16. package [kk.exceptionhandling] : Main, MyException. TODO: types and hierarchy of exception and error
 

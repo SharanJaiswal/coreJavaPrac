@@ -1,13 +1,21 @@
 package kk.strings.stringBufferClass;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RandomString {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println(RandomString.generate(input.nextInt()));
+
+
+        // Random class also has methods to give streams of few primitive types:
+        Random randomStreams = new Random();
+        System.out.println(Arrays.asList(randomStreams.doubles(3)));
     }
     static String generate (int size) {
         Random random = new Random();

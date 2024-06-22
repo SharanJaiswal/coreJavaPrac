@@ -2,7 +2,7 @@
 
 2. package [kk] : Switch, TODO: Enums, Objects
 
-3. package [kk.strings] : strings,CompareStrings,StringBuilderVsString TODO: StringUtils class methods, unicodes of few characters; String Obj.split() method with regex; More of StringBuilder
+3. package [kk.strings] : strings,CompareStrings,StringBuilderVsString TODO: StringUtils class methods, unicodes of few characters; String Obj.split() method with regex; More of StringBuilder; String format.
 
 4. package [kk.numbershandling] : Main, Factorial, TODO: Integer object making using new keyword, methods in BigDecimal and BigInteger and DecimalFormat
 
@@ -17,15 +17,22 @@
 
 9. package [kk.collectionInterface] : CollectionInterface. TODO: Collection; Collections
 
+14. package [kk.collectionsClass] : CollectionsClass, TODO: CollectionUtils
+
 10. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, Arrays, ReverseArray, CustomArrayList, CustomArrayListGeneric. TODO: Arrays utility class methods, ListIterator and Iterators
+
+11. package [kk.javaqueues]: JavaPrirityQueue, JavaDeque, 
+
+13. package [kk.arraylistAndGenerics]: JavaVectors,
+
+11. package [kk.oops.reflections] : Main
 
 11. package [kk.linkLists] : linkList,
 
-12. package [kk.sets] : Sets, TreeSets
+12. package [kk.maps] : JavaHashMaps, JavaHashTables, JavaLinkedHashMap. TODO: is different implementations, beyond HashMaps
 
-13. package [kk.maps] : Maps, TODO: is different implementations, beyond HashMaps
+13. package [kk.sets] : Sets, TreeSets
 
-14. package [kk.collectionsClass] : CollectionsClass, TODO: CollectionUtils
 
 15. package [kk.streamapis] : StreamProgram. TODO: https://www.baeldung.com/java-8-streams; https://www.baeldung.com/java-8-collectors
 
@@ -51,6 +58,8 @@
 
 26. package [kk.oops.interfaces] : Main
 
+28. package [kk.oops.annotations] : 
+
 27. package [kk.oops.interfaces.extendinginteface] : Main
 
 28. package [kk.oops.interfaces.nestedinterface] : Main, Driver
@@ -72,3 +81,5 @@ functional interface(https://www.baeldung.com/java-8-lambda-expressions-tips) - 
 100. package [filehandling] : Main
 
 101. package [testingPackages] :
+
+102. AOT compiler v/s JIT compiler; OpenJDK, differemce b/n constructor and an instance block. Why not threads in REST APIs?; saving singleton from reflection; yield keyword; 

@@ -3,15 +3,22 @@ package kk.sets;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Initial capacity of HashBucket:Array[16] (in heap mem); Load-factor of HashSet:0.75|75%|initial-12-buckets. Threshold: cur-capacity(16)*load-factor; Rehashing: when load-factor reaches certain threshold(12) (75%, initially when 12 buckets are filled), capacity doubles.
- * First, hash gets created => idx of hashbucket is found using hash of an object => check for hash-collision =N=> add element as first node =Y=> check if same key present in a given linkedlist of bucket. =N=> add as last node =Y=> don't add
+ * HashSet internally uses HashMap, where key is the actual entry in the set but value is the dummy object. Non-ordered.
+ * Initial capacity of HashBucket:Array[16] (in heap mem); Load-factor of HashSet:0.75|75%|initial-12-buckets. Threshold: cur-capacity(16{entry count})*load-factor; Rehashing: when load-factor reaches certain threshold(12) (75%, initially when 12 k-v are added), capacity doubles.
+ * 16 or 12 here above represents the count of data elements currently in the Set or HashSet. It is not related to size of hash bucket, ie, unique count of hash indexes.
+ * First, ((hash gets created using key)%bucket_size) => idx of hashbucket is found using hash of an object => check for hash-collision =N=> add element as first node =Y=> check if same key present in a given linkedlist of bucket. =N=> add as last node =Y=> don't add
  * Elements having same equals() value after hash collision doesn't get added.
  * We have to override equal() method because an element will only get added to the Set iff its ele.equals(already present ele, if any) holds false
  * Also, a Set can have one "null" element. Although, it has nothing to do with equals() methods. equals(method) needs non-null object reference, or null reference must be handled.
  * Like Set's contains(), methods add() and remove() operation also return a boolean value; true if they perform as expected; false if they couldn't.
- * To make custom hashing algorithm, make sure that o1.equals(o2) is true, and o1.hashcode()==o2.hashcode() is true
+ * To make custom hashing algorithm, make sure that o1.equals(o2) is true, and o1.hashcode()==o2.hashcode() is true.
+ *
+ * hash contract: If obj1==obj2 holds true, then hash(both objs) should be equal everytime. If Hash of 2 objects are same, that doesn't mean they are same objects.
+ *
+ * Not thread-safe, no insertion order maintained, Allows only 1 null element, no duplicates are allowed.
  */
 public class Sets {
     public static void main(String[] args) {
@@ -49,5 +56,12 @@ public class Sets {
          * add() O(1); contains() O(1); next() O(1); remove(data) O(1)
          */
         Set<String> set2 = new LinkedHashSet<>();
+
+
+        // Threadsafe version:
+        ConcurrentHashMap hashMap = new ConcurrentHashMap();
+        Set<Integer> threadsafeversion =  hashMap.newKeySet();
+        // Its iterator is also threadsafe, hence we can use add() method from iterator object itself, as it won't throw ConcurrentModificationException because internally it is synchronized.
+        // Complexity is same as hashmap: add O(1), remove Amortized O(1), contains amortized O(1)
     }
 }

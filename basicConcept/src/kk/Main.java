@@ -114,9 +114,20 @@ public class Main {
         /**
          * Precedence order:
          * -> . () []    L-R
-         * postfix > unary(R-L) {++a, --a, +a, -a, ~a, !a} > multiplicative {* / %} > additive {+ -} > shift {<< >> >>>} > relational { < > <= >= instanceof} > equality {== !=} >
+         * postfix > unary(R-L) {++a, --a, +a, -a, ~a(bit-w, 1's comp; =-(a+1)), !a} > multiplicative {* / %} > additive {+ -} > shift {<< >> >>>} > relational { < > <= >= instanceof} > equality {== !=} >
          *     & > ^ > | > && > || > ?:(R-L) > assignment(R-L) {= += -+ *= /= %= &= ^= |= <<= >>= >>>=}
          *     Comma
          */
     }
+
+    // member variable: when object is created, each object has own new copy of this member variable.
+    int mem_var1;
+    // Local variable: which is defined inside a method, a block; scoped within that only.
+    // static var: objects refers to this variable, objects doesn't have its copy. Only 1 copy exists.
+    static int num1 = 32;
+    // method variables: method arguments.
+    // constructor variables: parameters of parameterized constructors.
+    // "new" keyword allocates memory in heap.
+
+//    Datatypes: 1) 8-Primitive dts;  [primitive<-unboxing- -autoboxing->wrapper ]  2) 4-Reference dts {Class, String, Interface, Array}
 }

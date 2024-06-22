@@ -2,7 +2,7 @@ package kk.oops.finalclassandmethods;
 
 public final class Bottle extends Container {   // final classes cannot be inherited. So, if we want our classes to NOT be inherited, we put final keyword.
 
-    final String type;
+    final String type;  // final class variables are not final but methods are inherently final.
     public Bottle() {
         super(3, "Glass");
         type = null;
@@ -10,7 +10,7 @@ public final class Bottle extends Container {   // final classes cannot be inher
 
     // Parent method gets overridden as that parent method is not final method
     @Override
-    void getSizeAndMaterial() {
+    final void getSizeAndMaterial() {   // final class variables are not final but methods are inherently final.
         super.getSizeAndMaterial();
     }
 

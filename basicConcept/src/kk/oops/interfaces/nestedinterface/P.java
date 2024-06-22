@@ -1,7 +1,8 @@
 package kk.oops.interfaces.nestedinterface;
 
+// Nested interface inside interface must be public, as something(except private and static method) which don't have body in interface must be public.
 public interface P {
-    public static interface NestedInterface {   // Inner interfaces are always static
+    abstract public static interface NestedInterface {   // Inner interfaces are always static
         boolean isOdd(int num);
     }
 

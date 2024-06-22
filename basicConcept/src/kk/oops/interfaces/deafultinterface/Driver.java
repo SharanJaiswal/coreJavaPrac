@@ -19,7 +19,7 @@ public class Driver implements A, B {
     // If there are 2 defaults inherited with same method signature, then override it and
     // provide the body as which method's body to execute; A's or B's. We can also add out code in below method
     @Override
-    public void forConflict() {
+    public void forConflict() { // since we are in a class, hence we didn't use "default" keyword to override the default method. But it is still overridden.
         A.super.forConflict();
 //        B.super.forConflict();
         System.out.println("Conflict resolved");

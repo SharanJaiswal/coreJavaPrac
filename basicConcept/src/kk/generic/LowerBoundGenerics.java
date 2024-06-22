@@ -42,4 +42,14 @@ public class LowerBoundGenerics {
         numbers.add(i);
     }
     // The above works all cases where list is supposed to contain elements of type "Some_parent", and element added is of type "Some_parent" or its child classes. Hence, for each element reference variable of type "parent", can refer objects of type parent  or its derived classes.
+
+    public void method1(List<? extends Number> list1, List<? extends Number> list2) {
+        // In this, as we have used wildcards, we cannot be assured that both the parameters, i.e., List of same type. One could be of Integer, one could be of Double.
+        // we can also use lower bounds with wildcards, i.e., we can use "super" keyword in place of "extends" as per our requirements.
+    }
+
+    public <T extends Number> void method2(List<T> list1, List<T> list2) {
+        // In this, as we have used generics, we can be assured that both the parameters, i.e., List of same type.
+        // We cannot use "super" keyword in place of "extends" keyword with generics. For that we need to go with wildcards.
+    }
 }

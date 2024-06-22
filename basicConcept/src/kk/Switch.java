@@ -10,10 +10,25 @@ public class Switch {
 //        If there is a switch statement inside a method that expects something to be returned from each case including default, then there has to be at least one provision for returning a value, from all the possible scenario. Also, the implementation of that method should return a value from all the possible paths.
         System.out.println(returnTypeAnalysisInOldSwitch(fruit));
         System.out.println(returnTypeAnalysisInNewSwitch(fruit));
+
+        // Whenever we are using block in an expression, and we wanted to return a value, we must use "yield". New version of java allows return statement in expression block. Previous versions don't.
+        int val = 1;
+        String outVal = switch (val) {
+            case 1 -> {
+                System.out.println("-");
+                yield "One";
+            }
+            case 2 -> {
+                System.out.println("--");
+                yield "Two";
+            }
+            default ->  "rest";
+        };
     }
 
     private static int returnTypeAnalysisInOldSwitch (String fruit) {
-        switch (fruit) {    // Only allowed type inside switch conditional parenthesis -> byte,short,char,int, String, Enum
+        switch (fruit) {    // Only allowed type inside switch conditional parenthesis -> byte,short,char,int, String, Enum, Integer, SHort, Byte, Char
+            // Make sure all the possible cases are handled, hence for those unknown cases we use default case.
             case "Mango" :
                 System.out.println("King of Fruits");
                 System.out.println("Favorite Fruit");

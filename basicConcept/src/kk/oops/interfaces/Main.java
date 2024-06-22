@@ -1,5 +1,9 @@
 package kk.oops.interfaces;
 
+// Interface helps 2 system to interact with each other w/o knowing the details of other; to achieve full abstraction. System calls exposed fly operation.
+// only public and default are allowed as outermost interface access modifier.
+// Interfaces are "abstract" by default.
+
 public class Main {
     public static void main(String[] args) {
         Car car = new Car();

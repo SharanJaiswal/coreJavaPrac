@@ -49,4 +49,7 @@ public class Box {
      * with same method name, same param count, each param type in same order, and same return type, otherwise it'll throw an error.
      * Constructors cannot be overridden in java.
      */
+
+    // Methods can have name same as class name or constructor name. Hence, to pick constructor in such cases, we use "new" keyword which always call constructor of a class.
+    // First object of topmost parent gets created, then only downstream child classes constructors are called. That is why in default constructor, first "super()" is called.
 }

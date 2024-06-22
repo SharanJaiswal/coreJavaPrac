@@ -5,7 +5,7 @@ public interface A {
         System.out.println("I am in A");
     }
 
-    // default methods in interfaces are always public.
+    // default methods in interfaces are always public. "default" method are added in Java-8 to extend functionality in legacy interfaces.
     /*
     In real world, once interface gets published, its out there to use and implement, and override abstract methods.
     We cannot simply add one more abstract method in the interface which is being implemented by many.
@@ -19,5 +19,21 @@ public interface A {
      */
     default public void forConflict() {    // See interface B for its description
         System.out.println("Conflict picked from A");
+    }
+
+    default public void makeAbstract() {
+        System.out.println("this have body");
+    }
+}
+
+interface C extends A {
+    abstract public void makeAbstract();    // we can make default method from parent interfaces again abstract.
+}
+
+interface D extends A {
+    @Override
+    default public void makeAbstract () {   // since we are in an interface, hence we use "default" keyword to override the default method. But it is still overridden.
+        A.super.makeAbstract(); // since if default is called by the object of the class implementing it, so we used "super" as this used in context with objects. Otherwise, it can be called anywhere using interface reference based on its accessibility.
+
     }
 }

@@ -1,7 +1,8 @@
 package kk.oops.interfaces.nestedinterface;
 
+// Nested interface inside a class can be of any access modifier, because class can have members of any access type.
 public class A {
-    public static interface NestedInterface {   // Inner interfaces are always static by default
+    abstract public static interface NestedInterface {   // Inner interfaces are always static by default
         boolean isOdd(int num);
     }
     int a=56;

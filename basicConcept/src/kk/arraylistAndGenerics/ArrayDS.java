@@ -75,7 +75,7 @@ public class ArrayDS {
                 {1,2,3},    // In C/C++, row-order or column order arrangement is done to store all the elements values of 2D array in continuous manner, logically in memory.
                 {4,5,6},    // In Java, it is stored in heap memory, [][](stack) -> [row1, row2, row3, ...](heap)
                 {7,8,9,0}     // row1 -> [1,2,3](heap); row2 -> [4,5,6](heap); row3 -> [7,8,9,0](heap); . . . . . .(heap)   // Individual row size may vary if we don't give 'j' in [i][j]
-        };
+        };// In java, arrays of references are continuous, but the referenced objects might be discontinuous in heap memory.
 
         int[][][] threeD = new int[2][][];
 

@@ -1,11 +1,18 @@
 package kk.arraylistAndGenerics;
 /*
-Dynamic size is not actually true. Internally, the size is fixed, but keeps on changing until certain threshold is reached. When element count threshold hits,
+Dynamic size is not actually true. Internally, the size is fixed and using Array DS, but keeps on changing until certain threshold is reached. When element count threshold hits,
 new ArrayList is created, elements from old arraylist are copied to new one, new arraylist reference replaces the old arraylist, old arraylist gets deleted.
 All this happens seamlessly.
+Insertion O(1) when threshold hasn't reached; O(N) threshold reached; O(N) adding at specific index.
+Deletion: O(N)
+Search: O(1) since Arrays underlies.
+Space: O(N)
+
+Not thread-safe; maintains insertion order, null allowed, duplicates allowed.
  */
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayListExample {
     public static void main(String[] args) {
@@ -42,6 +49,13 @@ public class ArrayListExample {
             System.out.println(arr1.get(i));    // syntax like arr1[idx] will not work here
         }
 
+        ListIterator<Integer> lstItr = arr1.listIterator();
+        // next and previous points to the address of next element. When we call them, it returns that element and then moves next|previous element,
+        // Rather first moving next|previous and then returning element.
+        System.out.println(lstItr.next());  // 234
+        System.out.println(lstItr.previous());  // 234
+        // nextIndex() can be size of array if pointing last, and previousIndex() can be -1 if pointing to first element.
+
 
         // Multidimensional ArrayList
         ArrayList<ArrayList<Integer>> multArrList = new ArrayList<>();
@@ -73,5 +87,9 @@ public class ArrayListExample {
          *
          * add(E ele) {supports selective List type only}, hasPrevious(), nextIndex() {returns idx of element that would be returned by next()}, previous(), previousIndex(), set(E ele)
          */
+
+
+        // Thread-safe version:
+        CopyOnWriteArrayList<Integer> threadsafeArrayList = new CopyOnWriteArrayList<>();
     }
 }

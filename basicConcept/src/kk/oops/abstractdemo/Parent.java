@@ -1,6 +1,6 @@
 package kk.oops.abstractdemo;
-
-public abstract class Parent {
+// Abstract classes can give range of abstraction 0-100%
+public abstract class Parent implements sampleInterface1 {  // abstract classes can implement interfaces but interfaces cannot extend classes, be it abstract class.
     // Variables of any type of abstract class can have any type of access-modifiers
     int age;    // Since this is still an abstract class, hence this class cannot have objects, unless methods are overridden before creating the objects.
         // Therefore, methods with body defined and variables are NOT bound to be final static. They CAN be final, static, final static, or without any of them.
@@ -10,7 +10,7 @@ public abstract class Parent {
     final static String finalStaticVariable = "Final Static Variable in abstract class.";   // Abstract class can have final static variable.
     // the constructor cannot create objects, but can be used to initialize the instance variables and perform some task. Below is best example
     // This class cannot create objects unless abstract methods will have body,
-    // but its child classes can call this parent constructor to initialize the variables of this class which are instance variables of child inherently
+    // but its child|anonymous classes can call this parent constructor to initialize the variables of this class which are instance variables of child inherently, via child constructor.
     public Parent(int age, int value) {
         this.age = age;
         this.VALUE = value;
@@ -46,4 +46,8 @@ public abstract class Parent {
     static final void finalStaticMethod() {
         System.out.println("Executing static final method from abstract class.");
     }
+
+//    default void sampleDefaultMethod() {} // default|extension methods can only be used with interfaces, bot with abstract classes, or any type of classes.
 }
+
+interface sampleInterface1 {}

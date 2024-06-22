@@ -2,7 +2,7 @@ package kk.oops;
 
 public class StaticExample {
     public static void main(String[] args) {
-        // main is a static method
+        // main is a static method.
         // Consider this main methods as part of code in application that will anywhere create the object of this class.
         // From static method, to call non-static methods, we need an object to refer those non-static methods via objects.
         StaticExample obj = new StaticExample();
@@ -29,6 +29,10 @@ public class StaticExample {
         // To call the non-static candidates inside the static method, we need object. Hence, we will create it.
         StaticExample obj1 = new StaticExample();
         obj1.greetings();
+        /** NOTE:
+         * Although static method can access static variables, but avoid it in cases where instances variables are also accessing static variables and are unaware about the
+         * write operation that could change the static variables. This might violate data integrity. Static method should only use local variables. eg, factory design pattern
+         */
     }
 
     void greetings() {

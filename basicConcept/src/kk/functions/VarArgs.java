@@ -11,6 +11,7 @@ public class VarArgs {
         fun2(8, "7");   // []
     }
 
+    // Only 1 varArgs should be present as a method argument, and that too as the last argument.
 
     static void fun1(int... varArgs) {
         // Multiple args passed individually but received in varArgs in Array data type

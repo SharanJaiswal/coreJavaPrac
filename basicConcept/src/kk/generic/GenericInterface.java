@@ -13,7 +13,7 @@ public interface GenericInterface<T> {
     void display(T num);
 }
 
-@FunctionalInterface
+@FunctionalInterface    // it is just an interface.It can be extended by other interfaces also, if provide extending interface is functional, then it must shadow this abstract method.
 interface AnotherGenericInterface {
     int calculate(int x);
 

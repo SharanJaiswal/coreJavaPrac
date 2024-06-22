@@ -2,16 +2,18 @@ package kk.maps;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Map doesn't extend Collections. It has its own set of methods, and iterator methods.
  * Object -> Hash Function|Logic -> Hash Code (One way only)
  * After hash collision, element replaces existing node with same value of equals().
- * If a certain bucket contain LL with node count > TREEIFY_THRESHOLD = 8, then that LL becomes red-black tree, where it first sorts by hashCode(), and then by compareTo() if hash are same.
+ * If a certain bucket contain LL with node count > TREEIFY_THRESHOLD = 8, then that LL becomes red-black tree in O(log N), where it first sorts by hashCode(), and then by compareTo() if hash are same.
  * < UNTREEIFY_THRESHOLD = 6 ==> makes LL again.
  *
+ * NOT thread-safe; can store null key or value. NOT maintains insertion order.
  */
-public class Maps {
+public class JavaHashMaps {
     public static void main(String[] args) {
         Map<Integer, Student> students = new HashMap<>();
         Student stu1 = new Student("Foo", "Bar", 2, "Science");
@@ -48,6 +50,8 @@ public class Maps {
                 students.values()) {
             System.out.println(stu);
         }
+
+        // HashMap has a sub-interface Entry
         System.out.println("=============Map Key-Value iteration==========");   // Maps has structure called Map.Entry<K, V>
         for (Map.Entry<Integer, Student> entry:
                 students.entrySet()){
@@ -74,5 +78,14 @@ public class Maps {
          * for HashMap, get() O(1) uses hash-code, containsKey (1) uses hash-code, put O(1)
          * In HashMap, for on key, gives one hashcode, mapped to only one value.
          */
+
+
+        // ThreadSafe:
+        ConcurrentHashMap<Integer, String> threadSafeHashMap = new ConcurrentHashMap<>();
     }
 }
+
+/**
+ * Storing of k-v in hashmap internally:
+ * There is an array of Node where each Node implementing sub-interface Map.Entry in HashMap class stores hash-k-v-next(ofNode for a given LL of hash).
+ */

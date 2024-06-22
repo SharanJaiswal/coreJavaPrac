@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public class CollectionInterface {
     /**
-     * API to manage group of things.
+     * Collection is a part of java collection framework, an interface which exposes API to manage group of things by various collection classes.
      * Collection<E>. Parent|top-most interface. Super interface: Iterable<E>
      * It must support Lowest common methods that could be implemented by all the child collections implementing it. For example, add(ele), but not get(idx).
      * Map doesn't implement Collection interface.

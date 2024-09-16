@@ -40,7 +40,7 @@ public class Main {
         if (A.compareTo(B) > 0) { System.out.println("A > B"); }
         else { System.out.println("B >= A"); }  // B >= A
 
-        // BigDecimal is used because operation on float/double don't give accurate answers. It is accompanied by small errors of order 10^-19. BigDecimal doesn't give any error.
+        // BigDecimal is used because operation on float|double don't give accurate answers. It is accompanied by small errors of order 10^-19. BigDecimal doesn't give any error.
         // Float and double are floating point numbers.
         // These are stored as binary representation of a fraction and an exponent. While Integers are fixed point numbers.
         double f1 = 0.03;

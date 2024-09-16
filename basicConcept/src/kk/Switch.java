@@ -27,7 +27,7 @@ public class Switch {
     }
 
     private static int returnTypeAnalysisInOldSwitch (String fruit) {
-        switch (fruit) {    // Only allowed type inside switch conditional parenthesis -> byte,short,char,int, String, Enum, Integer, SHort, Byte, Char
+        switch (fruit) {    // Only allowed type inside switch conditional parenthesis -> byte,short,char,int, String, Enum, Integer, Short, Byte, Char
             // Make sure all the possible cases are handled, hence for those unknown cases we use default case.
             case "Mango" :
                 System.out.println("King of Fruits");
@@ -36,14 +36,14 @@ public class Switch {
 //                break;
                 
 //                return 30;
-            case "Apple" :  // fall-through pattern
+            case "Apple" :  // fall-through pattern ====> no "break" keyword
             case "Lassan" :
                 System.out.println("A sweet red fruit");
 //                int i = 10;
 // We CANNOT "declare" same name reference variables inside switch cases, if that variable name has already been "declared" in any previous case.
-// This expansion of accessibility of declared variable happens only in old switch style. In new style, we need to both declare and define variable with same name.
+// This expansion of accessibility of declared variable happens only in old switch style. In new style, if we intend to use variable with same name in other cases, we need to both declare and define variable with same name.
 //                break;
-                i = 40; // declaration of variable in any case is scoped for whole switch statement, but its value needs to be initialized in every case block.
+                i = 40; // declaration of variable in any case is scoped for whole switch statement, but its value needs to be initialized if its value is getting used in every possible case(s) block path(s).
                 return i;
             case "Orange" :
                 System.out.println("Round Fruit");
@@ -73,6 +73,7 @@ public class Switch {
             case "Apple", "Orange" -> { System.out.println("It might be Apple");
                 System.out.println("It might be Orange");
                 int i = 20; // In new switch style, variable scope is within the case only, NOT in the whole switch statement. We have to declare as well as define again the variable with same name.
+                // a variable declared in one switch case needs to be re-declared in another if same name is intended to be used, is because new switch type uses lambda, which gets into work dynamically, not statically.
             return i; }
             case "Grapes" -> System.out.println("Small Fruit");
         }

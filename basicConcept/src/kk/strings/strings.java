@@ -26,7 +26,7 @@ public class strings {
         which internally calls valueOf->"null"|toString. Although, re-iterating that, this logic only works if both the operand are not primitive type, and at least one operand is of type String.
          */
         System.out.println('a' + 'b');  // 97+98
-        System.out.println("a" + 5);    // Ctrl+Click on println opens method that just takes single argument of type String. Hence, proved; first, valueOf() of operand of type other than String is called, then concatenation happens, then gain valueOf(cnct_str) is called.
+        System.out.println("a" + 5);    // Ctrl+Click on println opens method that just takes single argument of type String. Hence, proved; first, valueOf() of operand of type other than String is called, then concatenation happens, then again valueOf(cnct_str) is called.
         System.out.println(5 + "a");
         System.out.println('a' + 5);
         System.out.println(5 + 5 + 'a');

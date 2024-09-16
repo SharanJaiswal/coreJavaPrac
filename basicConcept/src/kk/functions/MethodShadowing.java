@@ -51,6 +51,10 @@ public class MethodShadowing {
             System.out.println(FirstLevel.this.x);  // 34 - I'm assuming that when we are explicitly mentioning classname before "this", then this(obj) makes only that class specific entities. Hence, I think, this might the reason.
             System.out.println(MethodShadowing.this.x); // 90 - Here, in case where x in MethodShadowing scope is defined as static variable, we can also access that x as MethodShadowing.x.
             // If that x is not static, then we will access by this way only.
+            System.out.println(MethodShadowing.x);
+            System.out.println(MethodShadowing.this.y);
+            System.out.println(MethodShadowing.this.str);
+//            System.out.println(MethodShadowing.y);  // This won't work as y is not static member of MethodShadowding class. "y" is instance member variable of MethodShadowing class, hence needs object of MethodShadowing above.
 //            System.out.println(super.x);  // this is wrong as super is used in context of inheritance. This context is related to nested class.
 
             // We can make outer class's object inside the inner class.

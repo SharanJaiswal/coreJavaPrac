@@ -15,7 +15,7 @@ public interface GenericInterface<T> {
 
 @FunctionalInterface    // it is just an interface.It can be extended by other interfaces also, if provide extending interface is functional, then it must shadow this abstract method.
 interface AnotherGenericInterface {
-    int calculate(int x);
+    abstract public int calculate(int x);   // keywords "abstract" and "public" are redundant.
 
     default void nothing1() {}
 
@@ -43,7 +43,7 @@ interface ExtentedFI extends AnotherGenericInterface {
  * ActionListener –> This interface only contains the actionPerformed() method.
  * Callable –> This interface only contains the call() method.
  *
- * There are some already defined functional interface. Since these FI generally takes arguments of type of some class, hence there are some Int-Double etc. versions of them.
+ * There are some already defined functional interface. Since these FI generally takes arguments of type of some class inside <>, hence there are some Int-Double etc. versions of them.
  * void {Consumer|DoubleConsumer|IntConsumer|LongConsumer}(obj); void BiConsumer(o1, o2);   boolean {Predicate|IntPredicate|DoublePredicate|LongPredicate}(o1); boolean BiPredicate(o1, o2);
  * {T|boolean|double|long|int} {Supplier<T>|BooleanSupplier|DoubleSupplier|LongSupplier|IntSupplier} ();
  * R Function<T,R>(o1)  ;  R BiFunction<T,U,R>(o1, o2)  ; T UnaryOperator<T>(o1)  ;   T BinaryOperator<T>(o1, o2)

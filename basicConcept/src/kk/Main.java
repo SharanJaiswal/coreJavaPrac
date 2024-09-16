@@ -3,7 +3,7 @@ package kk;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {    // String... args
         /*
         args passed to call the main method are stored in a String array, i.e., the arguments will be cast as String irrespective of their data type by looks
          */
@@ -34,7 +34,7 @@ public class Main {
         // These dunders cannot be placed adjacent to point in floating literals, before F or D or L, at the beginning or end of a number,
         int b = 1000000000; // 4-bytes
 //        int c = 1,000,000,000;  // wrong as commas are not allowed
-        // All floating point literals are by default of type double. So, we cannot assign default floating literals to reference type of "float". Same goes for int (default) into bytes.
+        // All floating point literals are by default of type double. So, we cannot assign only numeric floating literals to reference type of "float" without f or F. Same goes for int (default) into bytes.
         float flt = 23_456.75_01F;  // can be upper case or lower case f or F.  4-bytes
 //        float f3 = 2983.54; // Error because RHS is interpreted as double. Trying to fit in 8-bytes in 4-bytes
         double dbl = 23_456.75_01;
@@ -42,13 +42,14 @@ public class Main {
         double int_double = 25D;    // Specifying D or d is useful in cases when instead of double, we would have declared type as "var".
         long lng = 45378L;  // both cases of l or L == 8-bytes
         long lng2 = 45378;  // Widening casting
+//        int lng3 = 45378L;  // required int, provided long
         short shrt = 34;
 
         // lossy type casting, aka Narrowing
         b = (int) flt;
         System.out.println(b);  // no rounding off takes place 23456
 
-        int res1 = 3/2; // 1
+        int res1 = 3/2; // 1, not because LHS is having reference variable of type 'int', but depends upon the type of operand. See below example.
         double res2 = 3/2;  // NOT 1.5 because 3 and 2 are integers. int/int gives [precision lost] int result. that int result is then type converted to double.
         System.out.println(res1 + " = = = = " + res2);  // 1 = = = = 1.0
 
@@ -91,7 +92,9 @@ public class Main {
         // Follows operator precedence order as well while selecting 2 operand at a time for performing operation.
         int num1 = 2;
         double num2 = 10;
-        double res3 = num1 * num2;  // first VALUE OF num1 type will be promoted to double, then double num1 will be multiplied to double num2.
+//        int res3 = num1 * num2;  // first VALUE OF num1 type will be promoted to double, then double num1 will be multiplied to double num2 giving double.
+        double res3 = num1 * num2;
+//        float res3 = num1 * num2; // this will also not work because default floating -value type will be double whose size > size of float. But, here we are trying to put double(RHS) to float(LHS). Hence, giving error.
         System.out.println(res3);
 
         // Few basic progs
@@ -123,7 +126,7 @@ public class Main {
     // member variable: when object is created, each object has own new copy of this member variable.
     int mem_var1;
     // Local variable: which is defined inside a method, a block; scoped within that only.
-    // static var: objects refers to this variable, objects doesn't have its copy. Only 1 copy exists.
+    // static var: objects refers to this variable, objects doesn't have its copy. Only 1 copy exists on class level.
     static int num1 = 32;
     // method variables: method arguments.
     // constructor variables: parameters of parameterized constructors.

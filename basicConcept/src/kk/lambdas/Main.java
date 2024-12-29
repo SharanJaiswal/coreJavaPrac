@@ -22,6 +22,11 @@ public class Main {
 
         arrayList.forEach( item -> item.print());
 
+        // METHOD REFERENCE: It is passes to forEach() functions, where they expect the FI Consumer taking one argument. So instead of passing the lambda,
+        // we pass the function reference which in turn does not invoke the function, but passes it reference to be invoked later in the processing.
+        arrayList.forEach(Student::print);  // The method passed as a reference does not necessarily to be a static method. It could be any type of method having body|implementation
+        // By this way, we can also pass the constructor reference wherever required, eg, collectionItem.stream().map(UserDefinedClass::new).collect(Collector.toList()), where constructor takes one param and makes its makes object
+
 //        double averagePrice = arrayList.stream().collect(Collectors.averagingInt(Product::getPrice));     // summingInt
 
         // If hover over ArrayList.forEach(), we see that it takes only one parameter as action of type Consumer.
@@ -32,31 +37,27 @@ public class Main {
         /*
         lambdas expressions can be assigned to variables of type interfaces
          */
-        Operation printDetail = (a, b) -> System.out.println("rollno=" + a +", marks=" + b);    // JVM resolves it at runtime which body to pick of type Operations, ie, RHS ( after = )
-        // Operation<Integer, Float> printDetail = (a, b) -> System.out.println("rollno=" + a +", marks=" + b); // We can also restrict the type of param passed to lambda expression
+        Operation printDetail = (a, b) -> System.out.println("Rollno=" + a +", Marks=" + b);    // JVM resolves it at runtime which body to pick of type Operations, ie, RHS ( after = )
+//         Operation<Integer, Float> printDetail = (a, b) -> System.out.println("rollno=" + a +", marks=" + b); // We can also restrict the type of param passed to lambda expression. Mentioning type after -> for 'a' & 'b' is not required.
 
         // We can define any lambda expression body and assign to this interface, but here it is restricted to take exactly 2 parameters, body return type is void.
         // and if parameter class is also mentioned in interface blueprint, then those parameters should also take care of matching corresponding param and their order.
         Operation anyRandomName = (a, b) -> {
             System.out.println("marks=" + b + " rollno=" + a);
             System.out.println("Sharan");
+//            System.out.println(a*b);  // This line will only work if we have provided generics types of 'a', and 'b' in the <> operator which supports '*' operator
         };
 
         // Now we can pass this lambda variable to any function which needs action
         Main mainObj1 = new Main();
         mainObj1.lambdaUser1(stu1.rollno, stu1.marks, printDetail);
+        mainObj1.lambdaUser1(stu1.rollno, stu1.marks, anyRandomName);
 
-        Main mainObj2 = new Main();
-        mainObj2.lambdaUser2(stu1.rollno, stu1.marks, anyRandomName);
-
-        // If this lambdaUser1|2 had been defined in Student class, then had just passed the action to lambdaUser1|2, because we could have implemented lambdaUser1|2 as below:
+        // If this lambdaUser1 had been defined in Student class, then we had just passed the action to lambdaUser1|2, because we could have implemented lambdaUser1|2 as below:
         // action.operation(this.rollno, this.marks);   // and called stuObject.lambdaUser1|2(actionVariable);
     }
 
     private void lambdaUser1 (int a, float b, Operation action) {
-        action.operation(a, b);
-    }
-    private void lambdaUser2 (int a, float b, Operation action) {
         action.operation(a, b);
     }
 }

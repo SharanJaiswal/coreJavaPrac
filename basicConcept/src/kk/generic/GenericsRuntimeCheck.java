@@ -28,7 +28,6 @@ public class GenericsRuntimeCheck {
 //            System.out.println(Boolean.FALSE);
 //        }
 
-
 //        String name3 = names.get(2);  // This will give runtime error
         /**
          * The value inside <> is associated with the reference variable and not with the referenced object on RHS. So, when we assign names to names2, it just checked type compatibility.
@@ -51,6 +50,9 @@ public class GenericsRuntimeCheck {
          * The above situation gives runtime error but unlike giving it at place just above, it gives it in method incorrectAddToArray. It is because in that method, at runtime, java
          * knows that an array reference variable which is parameter, refers to an Array of String type. Thus, at runtime there is an awareness of type of array.
          * Hence, when we are assigning an integer value to an element of string array, it throws an error.
+         *
+         * We can visualize it as, in byte code, "Arraylist<DT>" will be converted as "Arraylist", bytecode will concern if its "Arraylist" type or not.
+         * But in case of Array, "DT[]" will be subject of concern, ie, each element of DT[] will be of type DT which could only store/refer data/object of type DT or its subsequent children.
          */
     }
 

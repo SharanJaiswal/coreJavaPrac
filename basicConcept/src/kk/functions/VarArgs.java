@@ -7,8 +7,8 @@ public class VarArgs {
     public static void main(String[] args) {
         fun1(2, 3, 4, 6);   // [2, 3, 4, 6]
         fun1(); // []
-        fun2(2, "3", 4, 5, 6);  // [4, 5, 6]
-        fun2(8, "7");   // []
+        fun1(2, "3", 4, 5, 6);  // [4, 5, 6]
+        fun1(8, "7");   // []
     }
 
     // Only 1 varArgs should be present as a method argument, and that too as the last argument.
@@ -35,10 +35,10 @@ public class VarArgs {
     static void fun1(String a, int... varArgs) {
         System.out.println(Arrays.toString(varArgs));
     }
-    // Similarly, we cannot define function fun1(String str, int i) {sout(vargs);}  because if we call fun1("a", 8); then compiler won't be able to resolve the version of fun1() to call
+    // Similarly, although we can define function fun1(String str, int i) {sout(vargs);}  but if we call fun1("a", 8); then compiler won't be able to resolve the version of fun1() to call
 
 
-    static void fun2(int a, String b, int ...varArgs) {
+    static void fun1(int a, String b, int ...varArgs) {
         System.out.println(Arrays.toString(varArgs));
     }
 }

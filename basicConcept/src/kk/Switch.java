@@ -26,6 +26,10 @@ public class Switch {
         };
     }
 
+    /**
+     * Think old styled switch cases codes are a single scoped codes, while new styled lambdas are having different individual scopes as they selected expression gets namespace and env during runtime. This is the reason we cannot redeclare same variable in old switch but in new.
+     */
+
     private static int returnTypeAnalysisInOldSwitch (String fruit) {
         switch (fruit) {    // Only allowed type inside switch conditional parenthesis -> byte,short,char,int, String, Enum, Integer, Short, Byte, Char
             // Make sure all the possible cases are handled, hence for those unknown cases we use default case.

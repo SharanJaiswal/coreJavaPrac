@@ -47,7 +47,7 @@ public abstract class Parent implements sampleInterface1 {  // abstract classes 
         System.out.println("Executing static final method from abstract class.");
     }
 
-//    default void sampleDefaultMethod() {} // default|extension methods can only be used with interfaces, bot with abstract classes, or any type of classes.
+//    default void sampleDefaultMethod() {} // default|extension methods can only be used with interfaces, both with abstract classes, or any type of classes.
 }
 
 interface sampleInterface1 {}

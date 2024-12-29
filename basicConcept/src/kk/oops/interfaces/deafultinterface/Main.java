@@ -1,7 +1,7 @@
 package kk.oops.interfaces.deafultinterface;
 
 /**
- * DO NOT DEFAULT METHODS EXTENSIVELY BECAUSE THEN WHAT WILL BE POINT OF CONTRACT?
+ * DO NOT USE DEFAULT METHODS EXTENSIVELY BECAUSE THEN WHAT WILL BE POINT OF CONTRACT?
  */
 public class Main implements A, B {
     // Even though there is NO abstract method in interface A which is not overridden here, it's okay.

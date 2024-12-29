@@ -1,4 +1,4 @@
-1. package [kk] : Main: args passed to psvm; Scanner class and next()|nextLine(); TODO: >>> operator; diff b/n next and nextLine; difference among major Java version updates; running java program from terminal; input types in Scanner object
+1. package [kk] : Main: args passed to psvm; Scanner class and next()|nextLine(); TODO: >>> operator, 1's and 2's compliment; diff b/n next and nextLine; difference among major Java version updates; running java program from terminal; input types in Scanner object
 
 2. package [kk] : Switch, TODO: Enums, Objects
 
@@ -8,31 +8,35 @@
 
 5. package [kk.functions] : VarArgs, MethodShadowing. TODO: https://www.geeksforgeeks.org/nested-classes-java/; why main body is not getting picked of nested non-static class; how to run run main method of nested classes via terminal
 
-6. package [kk.generic] : GenericInterface, GenericImplementation, GenericInterfaceClass, GenericsRuntimeCheck, MultipleParamGeneric, LowerBoundGenerics TODO : https://www.geeksforgeeks.org/functional-interfaces-java/; instanceOf; instanceOf(); method reference https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
+6. package [kk.generic] : GenericInterface, GenericImplementation, GenericInterfaceClass, GenericsRuntimeCheck, MultipleParamGeneric, "LowerBoundGenerics" TODO : https://www.geeksforgeeks.org/functional-interfaces-java/; instanceOf; instanceOf(); method reference https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html https://stackoverflow.com/questions/78341264/method-reference-and-type-inference-in-java-8
 
-7. package [kk.generic.zoo] : Zoo, Cage, Animals, BetterCage, AdvanceCage, Snail, Eats, Runs, Lion, BestCage
+7. package [kk.generic.zoo] : Zoo, Cage, BetterCage, Animals, Lion, Monkey, Snail, AdvanceCage, Eats, Runs, BestCage
 
 8. package [kk.lambdas] : Student, Main. Contains: Comparable and Comparators. TODO: https://www.baeldung.com/java-8-lambda-expressions-tips, https://www.baeldung.com/java-8-sort-lambda
 
 9. package [kk.collectionInterface] : CollectionInterface. TODO: Collection; Collections
 
-10. package [kk.collectionsClass] : CollectionsClass, TODO: CollectionUtils
+10. package [kk.collectionsClass] : CollectionsClass, TODO: CollectionUtils, Collections.singletonList() .unmodifiableList()
 
-11. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, Arrays, ReverseArray, CustomArrayList, CustomArrayListGeneric. TODO: Arrays utility class methods, ListIterator and Iterators
-
-12. package [kk.javaqueues]: JavaPriorityQueue, JavaDeque, 
-
-13. package [kk.arraylistAndGenerics]: JavaVectors,
-
-14. package [kk.oops.reflections] : Main
+11. package [kk.arraylistAndGenerics] : ArrayDS, PassingArrRef, ArrayListExample, ArraysDS, ReverseArray, CustomArrayList, CustomArrayListGeneric. TODO: Arrays utility class methods, ListIterator and Iterators
 
 15. package [kk.linkLists] : linkList,
 
-16. package [kk.maps] : JavaHashMaps, JavaHashTables, JavaLinkedHashMap. TODO: is different implementations, beyond HashMaps
+13. package [kk.arraylistAndGenerics]: JavaVectors,
 
-17. package [kk.sets] : Sets, TreeSets
+12. package [kk.javaqueues]: JavaStack
+
+11. package [kk.arraylistAndGenerics] : SynchronizedArrayList
+
+16. package [kk.maps] : JavaHashMaps, JavaLinkedHashMap, LRUCache, JavaIdentityHashMap, JavaTreeMap, JavaHashTables, JavaEnumMap, JavaImmutableHashMap. TODO: is different implementations, beyond HashMaps; https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest WeakHashMap, ConcurrentMap and its implementations
+
+17. package [kk.sets] : Sets, JavaLinkedHashSet, TreeSets. TODO: there are many othe set implementations at https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest
+ 
+12. package [kk.javaqueues]: QueueDemo, JavaPriorityQueue, JavaDeque. TODO: there are many Queue implementations at https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest
 
 18. package [kk.streamapis] : StreamProgram, ParallelStreamProg. TODO: Optional class, https://www.baeldung.com/java-8-streams; https://www.baeldung.com/java-8-collectors
+
+14. package [kk.oops.reflections] : Main
 
 19. package [kk.exceptionhandling] : Main, MyException. TODO: types and hierarchy of exception and error
 
@@ -42,7 +46,7 @@
 
 22. package [kk.oops] : FinalKeyword - Singleton
 
-23. package [kk.oops.finalclassandmethods] : StaticMethodInherit, Bottle, OuterClass, kk.functions.MethodShadowing; TODO: Closures in Java, https://www.geeksforgeeks.org/nested-classes-java/
+23. package [kk.oops.finalclassandmethods] : StaticMethodInherit, Bottle, OuterClass, kk.functions.MethodShadowing; TODO: Closures in Java, https://www.geeksforgeeks.org/nested-classes-java/  https://www.baeldung.com/java-lambda-effectively-final-local-variables
 
 24. package [kk.oops.inheritance] : Main. TODO: instanceof v/s instanceOf(); contract
 
@@ -80,4 +84,4 @@ functional interface(https://www.baeldung.com/java-8-lambda-expressions-tips) - 
 
 101. package [testingPackages] :
 
-102. AOT compiler v/s JIT compiler; OpenJDK, differemce b/n constructor and an instance block. Why not threads in REST APIs?; saving singleton from reflection; yield keyword; ActionListener in java; temporal data types in java; trasient keyword.
+102. AOT compiler v/s JIT compiler; OpenJDK, differemce b/n constructor and an instance block. Why not threads in REST APIs?; saving singleton from reflection; yield keyword; ActionListener in java; temporal data types in java; trasient keyword; inline literals.

@@ -7,13 +7,19 @@
  * eg- distinct, sorted([comparator],peek:doesn't do any processing as it takes a consumer, maybe used for sout,
  * Terminal: (optional) Triggers the processing of streams, and produces the output on which no more stream operation can be performed in the given stream.
  */
-        package kk.streamapis;
+package kk.streamapis;
 
+import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+/**
+ * introduced in java 8. Replaces over need of loops and boolean condition in coded forms. Process collection of data in a functional and declarative manner. Simplify data processing. Embrace Functional programming.
+ * Improve readability and Maintainability. Enable easy Parallelism, ie, with explicitly dealing with parallel programming on our own, it can deal with it automatically.
+ */
 public class StreamProgram {
 
     private static long counter;
@@ -29,13 +35,16 @@ public class StreamProgram {
         salaryList.add(9000);
         salaryList.add(1000);
         salaryList.add(3500);
+        // traditional method
         int count = 0;
         for (Integer salary : salaryList) {
             if (salary > 3000) {
                 count++;
             }
         }
-        long count1 = salaryList.stream().filter((Integer salary) -> salary > 3000).count();
+
+        // Using stream makes us do 3 things: We've source of collection, onto it we perform some intermediate operations, at last we perform terminal operation.
+        long count1 = salaryList.stream().filter((Integer salary) -> salary > 3000).count();    // filter takes predicate
         System.out.println(count + " " + count1);
 
 
@@ -46,7 +55,7 @@ public class StreamProgram {
         Stream<String> streamEmpty1 = Stream.empty();
 
         // Stream of any Collection type can be created
-        Collection<String> collection = Arrays.asList("a", "b", "c");
+        Collection<String> collection = Arrays.asList("a", "b", "c");   // LHS could be ArrayList also
         Stream<String> streamOfCollection = collection.stream();
 
         // Stream of an array:
@@ -55,30 +64,31 @@ public class StreamProgram {
         Stream<String> streamOfArrayPart = Arrays.stream(arr, 1, 3);
 
         // generate() accepts Supplier<T>. If .limit(N) is not mentioned, then generated stream will be of infinite size until memory overflow happens.
-        Stream<String> streamGenerated1 = Stream.generate(() -> "element").limit(10);
+        Stream<String> streamGenerated1 = Stream.generate(() -> "element").limit(10);   // .limit() can be applied to any stream, to return a stream of first 'n' elements.
 //    Stream<String> streamGenerated2 = Stream.generate(() -> "element");   // DANGEROUS
 
-        Stream<Integer> streamIterated = Stream.iterate(40, n -> n + 2).limit(20);  // First param is first element of stream, while Ith is i+2
+        Stream<Integer> streamIterated = Stream.iterate(40, n -> n + 2).skip(10).limit(20);  // First param is first element of stream, while Ith is i+2. Skip first 10, then generate next 20 elements in the stream.
 
 //    Since Stream<T> is generic interface, therefore, specially, only 3 primitive types to elevate unnecessary auto-boxing of int, long and double interfaces are provided IntStream, LongStream, DoubleStream.
         IntStream intStream = IntStream.range(1, 3);    // end exclusive. For end inclusive: .rangeClosed(s,e);
 
 //    We can instantiate a stream, and have an accessible reference to it, as long as only intermediate operations are called. Executing a terminal operation makes a stream inaccessible.
 //    To demonstrate this, we will forget for a while that the best practice is to chain the sequence of operation. Besides its unnecessary verbosity, technically the following code is valid:
-        Stream<String> stream = Stream.of("a", "b", "c").filter(element -> element.contains("b"));  // we have created stream using static method.
+        Stream<String> stream = Stream.of("a", "b", "c").filter(element -> element.contains("b"));  // we have created stream using static method .of() .
         Optional<String> anyElement1 = stream.findAny();
 //    However, an attempt to reuse the same reference after calling the terminal operation will trigger the IllegalStateException:
 //    Optional<String> firstElement1 = stream.findFirst();
 //    As the IllegalStateException is a RuntimeException, a compiler will not signalize about a problem. So it is very important to remember that Java 8 streams can’t be reused.
 //    This kind of behavior is logical. We designed streams to apply a finite sequence of operations to the source of elements in a functional style, not to store elements.
 //    So to make the previous code work properly, some changes should be made:
-        List<String> elements = Stream.of("a", "b", "c").filter(element -> element.contains("b")).collect(Collectors.toList());
+        List<String> elements = Stream.of("a", "b", "c").filter(element -> element.contains("b")).collect(Collectors.toList());     // Instead of .collect, we can use directly .toList() which gives unmodifiable list.
         Optional<String> anyElement2 = elements.stream().findAny();
         Optional<String> firstElement2 = elements.stream().findFirst();
 
         //  source, intermediate operation(s) and a terminal-operation(can only be one in number)
-        Stream<String> twiceModifiedStream = Stream.of("abcd", "bbcd", "cbcd").skip(1).map(element -> element.substring(0, 3));
-        long size = Arrays.asList("abc1", "abc2", "abc3").stream().skip(1).map(element -> element.substring(0, 3)).sorted().count();    // example of terminal operation
+        Stream<String> twiceModifiedStream = Stream.of("abcd", "bbcd", "cbcd").skip(1).map(element -> element.substring(0, 3)); // skip is used to skip 'n' number of leading elements from the stream. Returns Stream.empty() if all are skipped.
+        long size = Arrays.asList("abc1", "abc2", "abc3").stream().skip(1).map(element -> element.substring(0, 3)).sorted().count();    // example of terminal operation. sorted() returns stream with natural ordering.
+        // Sorted was not required here as ultimately we are simply counting it. .sorted() can also take comparator, if we want to override the natural ordering or if natural ordering is not present.
 
         // Stream can be of referenced data types, but not for primitives. But, there are certain primitive data type specific streams type: IntStream, DoubleStream, LongStream, using To{Int|Double|Long}Function
         int[] intarr = {2, 1, 4, 7};
@@ -93,7 +103,7 @@ public class StreamProgram {
         int[] array2 = integerStream.toArray();
         System.out.println(Arrays.toString(array2));
 
-        // Intermediate operations are lazy, will be invoked only if it is necessary for the terminal operation execution.
+        // Intermediate operations are lazy, will be invoked only if it is necessary for the terminal operation execution. They return a Stream.
         List<String> list = Arrays.asList("abc1", "abc2", "abc3");
         // demo1:
         Stream<String> stringStream1 = list.stream().filter((String str) -> Integer.parseInt(str.substring(3, 4)) >= 2).peek((String str) -> System.out.println(str));  // NOT printing
@@ -135,7 +145,7 @@ public class StreamProgram {
         List<Integer> collected = numberStream.collect(Collectors.toList());
         numbers.stream().forEach((Integer val) -> System.out.println(val)); // Its like peek() but peek is intermediate operation while forEach is terminal operation, returns void.
 
-        // Flat Map:
+        // Flat Map::: Handles stream of collections, lists, or arrays where each element is itself a collection. BOTH TRANSFORMS AND FLATTEN nested structures, eg, lists within list; to process result as single sequence of elements.
         List<List<String>> senetenceList = Arrays.asList(
           Arrays.asList("The ", "Quick ", "Brown "),
           Arrays.asList("Fox ", "Jumps ", "Over ", "A "),
@@ -144,9 +154,18 @@ public class StreamProgram {
         Stream<String> stringStream = senetenceList.stream().flatMap((List<String> sentence) -> sentence.stream().map((String word) -> word.toLowerCase()));
         System.out.println(stringStream.collect(Collectors.toList()));
 
+        List<String> sentences = Arrays.asList(
+                "Hello World",
+                "Java streams are powerful",
+                "flatmap is useful"
+        );
+        Object[] words = sentences.stream().flatMap(sentence -> Arrays.stream(sentence.split(" "))).map(String::toUpperCase).toArray();
+        System.out.println(Arrays.toString(words));
+
         // REDUCE: Terminal. Does reduction on the elements of the stream. Perform associative aggregation function. Accepts BinaryOperator.
         List<Integer> numnbers = Arrays.asList(2,1,4,7,10);
-        Optional<Integer> reducedValue = numnbers.stream().reduce((Integer val1, Integer val2) -> val1+val2);   // we can put identity also as default|initial value as first param.
+        Optional<Integer> reducedValue = numnbers.stream().reduce((Integer val1, Integer val2) -> val1+val2);
+        //Reduce is also called accumulator. We can put identity also as default|initial value as first param. Returns Optional type of data, where there is no guarantee of value inside it
         System.out.println(reducedValue.get()); // 24
 
         int reducedParams = Stream.of(1, 2, 3).reduce(10, (a, b) -> a + b, (a, b) -> { System.out.println("combiner from sequential wasn't called"); return a + b; });
@@ -154,8 +173,15 @@ public class StreamProgram {
         int reducedParallel = Arrays.asList(1, 2, 3).parallelStream().reduce(10, (a, b) -> a + b, (a, b) -> { System.out.println("aggregator combiner from parallel was called"); return a + b; });
         System.out.println(reducedParallel);    //36
 
-        // First sorts the elements and then send the leftmost element
-        Optional<Integer> minimumValueType1 = numnbers.stream().filter((Integer val) -> val>=3).min((Integer val1, Integer val2) -> val1-val2);
+        System.out.println("Using forEach in parallel Stream will not not guarantee the order, while using the forEachOrdered will guarantee the original sequential ordering");
+        List<Integer> list4 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        list4.parallelStream().forEach(System.out::print);
+        System.out.println("\t\t");
+        list4.parallelStream().forEachOrdered(System.out::println);
+        System.out.println("\n\n");
+
+        // First sorts the elements and then send the leftmost element ::: Here, min and max refers to the leftmost and rightmost element after ordering. Coincidentally, it coincides with the sorted min and max ele for few cases.
+        Optional<Integer> minimumValueType1 = numnbers.stream().filter((Integer val) -> val>=3).min(Comparator.naturalOrder());     // (val1, val2) -> val1-val2 is default
         System.out.println(minimumValueType1.get());    // 4
         Optional<Integer> minimumValueType2 = numnbers.stream().filter((Integer val) -> val>=3).min((Integer val1, Integer val2) -> val2-val1);
         System.out.println(minimumValueType2.get());    // 10
@@ -164,6 +190,7 @@ public class StreamProgram {
         long cardinal = numnbers.stream().filter((Integer val) -> val>=3).count();
         System.out.println(cardinal);
 
+        // Below next 5 operations are also called short-circuit operations, as they stop processing on remaining data when at least one condition holds true.
         boolean has1 = numnbers.stream().anyMatch((Integer val) -> val>3);   // Terminal. Takes Predicate and returns a boolean.
         boolean has2 = numnbers.stream().allMatch((Integer val) -> val>3);
         boolean has3 = numnbers.stream().noneMatch((Integer val) -> val>3);
@@ -173,10 +200,60 @@ public class StreamProgram {
         Optional<Integer> findAnyValue = numnbers.stream().filter((Integer val) -> val>=3).findAny();
         System.out.println(findFirstValue.get() + " " + findAnyValue.get());
 
+        // Counting occurrence of character 'l'
+        String sentence = "Hello World";
+        System.out.println(sentence.chars().filter(x -> x == 'l').count());
+
+        /**
+         * Stateful: When operation knows about other elements. eg sorting operation
+         * Stateless: When operation does not know about other elements. eg map operation
+         */
+
 
 //        IntSummaryStatistics statistics = productList.stream().collect(Collectors.summarizingInt(Product::getPrice));
 //        Map<Integer, List<Product>> collectorMapOfLists = productList.stream().collect(Collectors.groupingBy(Product::getPrice));
 //        Map<Boolean, List<Product>> mapPartioned = productList.stream().collect(Collectors.partitioningBy(element -> element.getPrice() > 15));
 //        Set<Product> unmodifiableSet = productList.stream().collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
+
+
+        List<Integer> list2 = Stream.iterate(1, x -> x + 1).limit(2000).toList();   // If we want to get this output in form of array, we can use .toArray() in place of .toList()
+        long startTime = System.currentTimeMillis();
+        List<BigInteger> list3 = list2.stream().map(StreamProgram::factorial).sequential().toList();    // to make stream elements available in sequence, which in this case, already is.
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime)/100 + " seconds in non-parallel stream processing");
+
+        startTime = System.currentTimeMillis();
+        list3 = list2.parallelStream().map(StreamProgram::factorial).sequential().toList();  // We used sequential here because we wanted to elements in the list to be in sequence, after they have been previously in parallel stream.
+        endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime)/100 + " seconds in parallel stream processing");
+
+        // Below we noticed that .sequential() will actually returns the stream where elements are in sequence as if they were processed sequentially. This we do, to make sequential available for further sequential processing
+        System.out.println((list2.parallelStream().map(StreamProgram::factorial).sequential().limit(200).toList())
+                .equals
+                        (list2.parallelStream().map(StreamProgram::factorial).limit(200).toList()));
+
+
+        // Cumulative sum [1, 2, 3, 4, 5] -> [1, 3, 6, 10, 15] :: where we see why parallel stream works flawlessly for only those scenarios where we don't have stateful requirements.
+        List<Integer> numbers2 = Arrays.asList(1, 2, 3, 4, 5);
+//        int sum = 0;    // since in lambda expressions, local variables used be used must be final or effectively final
+        AtomicInteger sum = new AtomicInteger(0);
+//        List<Integer> csParallel = numbers2.parallelStream().map(x -> {
+//            int i = x + sum;
+//            sum = i;
+//            return i;
+//        }).toList();
+        List<Integer> cumulativeSum = numbers2.stream().map(sum::addAndGet).toList();
+        System.out.println("Expected CS :: [1, 3, 6, 10, 15]");
+        System.out.println("Actual in parallel stream ::" + cumulativeSum);
+    }
+
+    static BigInteger factorial(int num) {
+        int i = 1;
+        BigInteger ans = BigInteger.ONE;
+        while (num != i) {
+            ans = ans.multiply(BigInteger.valueOf(num));
+            num--;
+        }
+        return ans;
     }
 }

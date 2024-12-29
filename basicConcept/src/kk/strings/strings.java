@@ -61,7 +61,7 @@ public class strings {
         System.out.println(name.toLowerCase()); // new object is created with all things in lower case
         System.out.println(name);   // original object doesn't get changed
         System.out.println(Arrays.toString(name.split(" ")));   // split needs a regex and returns a String[] array
-        System.out.println(Arrays.toString("boo:and:foo".split("o")));  // It should have one "" empty-sting more as on output, derived from last "oo" of "foo".
+        System.out.println(Arrays.toString("oomygboo:and:foo".split("o")));  // It should have one "" empty-sting more as on output, derived from last "oo" of "foo".
 
         // Replacing all whitespaces
         String white = "sljdbdvc j qfjv vx aj ljda ald   cl la  kac c a   k lda lma lm lc  ";

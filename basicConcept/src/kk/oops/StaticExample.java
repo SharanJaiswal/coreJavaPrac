@@ -41,7 +41,7 @@ public class StaticExample {
 
     void nonStatic() {
         System.out.println("Inside non static method!!!");
-        greetings();    // aka, this.greetings(); ,ie, nonStatic() is non-static method, and can call other object dependent objects, to which object it is part of.
+        greetings();    // aka, this.greetings(); ,ie, nonStatic() is non-static method, and can call other object dependent attributes, to which object it is part of.
         fun();  // We can and cannot use class name as a reference to access the static method. If we are not using, then that static member must belong to same class.
     }
 }

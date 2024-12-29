@@ -13,10 +13,15 @@ import java.util.function.BinaryOperator;
 
 public class ArraysDS {
     public static void main (String[] args) {
-        List<Integer> list = Arrays.asList(10, 20, 30);
+        List<Integer> list = Arrays.asList(10, 20, 30); // it returns the fixed sized List. Class name is Arrays$ArrayList which shows that this ArrayList is nested private static class inside Arrays class.
+//        list.add(65);   // This line will throw an error, as Arrays.asList() will return the fixed sized ArrayList. But we can change the existing element.
+        list.set(2, 64);
         int i = list.get(0);
         System.out.println(list.get(0));
 
+        // Just like Arrays.asList() where list ArrayList returned is of fixed size, List.of() will also do the same. Only difference is asList() has option to modify the list elements, but List.of() does not even give that functionality.
+        List<String> unmodifiableList = List.of("Sharan", "Jaiswal", "Saint");  // Only maximum of 10 element could fit in this List.of() method
+//        unmodifiableList.set(1, "Sharan");    // Produces error
 
         List<String> list1 = new ArrayList<>();
         list1.add("One");
@@ -45,9 +50,9 @@ public class ArraysDS {
     }
 }
 /**
- * Iterators is being implemented by all collections type and its downstream child classes. Iterator<E> interface has only 2 methods:
+ * Iterators is being implemented by all collections type and its downstream child classes. Iterator<E> interface has only 4 methods:
  * boolean hasNext(), E next(), void remove(), default void forEachRemaining(Consumer<? super E> action)
- * We can have may iterators simultaneously pointing to the Collections item. next() just gives the reference of the next present element.
+ * We can have many iterators simultaneously pointing to the Collections item. next() just gives the reference of the next present element.
  * remove() is not supported by all the collections. Also, if the underlying collections item gets changed, then iterator throws exception stating that something has been changed.
  * ConcurrentModificationException means, eg, if something is added or removed from the collection item, then next() is still pointing to the same element prior to change,
  * and this breaks the contract of next(). Hence, it raises the exception.

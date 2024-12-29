@@ -31,7 +31,7 @@ public interface Engine {
     // However, variables cannot be of type private, protected, or package-private. It can only be of type public static final.
     // Also, all variables declared will have "public static final" type. Adding custom access-modifier will create ambiguity and hence error.
 
-    default void defMet() { // default methods cannot be static, and can be call by the objects references of classes or its child implementing this interface.
+    default void defMet() { // default methods cannot be static, and can be called by the objects references of classes or its child implementing this interface.
         System.out.println("This is Engine default method");
         interfacePrivateMethod();
     }

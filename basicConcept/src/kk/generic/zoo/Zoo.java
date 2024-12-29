@@ -27,11 +27,15 @@ public class Zoo {
         // which is equivalent to assigning non-generic type to generic type for backward compatibility.
         // below is the correct way
         BetterCage<Monkey> monkeyBetterCage2 = new BetterCage<>(new Monkey(), new Monkey());
+//        BetterCage<Monkey> monkeyBetterCage3 = new BetterCage<>(new Monkey(), new Lion());    // gives error as it requires only of Monkey type species.
 
 
         // Till now, we can restrict the cage with specific type of element that could be part of it.
-        // But We still can make cage of Strings. We didn't restrict yet with type of animals only inside cage. This could be achieved by restricting the type of generic.
-
+        // But We still can make cage of Cars. We didn't restrict yet with type of animals only inside cage. This could be achieved by restricting the type of generic.
+        BetterCage<String> monkeyBetterCage4 = new BetterCage<>(new String(), new String());    // potentially can add anything of same type
+        // More sensible option is below:
+        AdvanceCage<Monkey> monkeyAdvanceCage1 = new AdvanceCage<>(new Monkey(), new Monkey());
+//        AdvanceCage<String> monkeyAdvanceCage2 = new AdvanceCage<>(new String(), new String()); // Only allowed type of entities in cage is Animal or its derivatives.
 
         // If we want to check the compatibility of two animal in the cage, we are first putting them together in cage and then deciding if they are compatible, ie,
 //        we are first making BestCage object, and then we are checking the compatibility of 2 animals.

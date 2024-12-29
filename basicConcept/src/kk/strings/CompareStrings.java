@@ -20,7 +20,7 @@ public class CompareStrings {
         System.out.println(st1 == st7); // false
 
         String st8 = "Scaler";
-        System.out.println(st1 == st8); // true because here literal values are same, hence st8 o longer made new string but pointed to the literal of st1.
+        System.out.println(st1 == st8); // true because here literal values are same, hence st8 no longer made new string but pointed to the literal of st1.
 
         System.out.println(st1.compareTo(st7)); // 0 lexicographically comparison
         System.out.println(st1.compareToIgnoreCase(st7));   // 0

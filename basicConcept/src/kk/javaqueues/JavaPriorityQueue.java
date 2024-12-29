@@ -4,11 +4,13 @@ import java.util.PriorityQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
- * Min priority queue: min heap. Max Priority Queue: max heap. Elements are ordered either by Natural Ordering or by comparator passed to constructor while creating object of it.
+ * Min priority queue: min heap. Max Priority Queue: max heap. Elements are ordered either by default using Natural Ordering(for primitives, lowest first) or by comparator passed to constructor while creating object of it.
  * add() - offer() -> O(log N)
  * remove() - poll() -> for head:O(log N) - for nth element except head: O(N)
  * element() - peek() -> O(1)
  * Thread unsafe. Not maintains insertion order. No null addition allowed.
+ *
+ * MIN HEAP:: It is simple binary tree, but the every node will either be equal to or smaller of their both the children. This makes the top-most node as smallest in the entry elements
  */
 public class JavaPriorityQueue {
     public static void main(String[] args) {

@@ -22,7 +22,7 @@ public class Main {
         } catch (MyException | ArithmeticException e) {
 //            throw e;    // we can again throw
             System.out.println(e.getMessage());
-            // We can also use return statement form any of the block.
+            // We can also use return statement from any of the block.
         } catch (Exception e) {
             System.out.println("normal exception");
         } finally {

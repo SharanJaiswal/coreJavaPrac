@@ -15,7 +15,7 @@ public class StudentComparable implements Comparable<StudentComparable> {
     // This overridden abstract method from Comparable interface can be used on the go by objects, and can be internally used by Arrays.sort() method
     // Arrays.sort() method will use this as, -VE -> a<b ; 0 -> a==b ; +VE -> a>b [STRICTLY < > ==]
     // If this method is not overridden in the class where objects are being sorted in the Array of those objects using Arrays.sort() method, then sorting will throw an exception.
-    // We can put below complex comparison logic as a body of below method, but ultimately it should return either -ve, 0, or +ve
+    // We can put below complex comparison logic as a body of below method, but ultimately it should return either -ve 1, 0, or +ve 1
     @Override
     public int compareTo(StudentComparable o) { // this method must return any among -ve, 0, +ve integer
         // THIS WILL SORT BY ROLLNO

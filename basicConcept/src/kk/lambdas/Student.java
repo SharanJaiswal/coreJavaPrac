@@ -3,7 +3,7 @@ package kk.lambdas;
 import java.util.*;
 
 // Both Comparable and Comparator interfaces, if implemented, DOES NOT MAKE IN ANY WAY the stateful instances of the class ready to work bluntly with relational operators, ie, ==, <, >, etc.
-// RELATIONAL OPERATORS ARE NOT OVERLOADED Comparable or Comparator interfaces are implemented.
+// RELATIONAL OPERATORS ARE NOT OVERLOADED when Comparable or Comparator interfaces are implemented.
 public class Student implements Comparable<Student> {
     int rollno;
     float marks;
@@ -83,9 +83,8 @@ public class Student implements Comparable<Student> {
         stuArr.add(stu4);
         stuArr.add(stu5);
 
-        Collections.sort(stuArr, compareByRollno);
+        Collections.sort(stuArr, compareByRollno);  // sort method of any among Collections, Arrays, lst, etc., takes comparator instance, but not comparable instance. Hence, below commented line was showing error as we have passed comparable instance.
 //        Collections.sort(stuArr, compareByMarks);
-
 
         CompareStudentsByMarks compareStudentsByMarks = new CompareStudentsByMarks();
         CompareStudentsByRollno compareStudentsByRollno = new CompareStudentsByRollno();
@@ -93,15 +92,14 @@ public class Student implements Comparable<Student> {
         Collections.sort(stuArr,compareStudentsByRollno);
 
         stuArr.sort(null);  // List also has sort() method. Also to any sort method, we can provide comparator(), or if null is given then natural ordering is picked for sort.
-
     }
 
     // By creating lambdas and using them. Also, we can create multiple lambdas of Comparable<T> and Comparator<T> inside class. But cannot override compareTo() method from Comparable more than one time.
     // Avoid implementing Comparator on domain class, prefer Comparable over Comparator interface whenever there is need to implement object comparison logic because by default compareTo() is looked for these situations.
     // If we are making logic outside of class, use Comparators or lambdas of both.
-    Comparator<Student> compareByRollno = (Student s1, Student s2) -> Integer.compare(s1.rollno, s2.rollno);
-    Comparable<Student> compareByMarks = (Student stu) -> Float.compare(stu.marks, this.marks);
-    Comparable<Student> compareByRolls = (Student stu) -> Float.compare(stu.rollno, this.rollno);
+    Comparator<Student> compareByRollno = (Student s1, Student s2) -> Integer.compare(s1.rollno, s2.rollno);    // (s1, s2) we can skip mentioning the "Student" as data type for both s1 & s2, and this can be type-inferred by java itself.
+    Comparable<Student> compareByMarks = (Student stu) -> Float.compare(stu.marks, this.marks);     // Here we have explicitly mentioned the data-type of "stu" lambda variable, which is unnecessary due to type inference.
+    Comparable<Student> compareByRolls = (stu) -> Float.compare(stu.rollno, this.rollno);   // Example of type-inference where data type of lambda variable "stu" is figured out by java.
 }
 
 

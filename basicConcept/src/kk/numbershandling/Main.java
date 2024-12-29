@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 public class Main {
     public static void main(String[] args) {
         DecimalFormat decimalFormat = new DecimalFormat("00.0000");
-        System.out.println(decimalFormat.format(7.9));  // 07.9000
+        System.out.println(decimalFormat.format(7.9));  // 07.9000  ---- .format method returns string
         System.out.println(decimalFormat.format(8.234689)); // 08.2347 Rounding off will take place if decimal range increases the decided decimal range format
         System.out.println(decimalFormat.format(789.45612793)); // 789.4561 While non-decimal may increase without any truncation of extra digits
         System.out.println(decimalFormat.format(new BigDecimal("65665.457886484861655612793")));    // 65665.4579
@@ -22,7 +22,8 @@ public class Main {
 
         BigInteger A = BigInteger.valueOf(33);
         BigInteger C = BigInteger.valueOf(2147483647);  // Maximum limit that we can pass to valueOf method. Minimum is -2147483648. It takes long type as input because we are passing integer whose largest value will be the largest value of long type.
-        BigInteger B = new BigInteger("12345678923456787654");  // Constructor should be called if very large number is present. Also, when passed number is string
+        // Consider valueOf() is taking integer value by default, so allowed value of Integers are only allowed in it. While new keyword can take String.
+        BigInteger B = new BigInteger("12345678923456787654");  // Constructor should be called if very large number is present. Also, when passed number is string.
 
         BigInteger D = BigInteger.TEN;
 
@@ -31,10 +32,13 @@ public class Main {
         System.out.println(s);  // 12345678923456787687
         System.out.println(A.multiply(B));  // 407407404474073992582
         System.out.println(A.divide(B));    // 0 - since integers are terminating, hence
+        BigInteger P = new BigInteger("10");
+        BigInteger Q = new BigInteger("3");
+        System.out.println(P.divide(Q));    // 3 fraction part is dropped off and only number left to the decimal(if exists) are taken, as it is an BigInteger operation
         System.out.println(A.subtract(B));  // -12345678923456787621
         System.out.println(A.remainder(B)); // 33
         System.out.println(B.remainder(A)); // 9
-        System.out.println(A.negate()); // -33 and many other operations
+        System.out.println(A.negate()); // -33 and many other math and bit operations
 
         // For comparing the two values, comparable compareTo() is called with same logic.
         if (A.compareTo(B) > 0) { System.out.println("A > B"); }

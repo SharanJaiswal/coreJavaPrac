@@ -6,28 +6,34 @@ public class MethodShadowing {
     static int x = 90;  // For shadowing
     int y = 90;
     private String str = "private parent string";
-    public static void main(String[] args) {
+
+    public static void main(String[] args) {    // Although methods are part of class, but consider them as the loosly wired with class, not actually the inseparable part of class. Hence, we can declare variables with same name here as it is in class level.
+        // we can declare variables again in nested scope which are declared in the parent scope.
+        // For shadowing continued... here it is shadowing the variable "x" in the main method enclosing scope
+        // Testing below 3 which are same as above-mentioned 3 at class level
+
+//        static int x = 90;  // Cannot define/declare anything static inside a class method, be it same variable or new different variable name.
+        int x;
+        x = 80; // scope will begin when value is initialized
+        System.out.println(x);  // 80 - Since, name is same; hence, it is called name-masking
+        int y = 100;
+        System.out.println(y);
+
+//        private String str = "private parent string";   // Cannot define/declare anything private inside class method, be it same name or new different variable name.
+        String str = "method local string";
+        System.out.println(str);
+
         String outer = "Sharan";
-        {   // any reference variable declared inside a block, will have its scope till that block. A block is " { . . . } "
+        {   // any reference variable declared inside a block, will have its scope till that block. A block is " { . . . } " . Consider the blocks are the inseparable part of the enclosing entity, here a method. Hence, we cannot redeclare variable with same name as in enclosing scope.
             String inner = "Jaiswal";
             outer = inner;
             // both same as writing outer=inner;
 
             System.out.println(outer);  // Jaiswal
 
-//            String outer = "Saint";    // we cannot declare a same variable if it is already accessible in a same access-level-scope(class or object or method), even if it is accessible here from its parent scope.
+//            String outer = "Saint";    // we cannot declare a same variable if it is already accessible in a same access-level-scope(class or object or method), even if it is accessible here from its parent scope. Same goes for 'x' and 'y'.
         }
         System.out.println(outer);  // Jaiswal
-
-        // we can declare variables again in lower scope which are declared in the higher scope.
-        // For shadowing continued... here it is shadowing the variable "x" in the main method enclosing scope
-        int x;
-        x = 80; // scope will begin when value is initialized
-        System.out.println(x);  // 80 - Since, name is same; hence, it is called name-masking
-        int y = 100;
-        String str = "method level string";
-        System.out.println(y);
-        System.out.println(str);
 
         // For shadowing also
         sum();  // Although call is in scope where shadowing var is initialized, but the actual method is out of scope.
@@ -45,22 +51,28 @@ public class MethodShadowing {
      */
     class FirstLevel {
         int x = 34;
+        int y;
         public void printNum(int x) {
             System.out.println(x);  // 56
             System.out.println(this.x); // 34
             System.out.println(FirstLevel.this.x);  // 34 - I'm assuming that when we are explicitly mentioning classname before "this", then this(obj) makes only that class specific entities. Hence, I think, this might the reason.
             System.out.println(MethodShadowing.this.x); // 90 - Here, in case where x in MethodShadowing scope is defined as static variable, we can also access that x as MethodShadowing.x.
             // If that x is not static, then we will access by this way only.
-            System.out.println(MethodShadowing.x);
-            System.out.println(MethodShadowing.this.y);
-            System.out.println(MethodShadowing.this.str);
-//            System.out.println(MethodShadowing.y);  // This won't work as y is not static member of MethodShadowding class. "y" is instance member variable of MethodShadowing class, hence needs object of MethodShadowing above.
+            System.out.println(MethodShadowing.x);  // 90
 //            System.out.println(super.x);  // this is wrong as super is used in context of inheritance. This context is related to nested class.
+            System.out.println(MethodShadowing.this.y); // 90
+            System.out.println(y);  // 0 - this.y, FirstLevel.this.y
+//            System.out.println(MethodShadowing.y);  // This won't work as y is not static member of MethodShadowding class. "y" is instance member variable of MethodShadowing class, hence needs object of MethodShadowing above. Also, enclosing class cannot access nested class members.
+            System.out.println(str);    // "private parent string"
+            System.out.println(MethodShadowing.this.str);   // "private parent string"
 
             // We can make outer class's object inside the inner class.
             MethodShadowing obj3 = new MethodShadowing();
             System.out.println(obj3.y); // 90
             System.out.println(obj3.str);   // "private parent string"
+
+            // We can access sibling nested class
+            MethodShadowing.StaticNestedClass staticNestedClass = new MethodShadowing.StaticNestedClass();
         }
 
         // Although we can define the static main method inside normal inner nested class, but the body of it will not shadow the body of enclosing main class. Hence, even if we run this main method(),
@@ -86,6 +98,6 @@ public class MethodShadowing {
         System.out.println("Sum is : " + sum);  // 29
 
         // For shadowing
-        System.out.println(x);  // 90
+        System.out.println(x);  // 90 - This will read value of x from either from its scope, or from its parent's scope. Hence, it's not getting affected by the change in the value of x inside main method, as this method is main method's sibling (same level)
     }
 }

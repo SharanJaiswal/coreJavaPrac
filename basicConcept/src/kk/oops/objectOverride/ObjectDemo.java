@@ -10,7 +10,7 @@ public class ObjectDemo implements Comparable<ObjectDemo> {  // Inside <> there 
 
     // random integer number representation of an object, not a memory address of object, formed using internal algo.
     // When 2 objects are compared, their hashCodes are NOT compared. eg., obj1 == obj2; Supports also != operator. These == & != uses memory location comparison, not their hashes.
-    // obj1>obj2 (NO HASHCODE or Memory Location or any method can be used to compare objects involving < or > operator. REQUIRES comparators) are NOT implementing hashCode() to compare.
+    // obj1>obj2 (NO HASHCODE or Memory Location or any method can be used to compare objects involving < or > operator. these operators are not overloaded. Comparing REQUIRES comparators) are NOT implementing hashCode() to compare.
     // When 2 objects are compared, they can be compared using equals() method or their using Comparable interface's compareTo() method must be implemented, or any comparator.
     // Class X is said to be in consistent with equals() when o1.equals(o2) gives same boolean value as when it gives in o1.hashCode()==o2.hashCode()
     @Override
@@ -22,11 +22,11 @@ public class ObjectDemo implements Comparable<ObjectDemo> {  // Inside <> there 
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
-        // By default, it calls hashCode() method internally if this has not been overridden, compares the memory location of objects, ie, internally calls == . We cannot overload "==" operator, but we can override .equals()
+        // By default, compares the memory location of objects, ie, internally calls == . We cannot overload "==" operator, but we can override .equals()
         // However, it is suggested that it should override the super[Object].equals() call and should call (hashCode of obj1) == (hashCode of obj2), and not == of memory location. (String.valueOf(obj) ==> obj.toString() ==> Classname+@hex()hash())
         // Hence, String objects having same value expects true while calling this, due to String Pool concept in java.
         // While "==" compares the memory location for all derived objects of Object, and literal of primitives.
-        // For Strings, equals internally calls toString values of the operands and compares the actual string value character by character to return the boolean value.
+        // For Strings, equals internally calls toString values of the operands and compares the actual string value lexicographically to return the boolean value.
         // While '==' compares the memory location in case of objects, and values in case of primitives.
 
         // Way for ideal equals(obj) body:

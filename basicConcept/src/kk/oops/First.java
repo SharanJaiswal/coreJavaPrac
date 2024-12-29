@@ -58,7 +58,7 @@ enum EnumSample1 implements Inter {  //Normal Enum - CAN BE PUBLIC IF A DEDICATE
 
 enum EnumSample2 {  // Enums with custom values. Needs constructor. Even user defined constructors are private implicitly. Whatever member variable, constructor method is present, it is for each constant.
     // Think enum constants as different instantiated objects. It is wrong technically, but only for the purpose of understanding.
-    // Observer that constructors are called for every constant. Also, the value is not sequential and repetitive.
+    // Observe that constructors are called for every constant. Also, the value is not sequential and repetitive.
     MONDAY(101, "1st day of week") {
         @Override   // Method overriding by constants
         public String getComment() {
@@ -66,39 +66,39 @@ enum EnumSample2 {  // Enums with custom values. Needs constructor. Even user de
             return "Overridden Comment for a particular constant. Hence, constants have individual method copies which can be overridden.";
         }
 
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     },
     TUESDAY(101, "1st day of week") {
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     },
     WEDNESDAY(102, "1st day of week") {
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     },
     THURSDAY(103, "1st day of week") {
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     },
     FRIDAY(105, "1st day of week") {
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     },
     SATURDAY(107, "1st day of week") {
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     },
     SUNDAY(106, "1st day of week") {
-//        @Override
-//        public void absMet() {
-//        }
+        @Override
+        public void absMet() {
+        }
     };
 
     public int val;
@@ -135,6 +135,6 @@ enum EnumSample2 {  // Enums with custom values. Needs constructor. Even user de
         return null;
     }
 
-//    public abstract void absMet();    // If enums have abstract method, then it need to be overridden by every constant because it will be part of every constant.
+    public abstract void absMet();    // If enums have abstract method, then it need to be overridden by every constant because it will be part of every constant.
 }
 

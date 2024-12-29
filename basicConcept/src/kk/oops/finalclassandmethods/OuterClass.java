@@ -65,7 +65,7 @@ public class OuterClass {
         /**
          * Here, since we are in class named OuterClass, therefore while creating the object of StaticTest class we are not using OuterClass.StaticTest in RHS as well as LHS.
          * Although we can use it as OuterClass.StaticTest.....
-         * But, if we have access StaticTest from outside OuterClass, then we must use format OuterClass.StaticTest.....
+         * But, if we have to access StaticTest from outside OuterClass, then we must use format OuterClass.StaticTest.....
          */
 
         /*
@@ -111,7 +111,7 @@ public class OuterClass {
         Foo f = new Foo();
         f.x=1;
         System.out.println(f.x);
-//        System.out.println(i);    // Even this potentially could change the value of "i" (absurd, but in cases where "i" hold non-primitive data reference), hence it is giving error in inner class.
+        System.out.println(i);    // Even this potentially could change the value of "i" (absurd, but in cases where "i" hold non-primitive data reference), hence it is giving error in inner class.
 
         // Fourth type is Anonymous Classes, where existing class object is made at a place where the class is override.
         Foo f2 = new Foo() {

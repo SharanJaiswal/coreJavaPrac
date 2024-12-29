@@ -2,7 +2,7 @@ package kk.generic.zoo;
 
 // While seeing method feedAnimal(), come here to read it.
 // We could think that we can write <E [...] implements Eats> in the class definition, but java doesn't allow to use "implements" keyword inside <>.
-// Instead, use "extends" even if its interface. That's the way generic syntax works.
+// Instead, use "extends" even if its interface. That's the way how generic syntax works.
 
 
 // Moreover, if we write <E extends Animals, AnythingLikeFooBar>, java compiler interpret it as BestCage have generic type that accepts 2 variables;
@@ -55,14 +55,17 @@ public class BestCage<E extends Animals & Eats & Runs> {
         animal2.run();
     }
 
-//    public static boolean isCompatibleBest(E animal1, E animal2) {    // If this would be non-static, we are bound to mention generic type "E" which should be same as mentioned inside class signature.
-    public static <T extends Animals & Eats> boolean isCompatibleBest(T animal1, T animal2) {  // Type inside <> must be between "static" keyword and before return type of the method.
-        return animal1.getType().equals(animal2.getType()); // We expect E to be of type Animal or its extension, because it'll support "getType()" method.
+//    public static boolean isCompatibleBest(E animal1, E animal2) {    // If this was non-static, we are bound to mention generic type "E" which should be same as mentioned inside class signature.
+//        E will get replaced by the value inside <> when creating the instance of BestCage class. Since, it is a static method, therefore we'll not call this method using BestCage instance.
+//        Therefore, in the commented method signature, there is error on "E" in argument parenthesis.
 //        says that E cannot be referenced from the static context because without specifying <E extends Animal>, E gets resolved in compile-time while instantiating BestCage object {new BestCage<Animal>}
 //        (in the commented method signature).
 
-//        E will get replaced by the value inside <> when creating the instance of BestCage class. Since, it is a static method, therefore we'll not call this method using BestCage instance.
-//        Therefore, in the commented method signature, there is error on "E" in argument parenthesis.
+//        public static boolean isCompatibleBest(F animal1, F animal2) {  // Just because its static and we can mention any generic notation, but here unlike "E", notation "F" is totally unknown to java. At least, previously it was knowing the significance of "E".
+
+    public static <T extends Animals & Eats> boolean isCompatibleBest(T animal1, T animal2) {  // Type inside <> must be between "static" keyword and before return type of the method.
+        return animal1.getType().equals(animal2.getType()); // We expect E to be of type Animal or its extension, because it'll support "getType()" method.
+
         /**
          * Also, even if we would write "E" instead of "T", then "E" inside the parenthesis of method signature, "E" is not same as the "E" which is mentioned inside <> of class signature.
          * Since, this is now a static method, therefore this method does not require "E" from the class signature, which eventually means, it does not require BestCage<Animal>(o1,o2) object to call this static method. So, this method's "E" will not get replaced when instance of this class gets created providing "Type" inside <>.

@@ -41,12 +41,12 @@ public class Main {
         double val = 5.012E-15;
         double int_double = 25D;    // Specifying D or d is useful in cases when instead of double, we would have declared type as "var".
         long lng = 45378L;  // both cases of l or L == 8-bytes
-        long lng2 = 45378;  // Widening casting
+        long lng2 = 45378;  // Widening casting as RHS alone is of type int which is wide casted into long
 //        int lng3 = 45378L;  // required int, provided long
         short shrt = 34;
 
         // lossy type casting, aka Narrowing
-        b = (int) flt;
+        b = (int) flt;  // happens at runtime
         System.out.println(b);  // no rounding off takes place 23456
 
         int res1 = 3/2; // 1, not because LHS is having reference variable of type 'int', but depends upon the type of operand. See below example.
@@ -113,6 +113,7 @@ public class Main {
         System.out.println(obj1.getClass().getClass()); // value to be printed is "class java.lang.Class"
         System.out.println(obj1.getClass().getClass().getClass()); // value to be printed is "class java.lang.Class" because .getClass() gives object of type Class.
         System.out.println(obj1.getClass().getName());  // package.s.ContextClass
+        System.out.println(obj1.getClass().getSimpleName());  // ContextClass
 
         /**
          * Precedence order:

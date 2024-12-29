@@ -6,7 +6,7 @@ public class Container {
     static String staticVar;    // class
     static String anotherStaticVar; // class
 
-    // Below for 2 final types variables, we have to provide their instantiation always.
+    // Below for 2 final types variables, we have to provide their instantiation always, either at place where it is declared, or in the constructor.
     final String finalVar = "Container Final Variable"; // instance
     final static String finalStaticVar = "Container Final Static Variable"; // class
 
@@ -18,7 +18,7 @@ public class Container {
     public Container() {
     }
 
-    // This instance method can be inherited and overridden because it is not final method, and neither this class is not defined as final class
+    // This instance method can be inherited and overridden because it is not final method, and neither this class is defined as final class
     void getSizeAndMaterial() {
         System.out.println("In conatiner " + this.size + " " + this.material);
     }

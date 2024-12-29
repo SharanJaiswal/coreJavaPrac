@@ -1,9 +1,6 @@
 package kk.strings.stringBufferClass;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RandomString {

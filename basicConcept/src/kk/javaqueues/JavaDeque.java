@@ -5,10 +5,22 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * Double ended queue, addition and removal can be done from both the ends.
- * Thread unsafe. Maintains insertion order. o null addition allowed.
+ * Thread unsafe. Maintains insertion order. no null addition allowed.
  */
 public class JavaDeque {
     public static void main(String[] args) {
+
+        // ArrayDeque is an implementation of Queue, which can work as Stack also. It is faster than Stack, than Stack itself; faster than LinkedList when used as Queue.
+        // Underlying array is used as a circular array. This makes the resizing happens only when there is need of the more space to store more elements.
+        /**
+         * Few methods are::
+         * offerFirst() and OfferLast() are preferred over addFirst() addLast()
+         * peekFirst() and peekLast() are preferred over getFirst() and getLast()
+         * pollFirst() and pollLast() are preferred over removeFirst() and removeLast()
+         *
+         * It also have few Stack methods:
+         * pop() and push(), which are similar to pollFirst() and offerFirst() methods
+         */
         ArrayDeque<Integer> queue = new ArrayDeque<>();
         queue.addLast(1);
         queue.addLast(5);

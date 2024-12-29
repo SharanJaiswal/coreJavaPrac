@@ -9,6 +9,8 @@ package kk.sets;
  * or smallest element of right child sub-tree (leftmost in right sub-tree).
  * Since, arrangement of element is based totally on comparison, hence element type of TreeSet must have compareTo() overridden from Comparable interface.
  * Also, compareTo() & equals() must be consistent.
+ * Internally uses TreeMap, same complexity. It canNOT store null values.
+ * We can give comparator also in the constructor of the treeSet.
  */
 
 /**

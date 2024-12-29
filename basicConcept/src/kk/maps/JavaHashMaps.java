@@ -3,19 +3,25 @@ package kk.maps;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+/**
+ * If 2 objects are giving same value of .equals() , then their .hashCode() should also give same value. Its is present as default implementation. In default implementation, .equals() compares the address of objects in the heap memory. Obj address is also used by hashCode() method.
+ * Even if we are overriding either of equals() or hashCode() methods, we must ensure that if 2 objects give same value of .equals(), then their hashCode() values should also be same, and vice-versa isNOT ALWAYS TRUE. This is the hashMap contract.
+ */
 
 /**
- * Map doesn't extend Collections. It has its own set of methods, and iterator methods.
- * Object -> Hash Function|Logic -> Hash Code (One way only)
+ * MAP DOESN'T EXTEND COLLECTION INTERFACE. It has its own set of methods, and iterator methods.
+ * Object -> Hash Function|Logic -> Hash Code (One way only) ===> (hashCode & (bucketLength - 1)) gives bucket index. If 2 hash-collision happens, then keys are compared using .equals() method.
+ * If keys found different () (ie, when .equals() give false) then entry is added as next LL node, otherwise replace existing node.
  * After hash collision, element replaces existing node with same value of equals().
- * If a certain bucket contain LL with node count > TREEIFY_THRESHOLD = 8, then that LL becomes red-black tree in O(log N), where it first sorts by hashCode(), and then by compareTo() if hash are same.
+ * If a certain bucket contain LL with node count > TREEIFY_THRESHOLD = 8, then that LL becomes red-black tree (binary tree - self-balancing tree) in O(log N), where it sorts and place nodes in tree (left-right child) by using compareTo() on keys.
  * < UNTREEIFY_THRESHOLD = 6 ==> makes LL again.
+ * Node replacement is possible when hash-collision happens and equals() gives value as true.
  *
  * NOT thread-safe; can store null key or value. NOT maintains insertion order.
  */
 public class JavaHashMaps {
     public static void main(String[] args) {
-        Map<Integer, Student> students = new HashMap<>();
+        Map<Integer, Student> students = new HashMap<>();   // We can use HashMap in LHS instead of simply using Map to get more functionality specific to HashMap
         Student stu1 = new Student("Foo", "Bar", 2, "Science");
         Student stu2 = new Student("Baar", "Baz", 1, "Commerce");
         Student stu3 = new Student("Blah", "Barrr", 3, "Arts");
@@ -28,7 +34,8 @@ public class JavaHashMaps {
 
         System.out.println(students);
 
-        System.out.println(students.get(1));
+        System.out.println(students.get(1));    // st2
+        System.out.println(students.get(null)); // stu4
 
         // null check : Both gives null. So, putting value as null in the map is not advised, as it won't give the clear picture as if key-value pair is missing or the value is null.
         students.put(200, null);
@@ -51,17 +58,22 @@ public class JavaHashMaps {
             System.out.println(stu);
         }
 
+        // Below both uses .equals() method to compare for the required existence
+        System.out.println(students.containsKey(stu1.getId()));
+        System.out.println(students.containsValue(stu2));
+
         // HashMap has a sub-interface Entry
         System.out.println("=============Map Key-Value iteration==========");   // Maps has structure called Map.Entry<K, V>
         for (Map.Entry<Integer, Student> entry:
-                students.entrySet()){
+                students.entrySet()){   // Although, map.entrySet() gives value of type Set<Map.Entry<K, V>>
+            entry.setValue(entry.getValue());   // We can do some modification if required, but better approach would be to use compute() inside this loop
             System.out.println(entry.getKey() + " ==> " + entry.getValue());
         }
 
-        System.out.println("=============Get Default Value if doesn't exists==========");
+        System.out.println("=============Get Default Value if key doesn't exists==========");
         System.out.println(students.getOrDefault(34, new Student("Sharan", "Jaiswal", 716, "CSE")));
 
-        System.out.println("=============Put K-V in Map if Key doesn't exists==========");
+        System.out.println("=============Put K-V in Map if key doesn't exists==========");
         students.putIfAbsent(897, new Student("Saint", "Sharan", 4536, "IT"));
         System.out.println(students);
 
@@ -73,10 +85,12 @@ public class JavaHashMaps {
         // If value returned is null, then that K-V is not added to map, otherwise, it will get added.
         students.computeIfAbsent(111, k -> new Student("Shrn", "Jswl", k, "CSE"));
         System.out.println(students.get(111));
+//        students.compute()  // takes key, and a BiFunction taking K,V and returning a computed value. But if Computed value is NULL, then it is removed from the map if present already. or it is NOT added in the list with (K, null) as new K,V pair.
+//        students.computeIfPresent() // does same thing but iff the key is present. If computed value is NULL, then that key value is removed from the list. Takes the BiFunction
 
         /**
-         * for HashMap, get() O(1) uses hash-code, containsKey (1) uses hash-code, put O(1)
-         * In HashMap, for on key, gives one hashcode, mapped to only one value.
+         * for HashMap, get() O(1) uses hash-code, containsKey (1) uses hash-code, put O(1). BOTH ARE AMORTIZED.
+         * In HashMap, for one key, gives one hashcode, mapped to only one value.
          */
 
 

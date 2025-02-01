@@ -23,6 +23,7 @@ public class Main {
         BigInteger A = BigInteger.valueOf(33);
         BigInteger C = BigInteger.valueOf(2147483647);  // Maximum limit that we can pass to valueOf method. Minimum is -2147483648. It takes long type as input because we are passing integer whose largest value will be the largest value of long type.
         // Consider valueOf() is taking integer value by default, so allowed value of Integers are only allowed in it. While new keyword can take String.
+//        System.out.println(new BigInteger("25467.45656"));    // throws NumberFormatException
         BigInteger B = new BigInteger("12345678923456787654");  // Constructor should be called if very large number is present. Also, when passed number is string.
 
         BigInteger D = BigInteger.TEN;

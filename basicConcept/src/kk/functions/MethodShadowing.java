@@ -17,11 +17,11 @@ public class MethodShadowing {
         x = 80; // scope will begin when value is initialized
         System.out.println(x);  // 80 - Since, name is same; hence, it is called name-masking
         int y = 100;
-        System.out.println(y);
+        System.out.println(y);  // 100
 
 //        private String str = "private parent string";   // Cannot define/declare anything private inside class method, be it same name or new different variable name.
         String str = "method local string";
-        System.out.println(str);
+        System.out.println(str);    // method local string
 
         String outer = "Sharan";
         {   // any reference variable declared inside a block, will have its scope till that block. A block is " { . . . } " . Consider the blocks are the inseparable part of the enclosing entity, here a method. Hence, we cannot redeclare variable with same name as in enclosing scope.
@@ -65,6 +65,9 @@ public class MethodShadowing {
 //            System.out.println(MethodShadowing.y);  // This won't work as y is not static member of MethodShadowding class. "y" is instance member variable of MethodShadowing class, hence needs object of MethodShadowing above. Also, enclosing class cannot access nested class members.
             System.out.println(str);    // "private parent string"
             System.out.println(MethodShadowing.this.str);   // "private parent string"
+            // Both below will throw an exception, as we are explicitly asking to give the FirstLevel's version of string, which is not present
+//            System.out.println(this.str);
+//            System.out.println(FirstLevel.this.str);
 
             // We can make outer class's object inside the inner class.
             MethodShadowing obj3 = new MethodShadowing();

@@ -13,6 +13,7 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -24,7 +25,6 @@ public class StreamProgram {
 
     private static long counter;
     private static void wasCalled() { counter++; }
-
 
     public static void main(String[] args) {
 
@@ -70,7 +70,21 @@ public class StreamProgram {
         Stream<Integer> streamIterated = Stream.iterate(40, n -> n + 2).skip(10).limit(20);  // First param is first element of stream, while Ith is i+2. Skip first 10, then generate next 20 elements in the stream.
 
 //    Since Stream<T> is generic interface, therefore, specially, only 3 primitive types to elevate unnecessary auto-boxing of int, long and double interfaces are provided IntStream, LongStream, DoubleStream.
-        IntStream intStream = IntStream.range(1, 3);    // end exclusive. For end inclusive: .rangeClosed(s,e);
+        IntStream intStream = IntStream.range(1, 3);    // end exclusive. For end inclusive: .rangeClosed(s,e); . This range is for numbers, not for generic streams of type "Stream"
+        System.out.println(IntStream.range(1, 6).boxed().collect(Collectors.toList())); // We can box the primitive streams, so that it can support the non-primitive data-type Stream methods. Eg, .collect()
+
+        IntStream.of(1, 2, 3, 4);
+        DoubleStream doubles = new Random().doubles(5);
+        System.out.println(doubles.boxed().toList());
+//        System.out.println(doubles.sum());
+//        System.out.println(doubles.min());
+//        System.out.println(doubles.max());
+//        System.out.println(doubles.average());
+//        System.out.println(doubles.summaryStatistics());
+        System.out.println(doubles.mapToInt(x -> (int) (x + 1)));
+        IntStream ints = new Random().ints(5);
+        System.out.println(ints.boxed().toList());
+
 
 //    We can instantiate a stream, and have an accessible reference to it, as long as only intermediate operations are called. Executing a terminal operation makes a stream inaccessible.
 //    To demonstrate this, we will forget for a while that the best practice is to chain the sequence of operation. Besides its unnecessary verbosity, technically the following code is valid:
@@ -214,46 +228,5 @@ public class StreamProgram {
 //        Map<Integer, List<Product>> collectorMapOfLists = productList.stream().collect(Collectors.groupingBy(Product::getPrice));
 //        Map<Boolean, List<Product>> mapPartioned = productList.stream().collect(Collectors.partitioningBy(element -> element.getPrice() > 15));
 //        Set<Product> unmodifiableSet = productList.stream().collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
-
-
-        List<Integer> list2 = Stream.iterate(1, x -> x + 1).limit(2000).toList();   // If we want to get this output in form of array, we can use .toArray() in place of .toList()
-        long startTime = System.currentTimeMillis();
-        List<BigInteger> list3 = list2.stream().map(StreamProgram::factorial).sequential().toList();    // to make stream elements available in sequence, which in this case, already is.
-        long endTime = System.currentTimeMillis();
-        System.out.println((endTime - startTime)/100 + " seconds in non-parallel stream processing");
-
-        startTime = System.currentTimeMillis();
-        list3 = list2.parallelStream().map(StreamProgram::factorial).sequential().toList();  // We used sequential here because we wanted to elements in the list to be in sequence, after they have been previously in parallel stream.
-        endTime = System.currentTimeMillis();
-        System.out.println((endTime - startTime)/100 + " seconds in parallel stream processing");
-
-        // Below we noticed that .sequential() will actually returns the stream where elements are in sequence as if they were processed sequentially. This we do, to make sequential available for further sequential processing
-        System.out.println((list2.parallelStream().map(StreamProgram::factorial).sequential().limit(200).toList())
-                .equals
-                        (list2.parallelStream().map(StreamProgram::factorial).limit(200).toList()));
-
-
-        // Cumulative sum [1, 2, 3, 4, 5] -> [1, 3, 6, 10, 15] :: where we see why parallel stream works flawlessly for only those scenarios where we don't have stateful requirements.
-        List<Integer> numbers2 = Arrays.asList(1, 2, 3, 4, 5);
-//        int sum = 0;    // since in lambda expressions, local variables used be used must be final or effectively final
-        AtomicInteger sum = new AtomicInteger(0);
-//        List<Integer> csParallel = numbers2.parallelStream().map(x -> {
-//            int i = x + sum;
-//            sum = i;
-//            return i;
-//        }).toList();
-        List<Integer> cumulativeSum = numbers2.stream().map(sum::addAndGet).toList();
-        System.out.println("Expected CS :: [1, 3, 6, 10, 15]");
-        System.out.println("Actual in parallel stream ::" + cumulativeSum);
-    }
-
-    static BigInteger factorial(int num) {
-        int i = 1;
-        BigInteger ans = BigInteger.ONE;
-        while (num != i) {
-            ans = ans.multiply(BigInteger.valueOf(num));
-            num--;
-        }
-        return ans;
     }
 }

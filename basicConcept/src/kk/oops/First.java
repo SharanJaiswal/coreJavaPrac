@@ -7,13 +7,18 @@ public class First {
     // Concrete class should have access specifier as default or public.
 
     public static void main(String[] args) {
-        for (EnumSample1 enums : EnumSample1.values()) {
+        for (EnumSample1 enums : EnumSample1.values()) {    // EnumSample1.values() gives an array of enum entries, EnumSample1[] enumValues
             System.out.print(enums.ordinal() + " ---- " + enums.toLowerCase());
         }
 
-        EnumSample1 enumValue = EnumSample1.valueOf("FRIDAY");  // it is returning enum constant
+        EnumSample1 enumValue = EnumSample1.valueOf("FRIDAY");  // it is returning enum constant. If String value doesn't match with any of the enum value, then exception will be thrown
         System.out.println(enumValue);  // FRIDAY - because, value of enums are their constants name.
         System.out.println(enumValue.name());   // FRIDAY
+
+        EnumSample1 monday = EnumSample1.MONDAY;
+        System.out.println(monday.name());  // Gives string value of the enum, the actual visible name of the enum entries
+        System.out.println(monday.ordinal());   // Gives its enum order value. Its integer by nature.
+
 
 
         System.out.println(EnumSample2.getEnumFromValue(101).name());   // MONDAY - Since custom method returns first case satisfies
@@ -57,7 +62,7 @@ enum EnumSample1 implements Inter {  //Normal Enum - CAN BE PUBLIC IF A DEDICATE
 }
 
 enum EnumSample2 {  // Enums with custom values. Needs constructor. Even user defined constructors are private implicitly. Whatever member variable, constructor method is present, it is for each constant.
-    // Think enum constants as different instantiated objects. It is wrong technically, but only for the purpose of understanding.
+    // Think enum constants as different instantiated final objects. It is wrong technically, but only for the purpose of understanding.
     // Observe that constructors are called for every constant. Also, the value is not sequential and repetitive.
     MONDAY(101, "1st day of week") {
         @Override   // Method overriding by constants

@@ -2,6 +2,10 @@ package kk;
 
 import java.util.Scanner;
 
+/**
+ * Whenever we are using switch over Enum types, we need to handle every case of the enum values of that enum class. If we don't want to, we must use default for skipped enum values in the cases.
+ * If switch on enum is implemented from within the enum class, then "switch(this) { . . . }"  will be used, as the enum values are the objects in a way of that enum class.
+ */
 public class Switch {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -49,10 +53,11 @@ public class Switch {
 //                break;
                 i = 40; // declaration of variable in any case is scoped for whole switch statement, but its value needs to be initialized if its value is getting used in every possible case(s) block path(s).
                 return i;
-            case "Orange" :
+            case "Orange" : {   // We can put the case operation statements in a block
                 System.out.println("Round Fruit");
 //                break;
                 return 50;
+            }
 //      default can be anywhere but should be accompanied by break statement if it is not at the last.
             default:
                 System.out.println("Enter valid Fruit");

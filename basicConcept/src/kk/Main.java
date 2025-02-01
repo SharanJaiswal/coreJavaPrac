@@ -16,7 +16,7 @@ public class Main {
         next() works as if internally it first checks if the character to store is non-whitespace character or not.
         If it is non-whitespace character, then it starts to store the stream of characters.
         But when it does that, it does in same manner, ie, check if next character is non-whitespace char or not.
-        Once it sees that next incoming char is whitespace char, then it stops reading. That unsorted whitespace char
+        Once it sees that next incoming char is whitespace char, then it stops reading. That unsorted whitespace char 
         then ready to be store by another input scanner. If next input stream reader is also new next(), then it will not store char until
         non-whitespace char comes, and will store until non-whitespace char continues to occur. But if there is
         nextLine() method, this will store the whitespace character as well.
@@ -34,7 +34,7 @@ public class Main {
         // These dunders cannot be placed adjacent to point in floating literals, before F or D or L, at the beginning or end of a number,
         int b = 1000000000; // 4-bytes
 //        int c = 1,000,000,000;  // wrong as commas are not allowed
-        // All floating point literals are by default of type double. So, we cannot assign only numeric floating literals to reference type of "float" without f or F. Same goes for int (default) into bytes.
+        // All floating point literals are by default of type double. So, we cannot assign only numeric floating literals to reference type of "float" without f or F. Same goes for int (default) into bytes or long or short.
         float flt = 23_456.75_01F;  // can be upper case or lower case f or F.  4-bytes
 //        float f3 = 2983.54; // Error because RHS is interpreted as double. Trying to fit in 8-bytes in 4-bytes
         double dbl = 23_456.75_01;
@@ -44,6 +44,7 @@ public class Main {
         long lng2 = 45378;  // Widening casting as RHS alone is of type int which is wide casted into long
 //        int lng3 = 45378L;  // required int, provided long
         short shrt = 34;
+        // long can be casted into the float, even though the casting is happening from 8B to 4B, is because float can represent the values in the scientific notation as well, if the range goes beyond 4B
 
         // lossy type casting, aka Narrowing
         b = (int) flt;  // happens at runtime
@@ -122,6 +123,19 @@ public class Main {
          *     & > ^ > | > && > || > ?:(R-L) > assignment(R-L) {= += -+ *= /= %= &= ^= |= <<= >>= >>>=}
          *     Comma
          */
+
+        // Binary operators are only supported by whole numbers, i.e., byte, short, int, long, and their wrapper classes.
+        int n1 = 5, n2 = 2;
+        System.out.println(n1 + "===" + n2);
+        System.out.println("5 in binary: " + Integer.toBinaryString(n1));
+        System.out.println("Negated 5 in binary: " + Integer.toBinaryString(~n1));
+        System.out.println("Signs are preserved in right shift, aka, signed right shift; while in unsigned MSB is always set as 0");
+        System.out.println("5 on left shift by 2: " + Integer.toBinaryString(n1 << n2));
+        System.out.println("-5 on left shift by 2: " + Integer.toBinaryString(-n1 << n2));
+        System.out.println("5 on right shift by 2: " + Integer.toBinaryString(n1 >> n2));
+        System.out.println("-5 on right shift by 2: " + Integer.toBinaryString(-n1 >> n2));
+        System.out.println("5 on unsigned right shift by 2: " + Integer.toBinaryString(n1 >>> n2));
+        System.out.println("-5 on unsigned right shift by 2: " + Integer.toBinaryString(-n1 >>> n2));
     }
 
     // member variable: when object is created, each object has own new copy of this member variable.
@@ -134,4 +148,5 @@ public class Main {
     // "new" keyword allocates memory in heap.
 
 //    Datatypes: 1) 8-Primitive dts;  [primitive<-unboxing- -autoboxing->wrapper ]  2) 4-Reference dts {Class, String, Interface, Array}
+
 }

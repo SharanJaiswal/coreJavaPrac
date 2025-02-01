@@ -29,18 +29,22 @@ public class GenericImplementation {
         names.add("Name 2");
 //        names.add(69);    // This will not work but adding a number to the list of Strings is possible from method printList1(), provided in its method signature we do not specify the list of some generic type.
 //        names.add(Integer.valueOf("69"));
-//        printList1(names);   // Throws error, but to make it work, we can make parameter non-generic in method signature.
+//        printList1(names);   // Throws error because we are assigning list of String to list of Object(pointing specific child to parent in generics), but to make it work, we can make parameter non-generic in method signature.
         printList2(names);
         System.out.println(names);
+//        printList3(names);    // This will give error because printList3 method is expecting list of elements of type Number or its parent type, not string.
 
         List<Integer> numbers = new ArrayList<>();
         numbers.add(10);
         numbers.add(20);
 //        printList1(numbers); // Throws error, but to make it work, we can make parameter non-generic in method signature.
         printList2(numbers);
+//        printList3(numbers);    // expects list of Number but passing list of Integers. Throws error because we are assigning list of Integers to list of Number(pointing specific child to parent in generics)
 
 
-        // In similar way, it works with reference variable of generic type; can reference any object of specific generic type but restricts write operation, in below 2 lines
+        // In similar way, in addition to generic type placeholders T, ? also works with reference variable of generic type; can reference any object of unknown generic type but restricts write operation, in below 2 lines.
+        // Hence, because of this, ? allows only write operation. ? gets converted to Object in bytecode. T can allow the write operation. This fact about "?" is true only when there is single "?" w/o any extends or super keyword, which makes uncertain the data-type for data-structure modification.
+        // Hence, when using only "?" w/o extends|super, use it for only read operations and treating the objects as type of Object. Do not use only "?" without extends|super keyword for write operations
         List<?> temp = names;
         temp = numbers;
         Object o = temp.get(0);
@@ -72,12 +76,18 @@ public class GenericImplementation {
     // All it can do is check at compile time
     private static void printList2(List<?> itrList) {   // Also, <? extends Number> to restrict to types that extends Numbers; Upper-Bound Wildcard
         itrList.forEach(System.out::println);   // reading operation is allowed with wildcard in generics
-//        itrList.add("Foo"); // Writing operation is not allowed with wildcards in generics because writing could hamper the integrity of the type.
-//        Eg, in case of list of numbers, String is passed.
+//        itrList.add("Foo"); // Writing operation is not allowed with only wildcards w/o extends|super keywords in generics because writing could hamper the integrity of the type.
+//        Eg, in case of reference type list of numbers in method param, actual list of String is passed. Below is another method for the same.
 
         // Read operation is kind of behaving like list of Java Object
         Object o = itrList.get(0);
         // Number n = itrList.get(0);   // In case of Upperbound
+    }
+
+    private static void printList3(List<? super Number> itrList) {
+        itrList.forEach(System.out::println);
+//        itrList.add("Sharan");  // cannot add because this method only knows that itrList is list of elements of type Number or its parent type, not string.
+        itrList.add(43);    // Now here, "?" with extends|super keywords allows write operations because here we have restricted the allowed type elements|objects that culd be accepted in write operation, mitigating the risk of adding anything to the list, with element of any type.
     }
 }
 

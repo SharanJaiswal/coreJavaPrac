@@ -85,7 +85,7 @@ class FunctionalInterfaceTypesDemo {
     DoublePredicate doublePredicate = value -> value > 0D;
 
     // Function takes Generic types where last type is return type and before that all are input argument types in the same order.
-    Function<Integer, String> function = Object::toString;  // integer.toString()
+    Function<Integer, String> function = Object::toString;  // integer.toString() ====== We could have also written Integer::toString, but then it's ambiguous to select which version among toString() and toString(int)
     IntFunction<String> intFunction = value -> Integer.valueOf(value).toString();
     LongFunction<String> longFunction = value -> Long.valueOf(value).toString();
     DoubleFunction<String> doubleFunction = value -> Double.valueOf(value).toString();

@@ -143,3 +143,34 @@ enum EnumSample2 {  // Enums with custom values. Needs constructor. Even user de
     public abstract void absMet();    // If enums have abstract method, then it need to be overridden by every constant because it will be part of every constant.
 }
 
+//enum Day {
+//    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+//
+//    public void performAction() {
+//        switch (this) {
+//            case MONDAY:
+//                System.out.println("Start the week with energy!");
+//                break;
+//            case TUESDAY:
+//                System.out.println("Keep the momentum going!");
+//                break;
+//            case WEDNESDAY:
+//                System.out.println("Midweek hustle!");
+//                break;
+//            case THURSDAY:
+//                System.out.println("Almost there!");
+//                break;gsdfdfdfdfdfddfdfdddfffdfdfdfdfd
+//            case FRIDAY:
+//                System.out.println("Finish strong!");
+//                break;
+//            case SATURDAY:
+//                System.out.println("Relax and recharge!");
+//                break;
+//            case SUNDAY:
+//                System.out.println("Prepare for the week ahead!");
+//                break;
+//            default:
+//                System.out.println("Invalid day!");
+//        }
+//    }
+//}

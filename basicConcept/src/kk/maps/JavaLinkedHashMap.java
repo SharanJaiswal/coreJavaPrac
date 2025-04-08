@@ -11,7 +11,7 @@ import java.util.Map;
  * It uses Double Linked List. Where each node has 2 more fields, before and after which stores order of insertion.
  * forEach method of LinkedHashMap iterates over insertion order by default, but if access order is used while calling the constructor, then it iterated using the access order.
  * Node replacement is possible when hash-collision happens and equals() gives value as true. This will not, however, alter the insertion order of the nodes when same key is trying to get inserted.
- * Head & Tail is also maintained in this LinkedHashMap. Entry DS has hash, key, value, next, before, after; where before and after are extra, along with head and tail. Head and tail are not part of the Entry data structure.
+ * Head & Tail is also maintained in this LinkedHashMap. Entry DS has hash, key, value, next, previous, before, after; where before and after are extra, along with head and tail. Head and tail are not part of the Entry data structure.
  *
  * Time complexity is same as of hashmap. O(1) amortized; O(N) worst; O(Log N) in tree case.
  * Not threadsafe, nor its threadsafe version available. but we can use Collections util class.

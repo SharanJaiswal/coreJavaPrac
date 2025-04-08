@@ -18,6 +18,7 @@ public class JavaIdentityHashMap {
 //        By default, preferred hashCode() method is taken from the class of which obj is in context. If absent, then its subsequent parent is considered for hashCode(). If nothing is present, IdentityHashCode() ie, Object.hashCode() computes mem-loc.
 //        In case, if IdentityHashCode() also gives the same hashCode, then collision gets resolved using operator "==" instead of .equals() method
 //        But if, We use IdentityHashMap, then for calculation of hashCode of key always the Object.hashCode() will be called, irrespective of the overridden hashCode() method in the <? super key> classes.
+//        When we say obj.hashCode() the content of the obj is considered, on the other hand in System.identityHashCode(obj) the content are not taken in consideration, thus identityHashCode for two different String, int(with same value) will be the different but Hashcode will be the same.
 
         Map<String, Integer> identityHashMap = new IdentityHashMap<>();
         identityHashMap.put(key1, 1);

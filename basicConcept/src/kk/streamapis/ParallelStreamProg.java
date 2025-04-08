@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Concurrent streams in multi-core CPU. Uses "spliterator" function to split data into multiple chunks; & for task submission and parallel processing uses Fork-Join pool technique.
+ * Concurrent streams in multi-core CPU. Uses "splititerator" function to split data into multiple chunks; & for task submission and parallel processing uses Fork-Join pool technique.
  */
 public class ParallelStreamProg {
     public static void main(String[] args) {

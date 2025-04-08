@@ -20,7 +20,6 @@ public class JavaVectors {
 
         System.out.println(vec.get(0));
         vec.set(1,45);  // .set(idx, ele)
-//        remove(idx|ele);
         System.out.println(vec.size());
         System.out.println(vec.isEmpty());
 //        vec.contains(ele) {true if object element is present}     we can also provide vec.containsAll(collectionItem)    {true if all the ele form collectionItem is present }
@@ -28,6 +27,7 @@ public class JavaVectors {
         System.out.println(vec.get(0));
 //        vec.clear();    // to just remove all the elements from the vector.
 
+//        remove(idx|ele);
 //        vec.remove(0);    // We can also use remove(element), remove()
 //        vec.removeAll(CollectionItem)   // removes the common item
 //        vec.removeIf(Predicate)

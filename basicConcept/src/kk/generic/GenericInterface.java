@@ -7,7 +7,7 @@ import java.util.function.*;
  * e.g. Runnable, Comparable, ActionListener, Callable, etc.
  * Instantiate FIs by lambdas as a good practice.
  * @FunctionalInterface annotation is optional. But if it is there, then that interface cannot have more than one in count of abstract method in that interface.
- * all other type of methods in functional interface are allowed. Its just that total count of abstract method in functional interface cannot exceed 1.
+ * all other type of methods, which does not need object specifically to call, in functional interface are allowed. Its just that total count of abstract method in functional interface cannot exceed 1.
  * Lambda expressions can be used to represent the instance of functional interface.
  */
 public interface GenericInterface<T> {

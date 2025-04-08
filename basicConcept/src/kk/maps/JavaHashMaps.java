@@ -5,7 +5,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 /**
  * If 2 objects are giving same value of .equals() , then their .hashCode() should also give same value. Its is present as default implementation. In default implementation, .equals() compares the address of objects in the heap memory. Obj address is also used by hashCode() method.
- * Even if we are overriding either of equals() or hashCode() methods, we must ensure that if 2 objects give same value of .equals(), then their hashCode() values should also be same, and vice-versa isNOT ALWAYS TRUE. This is the hashMap contract.
+ * In hash based collections, even if we are overriding either of equals() or hashCode() methods, we must ensure that if 2 objects give same value of .equals(), then their hashCode() values should also be same, and vice-versa.
+ * When there is NOT the case of hash based collections, it is NOT ALWAYS required that when we override hashCode() we need to override equals(). But in any case, if equals() is overridden, hashCode() needs to be overidden, to maintain the integrity of equals() and hashCode() contract; as equals() uses hashCode() in its default behavior, and we need to continue the same behavior.
  */
 
 /**
@@ -80,12 +81,19 @@ public class JavaHashMaps {
         System.out.println("=============for Each==========");
         students.forEach((key, value) -> System.out.println(key + "==>" + value));
 
-        System.out.println("=============Map computeIfAbsent==========");   // Also look compute, computeIfPresent, computeIfAbsent
-        // For a given key, if kv- pair is absent or v is null, then the same key will be a param to lambda which can return the value of type <? extends V> (in general).
-        // If value returned is null, then that K-V is not added to map, otherwise, it will get added.
-        students.computeIfAbsent(111, k -> new Student("Shrn", "Jswl", k, "CSE"));
+        System.out.println("=============Map computeIfAbsent==========");   // All 3 returns object of value. Modifies underlying map in certain cases. Also look compute, computeIfPresent, computeIfAbsent
+        // For a given key, if kv- pair is absent or v is null, then the same key will be a param to lambda which can return the value of type <? extends V> (in general). This key and computed value will be added to map, ie modify the map. If computed value is null, then this new KV will not get added to map because computed V is null.
+        // If for given key, KV is present and its V is not null, then irrespective of the computed value, the original KV will not get changed in the map.
+        Student student = students.computeIfAbsent(111, k -> new Student("Shrn", "Jswl", k, "CSE"));    // it returns computed non-null value, and modifies map by adding KV in map. Also returns the computed value.
+        students.computeIfAbsent(1, k -> new Student("Shrrrrrrrrrn", "Baz", 1, "CSE")); // orig KV is present where V is not null. So computed value will not replace original V in KV in map.
+        students.computeIfAbsent(200, k -> new Student("Shrrrrrrrrrn", "Baz", 1, "CSE"));   // Orig KV present with V as null. So computed V will replace V in map
+        students.computeIfAbsent(2, k -> null);
         System.out.println(students.get(111));
-//        students.compute()  // takes key, and a BiFunction taking K,V and returning a computed value. But if Computed value is NULL, then it is removed from the map if present already. or it is NOT added in the list with (K, null) as new K,V pair.
+        System.out.println(students.get(1));
+        System.out.println(students.get(200));
+        System.out.println(students.get(2));    // Does not drop original KV from map if computed value gives null. Unlike other 2 compute() and computeIfPresent() where if computed V is null, then orig KV is dropped from map.
+
+//        students.compute()  // takes key, and a BiFunction taking K,V and returning a computed value. But if Computed value is NULL, then orig KV is removed from the map if present already. or it is NOT added in the list with (K, null) as new K,V pair.
 //        students.computeIfPresent() // does same thing but iff the key is present. If computed value is NULL, then that key value is removed from the list. Takes the BiFunction
 
         /**

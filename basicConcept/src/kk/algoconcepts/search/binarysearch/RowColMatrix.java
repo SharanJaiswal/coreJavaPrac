@@ -17,7 +17,7 @@ public class RowColMatrix {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-        System.out.println(Arrays.toString(search2(arr, 6)));   // log(row) + log(col)
+        System.out.println(Arrays.toString(search2(arr, 1)));   // log(row) + log(col)
     }
 
     /*
@@ -53,6 +53,16 @@ public class RowColMatrix {
         int rEnd = rows - 1;
         int cMid = cols / 2;
 
+        /**
+         * Now, below condition in the while loop will ensure that rStart and rEnd will be consecutive to each other, after the end of the loop.
+         * Later we see that we have performed linear search on the middle column only to see the occurrence of the target.
+         * Later we see that we have performed binary search on sub-array left of first element of the mid-col; then binary-search on sub-array of right of the first element of mid-col; and same for second element of the mid-col.
+         * If, rStart is updated during the process in while loop, then there would have been no need to compare target with first element of the mid-col, also no need to perform binary search on the sub-array to the left of first element of the mid-col
+         * If, rEnd is updated during the process in while loop, then there would have been no need to compare target with second|last element of the mid-col, also no need to perform binary search on the sub-array to the right of second|last element of the mid-col
+         * We anyway are still performing these 4 operations because there will be cases where rStart or rEnd might not be updated. Such cases would be either when matrix is having only 2 rows. In that case while loop won't even run, and the possibility of target on these 4 cases which could be skipped otherwise, can happen.
+         * Similarly, if target is on either first row or last row. In such cases, tagret could be in the left sub-array of the first element of the mid-col; or could be in the right sub-array of the last element of the mid-col, of the original matrix.
+         */
+
         // run the loop till 2 rows are remaining
         while (rStart < (rEnd - 1)) {   // while this is true, it will have more than 2 rows
             int mid = rStart + (rEnd - rStart) / 2;
@@ -68,7 +78,7 @@ public class RowColMatrix {
         }
 
         // now we have 2 rows. Check whether the target is in the col of 3 rows
-        if (matrix[rStart + 1][cMid] == target) {
+        if (matrix[rStart][cMid] == target) {
             return new int[]{rStart, cMid};
         }
         if (matrix[rStart + 1][cMid] == target) {
@@ -86,7 +96,7 @@ public class RowColMatrix {
         }
 
         // Search in 3rd half sorted array
-        if (target <= matrix[rStart][cMid - 1]) {
+        if (target <= matrix[rEnd][cMid - 1]) {
             return binarySearch(matrix, rStart + 1, 0, cMid - 1, target);
         }
 

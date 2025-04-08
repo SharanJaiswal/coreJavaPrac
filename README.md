@@ -2,7 +2,7 @@
 
 2. package [kk] : Switch, TODO: Enums, Objects
 
-3. package [kk.strings] : strings,CompareStrings,StringBuilderVsString TODO: StringUtils class methods, unicodes of few characters; String Obj.split() method with regex; More of StringBuilder; String format.
+3. package [kk.strings] : strings,CompareStrings,StringBuilderVsString TODO: StringUtils class methods, unicodes of few characters; String Obj.split() method with regex; More of StringBuilder; String format; REGEX IN JAVA
 
 4. package [kk.numbershandling] : Main, Factorial, TODO: Integer object making using new keyword, methods in BigDecimal and BigInteger and DecimalFormat
 
@@ -42,7 +42,7 @@
 
 22. package [kk.strings.stringBufferClass] : Main, RandomString, TestingRandFloat. TODO: StringBuffer, threads-safe and non-thread-safe
 
-23. package [kk.oops] : First, Students, SwapInteger, AGC, StaticExample, StaticBlock, TODO: destructors; AGC working mechanism
+23. package [kk.oops] : First (Enum), Students, SwapInteger, AGC, StaticExample, StaticBlock, TODO: destructors; AGC working mechanism
 
 24. package [kk.oops] : FinalKeyword - Singleton
 

@@ -7,8 +7,8 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
- * TreeMap is implementing interface SortedMap which ensures that nodes are in sorted order. SortedMap is extending interface Map.
- * TreeMap is also implementing NavigableMap which provides numerous utilities to navigate the nodes easily.
+ * TreeMap is implementing interface NavigableMap which extends interface SortedMap, which ensures that nodes are in sorted order. SortedMap is extending interface Map.
+ * TreeMap since implementing NavigableMap, hence provides numerous utilities to navigate the nodes easily.
  * Nodes are sorted according to the natural ordering of keys or by the Comparator provided while calling constructor. Natural Ordering is compareTo() method from Comparable<> interface.
  * Providing Comparator is different thing but works.
  * Based on red-Black binary tree (Self-Balancing binary search tree).
@@ -42,10 +42,10 @@ public class JavaTreeMap {
         // Below methods are specific to the SortedMap interface
         System.out.println(map1.firstKey());
         System.out.println(map1.lastKey());
-        System.out.println(map1.headMap(13));   // print all the map entry whose key is less than the given key, excluding that key
+        System.out.println(map1.headMap(13));   // print all the map entry whose key are towards the left of the given key, excluding that key
         System.out.println(map1.headMap(4));
         System.out.println(map1.headMap(99));
-        System.out.println(map1.tailMap(13));   // all map entries staring from this key, including this key map entry
+        System.out.println(map1.tailMap(13));   // all map entries towards right staring from this key, including this key map entry
         System.out.println(map1.tailMap(4));
         System.out.println(map1.tailMap(99));
 

@@ -48,8 +48,8 @@ public class CustomArrayListGeneric<T> {    // public class CustomArrayListGener
 
     private void resize() {
         int idx = 0;
-        T[] temp = (T[]) new Object[this.data.length * 2];
-//        T[] temp = (T[]) Array.newInstance(Object.class, this.data.length * 2);
+//        T[] temp = (T[]) new Object[this.data.length * 2];
+        T[] temp = (T[]) Array.newInstance(Object.class, this.data.length * 2);
         for (T ele : this.data) {
             temp[idx++] = ele;
         }

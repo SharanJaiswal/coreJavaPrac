@@ -44,14 +44,15 @@ public class GenericsRuntimeCheck {
         // Replicating the above with Array data type
         String[] namesArray = new String[5];
         addToArray(namesArray, "Name1");
-        incorrectAddToArray(namesArray, 10);
+        incorrectAddToArray1(namesArray, 10);
+        incorrectAddToArray2(namesArray, 10);
         String anotherName = namesArray[0];
         /**
          * The above situation gives runtime error but unlike giving it at place just above, it gives it in method incorrectAddToArray. It is because in that method, at runtime, java
          * knows that an array reference variable which is parameter, refers to an Array of String type. Thus, at runtime there is an awareness of type of array.
          * Hence, when we are assigning an integer value to an element of string array, it throws an error.
          *
-         * We can visualize it as, in byte code, "Arraylist<DT>" will be converted as "Arraylist", bytecode will concern if its "Arraylist" type or not.
+         * We can visualize it as, in byte code, "Arraylist<DT>" will be converted as "Arraylist", bytecode will only concern if its of "Arraylist" type or not.
          * But in case of Array, "DT[]" will be subject of concern, ie, each element of DT[] will be of type DT which could only store/refer data/object of type DT or its subsequent children.
          */
     }
@@ -68,7 +69,12 @@ public class GenericsRuntimeCheck {
         namesArray[0] = name1;
     }
 
-    private static void incorrectAddToArray(Object[] namesArray, Integer i) {
+    private static void incorrectAddToArray1(Object[] namesArray, Integer i) {
         namesArray[0] = i;
     }
+
+    private static void incorrectAddToArray2(Object[] namesArray, Object i) {
+        namesArray[0] = i;
+    }
+
 }

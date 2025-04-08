@@ -17,7 +17,7 @@ import java.util.LinkedList;
  */
 public class linkList {
     public static void main(String[] args) {
-        LinkedList<Integer> integerLinkedList = new LinkedList<>(); // better we write LinkedLit in the LHS. If we reference it using type List, then, some methods will not be recognized as they are specific to the linked List.
+        LinkedList<Integer> integerLinkedList = new LinkedList<>(); // better if we write LinkedList in the LHS. If we reference it using type List, then, some methods will not be recognized as they are specific to the linked List.
         integerLinkedList.add(1);
         integerLinkedList.add(2);
         integerLinkedList.add(3);

@@ -1,6 +1,7 @@
 package kk.generic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LowerBoundGenerics {
@@ -22,6 +23,13 @@ public class LowerBoundGenerics {
         List<Number> numbers = new ArrayList<>();
         addToList1(numbers, 100);
         addToList2(numbers, 100);
+
+        ArrayList<Integer> arrayListInt = new ArrayList<>(); arrayListInt.add(1); arrayListInt.add(2); arrayListInt.add(3);
+        ArrayList<Double> arrayListDouble = new ArrayList<>(); arrayListDouble.add(1.1); arrayListDouble.add(2.1); arrayListDouble.add(3.1);
+        LowerBoundGenerics lowerBoundGenerics = new LowerBoundGenerics();
+//        lowerBoundGenerics.method3(arrayListInt, arrayListDouble);  // error because both the array does not contain elements of same type. Below contains same type of elements.
+        lowerBoundGenerics.method3(arrayListInt, arrayListInt);
+        System.out.println(arrayListInt);
     }
 
     private static void printNumbers(List<? extends Number> numbers) {
@@ -60,5 +68,6 @@ public class LowerBoundGenerics {
         // If this was a static method, then there was no need to add "<T>" beside this class name at the top as static methods can be invoked w/o object as " ClassName.<T1, T2, ....>methodName(param1, param2, ...) " =======. This <T1, T2, ....> could be avoided in cases, and will be auto rendered by compiler. This phenomenon is called "Type Inference".
         // In this, as we have used generics, we can be assured that both the parameters, i.e., List of same type.
         // We cannot use "super" keyword in place of "extends" keyword with generics. For that we need to go with wildcards.
+        list1.addAll(list2);
     }
 }

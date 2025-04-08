@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 /**
  * introduced in java 8. Replaces over need of loops and boolean condition in coded forms. Process collection of data in a functional and declarative manner. Simplify data processing. Embrace Functional programming.
- * Improve readability and Maintainability. Enable easy Parallelism, ie, with explicitly dealing with parallel programming on our own, it can deal with it automatically.
+ * Improve readability and Maintainability. Enable easy Parallelism, ie, without explicitly dealing with parallel programming managed by ourselves, it can deal with it automatically on its own.
  */
 public class StreamProgram {
 
@@ -74,14 +74,14 @@ public class StreamProgram {
         System.out.println(IntStream.range(1, 6).boxed().collect(Collectors.toList())); // We can box the primitive streams, so that it can support the non-primitive data-type Stream methods. Eg, .collect()
 
         IntStream.of(1, 2, 3, 4);
-        DoubleStream doubles = new Random().doubles(5);
-        System.out.println(doubles.boxed().toList());
+        DoubleStream doubles = new Random().doubles(5); // [0,1)]
+//        System.out.println(doubles.boxed().toList());
 //        System.out.println(doubles.sum());
 //        System.out.println(doubles.min());
 //        System.out.println(doubles.max());
 //        System.out.println(doubles.average());
 //        System.out.println(doubles.summaryStatistics());
-        System.out.println(doubles.mapToInt(x -> (int) (x + 1)));
+        System.out.println(doubles.mapToInt(x -> (int) (x + 1)).boxed().toList());
         IntStream ints = new Random().ints(5);
         System.out.println(ints.boxed().toList());
 

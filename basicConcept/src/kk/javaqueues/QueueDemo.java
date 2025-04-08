@@ -10,7 +10,7 @@ public class QueueDemo {
         // Queue is an interface which has 2 primary implementations - LinkedList and ArrayDeque. LinkedList is used for better write|add nodes, while ArrayDeque is used for read operations prominent operations.
         // Priority queue is just another queue with special requirement of element ordering.
         LinkedList<Integer> list = new LinkedList<>();
-        list.addLast(1);    // enque    ----  add and addLast works asame for the given LinkedList
+        list.addLast(1);    // enque    ----  add and addLast works same for the given LinkedList
         list.addLast(2);    // enque
         list.addLast(3);    // enque
         System.out.println(list);

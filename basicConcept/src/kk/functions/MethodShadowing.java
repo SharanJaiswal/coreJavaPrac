@@ -8,7 +8,7 @@ public class MethodShadowing {
     private String str = "private parent string";
 
     public static void main(String[] args) {    // Although methods are part of class, but consider them as the loosly wired with class, not actually the inseparable part of class. Hence, we can declare variables with same name here as it is in class level.
-        // we can declare variables again in nested scope which are declared in the parent scope.
+        // we can declare variables again in nested scope which are declared in the parent scope, provided the nested scope|block has some label to identify, eg class methods; not simply blocks.
         // For shadowing continued... here it is shadowing the variable "x" in the main method enclosing scope
         // Testing below 3 which are same as above-mentioned 3 at class level
 
@@ -26,6 +26,7 @@ public class MethodShadowing {
         String outer = "Sharan";
         {   // any reference variable declared inside a block, will have its scope till that block. A block is " { . . . } " . Consider the blocks are the inseparable part of the enclosing entity, here a method. Hence, we cannot redeclare variable with same name as in enclosing scope.
             String inner = "Jaiswal";
+//            String outer;   // "outer" is already defined and present in this scope, hence can't be redefined; because this block scope is not labelled which is tightly coupled with the method.
             outer = inner;
             // both same as writing outer=inner;
 
@@ -42,6 +43,7 @@ public class MethodShadowing {
         MethodShadowing obj1 = new MethodShadowing();
         FirstLevel firstLevel = obj1.new FirstLevel();  // We can also write type of reference variable as "MethodShadowing.FirstLevel" which is recommended.
         firstLevel.printNum(56);
+        firstLevel.main(null);
     }
 
     /**
@@ -66,6 +68,7 @@ public class MethodShadowing {
             System.out.println(str);    // "private parent string"
             System.out.println(MethodShadowing.this.str);   // "private parent string"
             // Both below will throw an exception, as we are explicitly asking to give the FirstLevel's version of string, which is not present
+            // Above 2 lines makes us understand that just accessing variable "str" will first internally resolve at FirstLevel's level method scope, then class variable "str". When not found then FirstLevel's static scope, and then at last in the enclosing scope.
 //            System.out.println(this.str);
 //            System.out.println(FirstLevel.this.str);
 

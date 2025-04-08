@@ -28,7 +28,7 @@ public class Main {
         System.out.println(input.nextLine());
 
         // byte size of primitive data types (byte(1B)->short.   char(2B)->int.    short(2B)->int(4B)->long(8B)->float(4B)->double(8B),boolean) // Arrow indicates widening
-        // Java is strongly typed. Static typing. int type of variable can only contain int value, decided and checked at compile time. (Dynamic type is observed in python, where a=10, but can be a="Sharan".)
+        // Java is strongly|static typed. int type of variable can only contain int value, decided and checked at compile time. (Dynamic type is observed in python, where a=10, but can be a="Sharan".). Expression type is also checked for compatibility. This avoids runtime errors.
         // Before throwing an error when type doesn't match with the value, it checks and tries to do type conversion, internally or via casting. But casting happens at runtime.
         int a = 1_0_0_0_00_0_000;  // rendered as below var 'b', Cannot be scanner input in this form. We can place underscore anywhere in the number, even with floating-points also.
         // These dunders cannot be placed adjacent to point in floating literals, before F or D or L, at the beginning or end of a number,

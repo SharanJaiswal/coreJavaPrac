@@ -105,7 +105,7 @@ public class OuterClass {
 //                i++;  // Updating this asynchronously will make "i" in enclosing scope out-of-sync.
             }
         }
-//        i=40; // This line will create compilation error inside class Foo.
+//        i=40; // This line will create compilation error inside class Foo. Because, anything that has been captured from local scope to inside the block which can be accessed independently w/o depending on the enclosing local scope, that should not be changed from inside or outside of block to avoid synchronization issues. In cases where mutation does not give error, but avoid these practices because in parallel processing mutation will give error.
 //        j=30;   // we cannot change the value of this final variable.
 
         Foo f = new Foo();
@@ -125,5 +125,6 @@ public class OuterClass {
 
     /**
      * https://www.baeldung.com/java-lambda-effectively-final-local-variables
+     * https://www.youtube.com/watch?v=k7ryJslpmdM&ab_channel=CodeEdx
      */
 }

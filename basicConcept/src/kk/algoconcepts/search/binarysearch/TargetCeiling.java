@@ -1,5 +1,5 @@
 package kk.algoconcepts.search.binarysearch;
-// to find the first smallest element's index whose element is >= target in ascending sorted array
+// to find the first smallest element's index where that element is >= target in ascending sorted array
 // It is not required that target must be present in the array. There could be cases where target is not present in the array, still we can get the answer.
 // eg, if target < arr[0], then answer is arr[0]; if arr[0]<target<arr[max_idx], where target element is not in arr, then answer will surely be one element among all array elements;
 // For case where target> arr[max_idx], answer is not possible
@@ -30,12 +30,33 @@ public class TargetCeiling {
         }
         return targetIdx;
     }
-}
 
-/*
+    /*
 FOR FLOOR:
 If we need to find the largest floor of target, then when condition hits where target>arr[mid], we take this mid as potential index, and search in subarray right of mid.
 If condition won't be satisfying in right subarray, then we will be selecting leftmost subarray of this right subarray mentioned above in consecutive iteration, until loop breaks.
 Hence, will return the potential index.
 // when loop breaks, and we are ensured that condition will satisfy in array, we can send end. As at this loop breaking point end will hold same index value as potential index
  */
+    public static int findFloorElement(int[] arr, int target) {
+        int targetIndex = -1;
+        if (arr == null || arr.length == 0) {
+            return targetIndex;
+        } else {
+            int start = 0, end = arr.length - 1, mid;
+            while (start <= end) {
+                mid = start + (end - start) / 2;
+                if (arr[mid] == target) {
+                    return mid;
+                } else if (target > arr[mid]) {
+                    targetIndex = mid;
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+        return targetIndex;
+    }
+
+}

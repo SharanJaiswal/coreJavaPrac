@@ -1,5 +1,5 @@
 package kk.exceptionhandling;
-// Exceptions are used to handle mostly runtime errors, but less compile time errors. They are expensive if not handled cuz they look to get caught unless they get caught in upstacks.
+// Exceptions are used to handle mostly runtime errors, but less compile time errors. They are expensive if not handled cuz they look to get caught unless they get caught down in call stacks, ie, caller methods.
 // catch block are optional, there could be try{ [t-[...c]-[f] }-[... catch]-[finally]. If catch block is not mentioned, then that method should mention "throws Exception..."
 // catch makes sure that program will continue to run the next set of instruction, after the part where exception is thrown, i.e., in try block. eg, try catch in loop will complete all iterations if any iteration goes in catch block.
 // finally doesn't get executed on Error, but executed on exceptions.
@@ -17,8 +17,8 @@ public class Main {
             }
             // Inside try block, or any block, we can have nested try-catch-finally block.
 
-            // If we had called any method from this try block and that method had thrown an exception, then if that exception had been handled there in downstream, then here, this catch
-            // block will not get invoked. Otherwise, any of the below catch block would have been invoked. In that case where exception is not handled inside the downstream method,
+            // If we had called any method from this try block and that method had thrown an exception, then if that exception had been handled there UP in call stack, then here, this catch
+            // block will not get invoked. Otherwise, any of the below catch block would have been invoked. In that case where exception is not handled inside the downstream method, ie UP in call stack,
             // the method signature will append "throws {ExceptionClassName}" after parenthesis containing parameters of the method. If exception is handled in method, then no need to append.
         } catch (MyException | ArithmeticException e) {     // Multi-catch exception block must have disjoint exceptions
 //            throw e;    // we can again throw

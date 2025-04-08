@@ -43,7 +43,7 @@ public class GenericImplementation {
 
 
         // In similar way, in addition to generic type placeholders T, ? also works with reference variable of generic type; can reference any object of unknown generic type but restricts write operation, in below 2 lines.
-        // Hence, because of this, ? allows only write operation. ? gets converted to Object in bytecode. T can allow the write operation. This fact about "?" is true only when there is single "?" w/o any extends or super keyword, which makes uncertain the data-type for data-structure modification.
+        // Hence, because of this, ? allows only read operation. ? gets converted to Object in bytecode. T can allow the write operation. This fact about "?" is true only when there is single "?" w/o any extends or super keyword, which makes uncertain the data-type for data-structure modification.
         // Hence, when using only "?" w/o extends|super, use it for only read operations and treating the objects as type of Object. Do not use only "?" without extends|super keyword for write operations
         List<?> temp = names;
         temp = numbers;
@@ -87,7 +87,8 @@ public class GenericImplementation {
     private static void printList3(List<? super Number> itrList) {
         itrList.forEach(System.out::println);
 //        itrList.add("Sharan");  // cannot add because this method only knows that itrList is list of elements of type Number or its parent type, not string.
-        itrList.add(43);    // Now here, "?" with extends|super keywords allows write operations because here we have restricted the allowed type elements|objects that culd be accepted in write operation, mitigating the risk of adding anything to the list, with element of any type.
+        itrList.add(43);    // Now here, "?" with extends|super keywords allows write operations because here we have restricted the allowed type elements|objects that could be accepted in write operation, mitigating the risk of adding anything to the list, with element of any type.
+        itrList.add(943.15);
     }
 }
 

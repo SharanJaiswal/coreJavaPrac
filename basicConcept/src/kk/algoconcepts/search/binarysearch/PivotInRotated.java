@@ -120,4 +120,70 @@ public class PivotInRotated {
         }
         return -1;
     }
+
+    // Below 2 are to find target in rotated array, without first finding the pivot
+    static int targetInNonDuplicatedRoatated(int[] arr, int target) {
+        int start = 0, end = arr.length - 1, mid;
+        while (start <= end) {
+            mid = start + ((end - start) >> 1);
+            if (arr[mid] == target) {
+                return mid;
+            }
+            // Next approach would be, to find the side where target could exist. Since it is rotated array, we cannot simply check mid with its neighbours to predict the sorted side of the array. So we compare mid with start and end elements, and then we'll 2 paths. First, to check if target exists in sorted part and then proceed with it. Else, proceed with the unsorted part.
+            else if (mid < end && arr[mid] < arr[end]) {   // Same logic as above, to first check mid with end, and not with start. There are no duplicates AND array in context will not have 1 element at this else-if part(it'll be handled in first if case), hence I didn't assume the element at mid and end could be equal.
+                // Inside here, second half is sorted half. Now we check if target lies within this sorted half. If yes, we continue with sorted search space, else with unsorted search space.
+                if (arr[mid] < target && target <= arr[end]) {  // Here, we know that at this point target element cannot be equal to mid element, but might be equal to end element.
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                // Inside here, first half is sorted. So we check if target lies in sorted half. If yes then continue with sorted search space, else continue with unsorted search space.
+                if (arr[start] <= target && target < arr[mid]) {    // at this point, target will not be equal to mid element but might be equal to start element.
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    static boolean ifTargetInDuplicatedRotated(int[] arr, int target) {     // It is NOT possible from binary search to directly find the index of a target in a rotated duplicated array. But we can check if it exists or not.
+        int start = 0, end = arr.length - 1, mid;
+        while (start <= end) {
+            mid = start + ((end - start) >> 1);
+            if (arr[mid] == target) {
+                return true;
+            }
+            // Now, there could be case where {10, 10, 10, 10, 1, 2, 10} mid and end are equal and target is 1, and when we go to find the sorted half of and array by first comparing mid element with end element, and then find the potential side in which target lies, we could end up selecting wrong half into consideration for further iterations. Because, {10, 1, 2, 10, 10, 10, 10, 10} could be the case also.
+            // So, to decide which half is sorted array, there has to be the case where below condition should hold false.
+            else if (arr[start] == arr[mid] && arr[mid] == arr[end]) {
+                if (arr[start] == target) {
+                    return true;
+                }
+                start++;
+
+                if (arr[end] == target) {
+                    return true;
+                }
+                end--;
+            } // Now that we have case where we can easily identify which part is sorted, we will perform that below:
+            else if (arr[mid] < arr[end] || (arr[mid] == arr[end] && arr[start] > arr[mid])) {
+                // Now we are in a sorted space which is second half. Check where target lies, in which half.
+                if (arr[mid] < target && target <= arr[end]) {  // check if target is in sorted part
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                if (arr[start] <= target && target < arr[mid]) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            }
+        }
+        return false;
+    }
 }

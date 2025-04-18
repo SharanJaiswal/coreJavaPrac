@@ -18,6 +18,6 @@ public class RangeXOR {
         if (n % 4 == 2){
             return n + 1;
         }
-        return 0;
+        return 0;   // for n%4==3
     }
 }

@@ -40,6 +40,9 @@ public class RowColMatrix {
         return new int[] {-1, -1};
     }
 
+    /**
+     * Another approach is by treating this 2D as 1D. Tot elements = n*m. MaxIdx = (n*m - 1). Conversion of 1D idx to 2D idx as : row=(1D idx)/n; col=(1D idx)%n; In both operand is col ie 'n'.
+     */
     // Array is sorted in row-order
     static int[] search2(int[][] matrix, int target) {
         int rows = matrix.length;

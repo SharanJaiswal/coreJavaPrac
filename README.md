@@ -72,11 +72,9 @@
 
 37. package [kk.algoconcepts.search.linearsearch] : Main(lc1295, lc1672)
 
-38. package [kk.algoconcepts.search.binarysearch] : >>> Main, TargetCeiling(lc744, lc34), InfiniteArrays, (lc852, lc162, lc1095), PivotInRotated, (lc410), RowColMatrix
+38. package [kk.algoconcepts.search.binarysearch] : >>> Main, TargetCeiling(lc744, lc34), InfiniteArrays, (lc852, lc162, lc1095), PivotInRotated, (lc410), ExtraQuestions, RowColMatrix, (lc540, lc1482, lc1011, lc1539, lc4)
 
-39. package [kk.numberSystem] : MagicNumber, Power, CountSetBits(lc832), RangeXOR; TODO: https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
-
-40. package [kk.numberSystem.primes] : Prime,
+39. package [kk.numberSystem] : BasicMaths(lc07, lc09), Prime, Power, MagicNumber, BasicBits, CountSetBits(lc832), PowerSet, RangeXOR, DivideTwoIntegers; TODO: https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
 
 functional interface(https://www.baeldung.com/java-8-lambda-expressions-tips) - cmd ln runner, Component v/s Bean v/s fffffffff
 

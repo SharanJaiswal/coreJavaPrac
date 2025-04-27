@@ -35,4 +35,18 @@ public class Main {
         }
         return -1;
     }
+
+    private static int binarySearchRecursion(int[] arr, int target, int start, int end) {
+        if (start > end) {
+            return -1;
+        }
+        int mid = start + (end - start) / 2;
+        if (target == arr[mid]) {
+            return mid;
+        } else if (target < arr[mid]) {
+            return binarySearchRecursion(arr, target, start, mid - 1);
+        } else {
+            return binarySearchRecursion(arr, target, mid + 1, end);
+        }
+    }
 }

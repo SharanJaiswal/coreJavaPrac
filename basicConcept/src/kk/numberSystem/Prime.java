@@ -59,6 +59,9 @@ public class Prime {
      * What if i*i itself is beyond N. So, any i which is greater than N will be of no use in the iterations. So, why not we iterate from 1 to sqrt(N) instead of 1 to N, in outer loop. This will reduce the complexity of creating the sieve from the factor of N to sqrt(N).
      *
      * TC: O(N) + O(N*log(logN)) + O(N)
+     *
+     * For range [0,N], while making sieve, every iteration i where i=[2,N], i will be running over sieve for n/i times.
+     * So, (n/2 + n/3 + n/4 + n/5 + . . . ) ==> n(1/2 + 1/3 + 1/4 + 1/5 + . . .) ==> n*log(log(n)), where series inside parenthesis is solved using HP for primes.
      */
 
     private static boolean[] findNumbersFromEratosthenesSieve(int n) {
@@ -100,5 +103,24 @@ public class Prime {
             prefixSum[i] = eratosthenesSieve[i] ? ++count : count;
         }
         System.out.println(prefixSum[r] - prefixSum[l - 1]);
+    }
+
+
+    /**
+     * SQUARE ROOT
+     * METHOD-1: Use binary search, and check for the mid element within range 1 to N. This will give the integer part. For decimal part, do the same.
+     * Method-2: There's NEWTON-RAPHSON METHOD formula where ROOT=[X + (N/X)]/2, where X is the assumed root. So this will give an error as ERROR=abs(X-N)
+     * Now, we can assume X as anything, but we can start from X=N. Once error comes or it is greater than some permissible limit, say 1, update X as ROOT for next iteration.
+     * Do this until ERROR becomes <= permissible limit.
+     * TC: O(logN * f(N)) where f(N) is a function which gives cost of calculating f(N)/f'(N) with n-digit precision.
+     */
+    private static void newtonRaphsonSqrt(int n) {
+        int errorThreshold = 1;
+        double root = 0, assumedX = n, error = Integer.MAX_VALUE;
+        while (error > errorThreshold) {
+            root = (assumedX + n/assumedX) / 2;
+            error = Math.abs(assumedX - root);
+        }
+        System.out.println(root);
     }
 }

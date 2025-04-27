@@ -94,6 +94,7 @@ public class BasicMaths {
     }
 
     /**
+     * Minimum positive value of Ax+By is the gcd(A,B), where x and y are integers. So, for given eq Ax+By=k is only possible when k%gcd(A,B)==0, where gcd(A,B)(Px+Qy)=k
      * Euclidean Algorithm for GCD of 2 numbers: gcd(a,b) == gcd(a-b, b); a>=b. That means, If we iteratively|recursively reduce the numbers by subtracting one from another, we will end up with one number having 0, and another x. This remaining number 'x' is the gcd of (a,b). Linear approach O(N)
      * Above steps can be minimized by, instead of chained reduction using subtraction, we can see that gcd(a,b)==gcd(a%b, b); where a>=b. Logarithmic approach O(log phi (min(a,b)))
      */
@@ -118,6 +119,8 @@ public class BasicMaths {
         }
         return num1 == 0 ? num2 : num1;
     }
+
+    // recursive approach : gcd(a,b) {while (num1!=0 {or num2!=0}) { gcd(b%a,a) }}
 
     // Find prime divisors of a number ::: Not exactly but TC is O(sqrt(N) * 2 * sqrt(N)), where first sqrt(N) will belong to first loop in which it is exact iteration. While prime checks are done with sqrt(N) iterations. Prime checks are done twice, but NOT for all the numbers. Checks are happening only for those which are factor of num provided.
     private static void allPrimeDivisors1(int num) {
@@ -144,7 +147,7 @@ public class BasicMaths {
             if (num % i == 0) {
                 System.out.println(i);
                 while (num % i == 0) {
-                    num /= 10;
+                    num /= i;
                 }
             }
             i++;
@@ -160,7 +163,7 @@ public class BasicMaths {
      * This is based on sieve of eratosthenes concept where we prepare sieve of N+1, where value at each idx will be holding the smallest prime factor of that idx.
      * So that, if sieve is already given, then we find the prime factors in log2(N) in worse complexity.
      * We choose base 2 because it's a worse complexity, which means, if a num is an exponentiation of 2 only, then it'll be reduced iteratively by half only, the slowest, taking most time.
-     * Similarly, if the num is exp of 5, then it would have been log5(num). For seven, it would have been log7(num). However num could be combined prod of many different primes.
+     * Similarly, if the num is exp of 5, then it would have been log5(num). For seven, it would have been log7,(num). However num could be combined prod of many different primes.
      * So, largest time will be taken by smallest prime, to reduce it iteratively; which is worse case. So, worse case TC: O(log2(N)); if sieve is already served.
      * If sieve is also taken into consideration, then, TC: [O(n*log(logN)) + O(log2(N))]
      */
@@ -186,3 +189,11 @@ public class BasicMaths {
         return spfSieve;
     }
 }
+
+/**
+ * LCM: least common multiple of numbers, here 2 numbers. A smallest non-negative number which can be completely divisible by both the numbers A and B.
+ * A=Px and B=Qy. So, gcd(A,B) is the largest common factor of A and B. Hence, A=gcd(A,B)*P and B=gcd(A,B)*Q
+ * A*B=gcd*gcd*P*Q  => (A*B)/gcd = gcd*P*Q where gcd*P*Q is LCM.
+ * Visualize, for given A and B, LCM of A and B will be taking out maximum possible common part (as their factor) and multiply that HCF with the product of remaining factor P and Q.
+ * Interestingly, P and Q will be co-primes as the common part as factors are being taken out and remaining respective factors are P and Q.
+ */

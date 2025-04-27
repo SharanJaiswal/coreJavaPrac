@@ -30,7 +30,7 @@
 
 16. package [kk.maps] : JavaHashMaps, JavaLinkedHashMap, LRUCache, JavaIdentityHashMap, JavaTreeMap, JavaHashTables, JavaEnumMap, JavaImmutableHashMap. TODO: is different implementations, beyond HashMaps; https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest WeakHashMap, ConcurrentMap and its implementations
 
-17. package [kk.sets] : Sets, JavaLinkedHashSet, TreeSets. TODO: there are many othe set implementations at https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest
+17. package [kk.sets] : Sets, JavaLinkedHashSet, TreeSets. TODO: there are many other set implementations at https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest
  
 18. package [kk.javaqueues]: QueueDemo, JavaPriorityQueue, JavaDeque. TODO: there are many Queue implementations at https://www.youtube.com/watch?v=92k5uokmW9o&ab_channel=EngineeringDigest
 
@@ -75,6 +75,10 @@
 38. package [kk.algoconcepts.search.binarysearch] : >>> Main, TargetCeiling(lc744, lc34), InfiniteArrays, (lc852, lc162, lc1095), PivotInRotated, (lc410), ExtraQuestions, RowColMatrix, (lc540, lc1482, lc1011, lc1539, lc4)
 
 39. package [kk.numberSystem] : BasicMaths(lc07, lc09), Prime, Power, MagicNumber, BasicBits, CountSetBits(lc832), PowerSet, RangeXOR, DivideTwoIntegers; TODO: https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
+
+40. package [kk.recursion] : Basic(lc39, lc40), BasicMore(lc90, lc46, lc17), Patterns
+
+41. package [kk.sorting] : Sorting - NOT BEATS 100% OF Cyclic(lc268, lc448-here missing number can be in any count, may not be 2, for XOR implementation, lc287, lc442, lc645{IMP}, lc41)
 
 functional interface(https://www.baeldung.com/java-8-lambda-expressions-tips) - cmd ln runner, Component v/s Bean v/s fffffffff
 

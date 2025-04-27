@@ -8,6 +8,12 @@ public class BasicBits {
     }
 
     /**
+     * A number formed from the remaining bit except the LSB will always be even because each bit can be expressed as a multiple of natural powers of 2.
+     * Hence, 2 can be a common factor in the number formed using remaining bits except LSB.
+     * While LSB can be 0 or 1. So, LSB only decides if the number can be even or odd.
+     */
+
+    /**
      * 1's compliment : flipping all the bits.
      * 2's compliment : 1's compliment + 1
      */
@@ -19,6 +25,13 @@ public class BasicBits {
      * Let's take example of 3 and -3. 3 is stored as [0]...011 in 32-bit format.
      * While to store -3; first 32-bit representation of 3 is gone through 1's compliment (flipping all 32 bits), then add 1 to flipped number (2's compliment). In the result, MSB will be 1.
      * So, to store -3, first 3's 1s compliment and then 2s compliment is taken.
+     */
+
+    /**
+     * Let's say we have only 8-bit number, and we want to store the negative of a number 00001010 (8-bit). Its negative will be same as subtracting it from 00000000(8bit)
+     * But this 00000000(8-bit)-00001010(8-bit) will make no sense. Hence, for calculation purpose, assume that its is like 100000000-00001010 (where MSB of first operand will be discarded).
+     * Now, first operand(9-bit) can be written as 11111111(8-bit) + 1. So, substituting and rearranging: (11111111-00001010+1).
+     * Considering only first 2 operands operation, it is as simple as taking compliment (aka, 1's compliment). And adding 1 to the first operation to get the -ve of 00001010 (Overall taking 2's compliment)
      */
 
     /**
@@ -43,7 +56,7 @@ public class BasicBits {
 
     /**
      * SET THE i-th BIT
-     * ( (1 << i) | N )
+     * ( (1 << i) | N ) // we didn't use XOR here because there might be a case where i-th bit is already set. Not everytime i-th bit will be unset already.
      */
 
     /**
@@ -51,6 +64,13 @@ public class BasicBits {
      * Approach: Make another operand in such a way that all bits are set except the i-th bit. Then take '&' with N
      * Making operand::: ( ~ ( 1 << i ))        First make an operand with only i-th bit set, and then flip all the bits of it to get the required operand
      * ANSWER: (N & ( ~ ( 1 << i )))
+     */
+
+    /**
+     * Properties of XOR:
+     * 1. XOR of 1 with any bit will reverse the bit. Hence, XOR of a number with all 1 32 bit will return a number's compliment.
+     * 2. XOR of 0 with any bit will give same bit. Hence, XOR of a number with all 0 32 bit will return the same number.
+     * 3. XOR of a number with number itself will give 0.
      */
 
     /**

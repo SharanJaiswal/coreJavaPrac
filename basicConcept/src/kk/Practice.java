@@ -1,5 +1,7 @@
 package kk;
 
+import java.util.ArrayList;
+
 public class Practice {
     public static void main (String[] args) {
         int[] a = {}, b = {6,7,9};

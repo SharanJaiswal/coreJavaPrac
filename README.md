@@ -76,9 +76,11 @@
 
 39. package [kk.numberSystem] : BasicMaths(lc07, lc09), Prime, Power, MagicNumber, BasicBits, CountSetBits(lc832), PowerSet, RangeXOR, DivideTwoIntegers; TODO: https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
 
-40. package [kk.recursion] : Basic(lc39, lc40), BasicMore(lc90, lc46, lc17), Patterns
+40. package [kk.twopointerslidingwin] : Basic, Examples
 
-41. package [kk.sorting] : Sorting - NOT BEATS 100% OF Cyclic(lc268, lc448-here missing number can be in any count, may not be 2, for XOR implementation, lc287, lc442, lc645{IMP}, lc41)
+41. package [kk.recursion] : Basic(lc39, lc40), BasicMore(lc90, lc46, lc60, lc17), Patterns, Nqueens(lc37), Maze, ArrayInversion, lc131
+
+42. package [kk.sorting] : Sorting - NOT BEATS 100% OF Cyclic(lc268, lc448-here missing number can be in any count, may not be 2, for XOR implementation, lc287, lc442, lc645{IMP}, lc41)
 
 functional interface(https://www.baeldung.com/java-8-lambda-expressions-tips) - cmd ln runner, Component v/s Bean v/s fffffffff
 

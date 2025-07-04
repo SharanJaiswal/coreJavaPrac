@@ -2,7 +2,7 @@ package kk.algoconcepts.search.binarysearch;
 
 import java.util.Arrays;
 
-// Infinite integer array is given in non-decreasing order, and may have repetitive elements. FInd the index of the target in such array. We cannot use arrayObj.length, or end
+// Infinite integer array is given in non-decreasing order, and may have repetitive elements. Find the index of the target in such array. We cannot use arrayObj.length, or end
 // O(log N) <= 2 * (log N)
 public class InfiniteArrays {
     public static void main(String[] args) {

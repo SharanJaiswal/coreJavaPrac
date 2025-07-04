@@ -1,8 +1,11 @@
 package kk.algoconcepts.search.binarysearch;
+
 // to find the first smallest element's index where that element is >= target in ascending sorted array
 // It is not required that target must be present in the array. There could be cases where target is not present in the array, still we can get the answer.
 // eg, if target < arr[0], then answer is arr[0]; if arr[0]<target<arr[max_idx], where target element is not in arr, then answer will surely be one element among all array elements;
-// For case where target> arr[max_idx], answer is not possible
+// For case where target > arr[max_idx], answer is not possible or it's considered as -1
+
+
 public class TargetCeiling {
     public static void main(String[] args) {
         int[] arr = null;

@@ -6,7 +6,7 @@
 
 4. package [kk.numbershandling] : Main, Factorial, TODO: Integer object making using new keyword, methods in BigDecimal and BigInteger and DecimalFormat
 
-5. package [kk.functions] : VarArgs, MethodShadowing. TODO: https://www.geeksforgeeks.org/nested-classes-java/; why main body is not getting picked of nested non-static class; how to run run main method of nested classes via terminal
+5. package [kk.functions] : VarArgs, MethodShadowing. TODO: https://www.geeksforgeeks.org/nested-classes-java/; why main body is not getting picked of nested non-static class; how to run main method of nested classes via terminal
 
 6. package [kk.generic] : GenericInterface, GenericImplementation, GenericInterfaceClass, GenericsRuntimeCheck, MultipleParamGeneric, LowerBoundGenerics TODO : https://www.geeksforgeeks.org/functional-interfaces-java/; instanceOf; instanceOf(); method reference https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html https://stackoverflow.com/questions/78341264/method-reference-and-type-inference-in-java-8
 
@@ -89,3 +89,5 @@ functional interface(https://www.baeldung.com/java-8-lambda-expressions-tips) - 
 101. package [testingPackages] :
 
 102. AOT compiler v/s JIT compiler; OpenJDK, differemce b/n constructor and an instance block. Why not threads in REST APIs?; saving singleton from reflection; yield keyword; ActionListener in java; temporal data types in java; trasient keyword; inline literals.
+
+103. TC and SC

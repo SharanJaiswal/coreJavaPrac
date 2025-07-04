@@ -40,7 +40,7 @@ public class PivotInRotated {
                 return mid;
             } else if (mid > start && arr[mid] < arr[mid - 1]) {    // If mid is smallest element; Arrays minimum size is 3; first ensuring there is an element before mid && condition. At least 2 elements.
                 return mid - 1;
-            } else if (arr[mid] <= arr[start])  // Because we have put <= instead of just <, ensures that cases of array of size 1 will be handeled here. In case we have put just <, then array of size 1 will be handeled in the below else part.
+            } else if (arr[mid] <= arr[start])  // Because we have put <= instead of just <, ensures that cases of array of size 1 will be handled here. In case we have put just <, then array of size 1 will be handled in the below else part.
             // We are not considering the end element as the pivot because we haven't considered at any time that array in context will be sorted array, with pivot at the end.
             // If pivot will be at end in the original array, then this method will give -1 as return value. Otherwise, in successive iterations, there won't be case where pivot will be at the end of array in context.
             {    // we used <= and not < because this can handle array of size 1|2 where mid and start CAN point to same start element.
@@ -149,6 +149,7 @@ public class PivotInRotated {
         return -1;
     }
 
+    // lc81
     static boolean ifTargetInDuplicatedRotated(int[] arr, int target) {     // It is NOT possible from binary search to directly find the index of a target in a rotated duplicated array. But we can check if it exists or not.
         int start = 0, end = arr.length - 1, mid;
         while (start <= end) {
